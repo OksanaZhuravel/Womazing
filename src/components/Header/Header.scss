@@ -1,14 +1,18 @@
 .header {
-	&__container {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		min-height: 28px;
-		padding-top: 28px;
-		padding-bottom: 41px;
-	}
-	&__logo {
-	}
-	&__menu {
-	}
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 28px;
+    padding-top: 28px;
+    padding-bottom: 41px;
+  }
+  &__logo {
+  }
+  &__menu {
+  }
+  &__phone {
+  }
+  &__cart {
+  }
 }

@@ -5,7 +5,7 @@ import Layout from '../pages/Layout';
 import Home from '../pages/Home';
 import AboutBrand from '../pages/AboutBrand';
 import Cart from '../pages/Cart';
-import Shop from '../pages/Home';
+import Shop from '../pages/Shop';
 import Contacts from '../pages/Contacts';
 
 export default createBrowserRouter([

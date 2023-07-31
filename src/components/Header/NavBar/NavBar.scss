@@ -1,26 +1,27 @@
 .menu {
-	&__list {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 45px;
-	}
-	&__item {
-	}
-	&__link {
-		color: $colorBlack;
-		transition: color 0.5s ease 0s;
-		&:hover {
-			color: $colorAccent;
-		}
-	}
-	&__text {
-		font-size: 15px;
-		line-height: 140%; /* 21/15 */
-		letter-spacing: 0.3px;
-		.active & {
-			font-weight: 700;
-			color: $colorAccent;
-		}
-	}
+  min-width: 410px;
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__item {
+  }
+  &__link {
+    color: $colorBlack;
+    transition: color 0.5s ease 0s;
+    &:hover {
+      color: $colorAccent;
+    }
+  }
+  &__text {
+    padding: 3px;
+    font-size: 15px;
+    line-height: 140%; /* 21/15 */
+    letter-spacing: 0.3px;
+    .active & {
+      font-weight: 700;
+      color: $colorAccent;
+    }
+  }
 }

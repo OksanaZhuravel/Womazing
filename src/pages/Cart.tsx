@@ -1,4 +1,4 @@
 const Cart = () => {
-  return <div>Cart</div>;
+  return <div>Cart User</div>;
 };
 export default Cart;

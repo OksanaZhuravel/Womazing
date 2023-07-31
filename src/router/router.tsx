@@ -5,8 +5,8 @@ import Layout from '../pages/Layout';
 import Home from '../pages/Home';
 import AboutBrand from '../pages/AboutBrand';
 import Cart from '../pages/Cart';
-import Contact from '../pages/Contact';
 import Shop from '../pages/Home';
+import Contacts from '../pages/Contacts';
 
 export default createBrowserRouter([
   {
@@ -27,8 +27,8 @@ export default createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: RoutePath.CONTACT,
-        element: <Contact />,
+        path: RoutePath.CONTACTS,
+        element: <Contacts />,
       },
       {
         path: RoutePath.SHOP,

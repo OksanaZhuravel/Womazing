@@ -1,6 +1,6 @@
 export const RoutePath = {
   ABOUTBRAND: 'about',
-  CONTACT: 'contact',
+  CONTACTS:'contacts',
   CART: 'cart',
   CHECKOUT: 'checkout',
   ONEPRODUCT: 'product',

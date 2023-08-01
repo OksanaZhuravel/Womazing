@@ -79,3 +79,21 @@ $mobileSmall: 479.98px; //em(479.98)
   }
 }
 //==========================================================================================================================================
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 50px;
+  background-color: $colorAccent;
+  transition: background-color 0.5s ease 0s;
+  &:hover {
+    background-color: $colorGreen;
+  }
+  &__text {
+    color: $colorWrite;
+    text-align: center;
+    font-size: 17px;
+    line-height: 138.9%; /* 23.613px */
+    letter-spacing: 0.34px;
+  }
+}

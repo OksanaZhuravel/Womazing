@@ -49,7 +49,7 @@ const PhoneHeader = () => {
               Отлично! Мы скоро вам перезвоним.
             </h2>
             <Button className='button button--outline' onClick={handleCancel}>
-              Закрыть
+              <span className='button__text'>Закрыть</span>
             </Button>
           </div>
         </Modal>

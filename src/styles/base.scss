@@ -96,5 +96,15 @@ $mobileSmall: 479.98px; //em(479.98)
     line-height: 138.9%; /* 23.613px */
     letter-spacing: 0.34px;
   }
+  &--outline {
+    background-color: transparent;
+    border: 1px solid $colorAccent;
+    &:hover {
+      background-color: transparent;
+    }
+    & .button__text {
+      color: $colorAccent;
+    }
+  }
 }
 //==========================================================================================================================================

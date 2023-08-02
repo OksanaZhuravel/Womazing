@@ -1,23 +1,29 @@
 import { useState } from 'react';
 import Phone from '../../Icon/Phone';
 import Modal from '../../UI/Modal/Modal';
+import PopupForm from '../../PopupForm/PopupForm';
 import Button from '../../UI/Button/Button';
+import CloseSvg from '../../Icon/CloseSvg';
 
+interface formDataProps {
+  name: string;
+  email: string;
+  phone: string;
+}
 const PhoneHeader = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const showModal = () => {
-    console.log('showModal');
     setIsModalOpen(true);
   };
-  const handleOk = () => {
-    console.log('handleOk');
-    setIsModalOpen(false);
-  };
-
   const handleCancel = () => {
-    console.log('handleCancel');
     setIsModalOpen(false);
+    setIsFormSubmitted(false);
+  };
+  const create = (formData: formDataProps) => {
+    console.log(formData);
+    setIsModalOpen(false);
+    setIsFormSubmitted(true);
   };
 
   return (
@@ -28,19 +34,26 @@ const PhoneHeader = () => {
         </span>
         <span className='phone-header__number'>+7 (495) 823-54-12</span>
       </div>
-      <Modal
-        open={isModalOpen}
-        onCancel={handleCancel}>
-
-        <div className="popup__content">
-          <h2 className='popup__title'>Заказать обратный звонок</h2>
-          <div className='form'>FORM</div>
-          <Button onClick={handleOk} className='button'>
-            <span className='button__text'>Заказать звонок</span>
-          </Button>
+      <Modal open={isModalOpen} onCancel={handleCancel}>
+        <div className='popup__content'>
+          <PopupForm create={create} />
         </div>
-
+        <Button className='popup__close' onClick={handleCancel}>
+          <CloseSvg />
+        </Button>
       </Modal>
+      {isFormSubmitted && (
+        <Modal open={isFormSubmitted} onCancel={handleCancel}>
+          <div className='popup__content'>
+            <h2 className='popup__title submit'>
+              Отлично! Мы скоро вам перезвоним.
+            </h2>
+            <Button className='button button--outline' onClick={handleCancel}>
+              Закрыть
+            </Button>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

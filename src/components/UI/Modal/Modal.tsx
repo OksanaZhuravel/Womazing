@@ -1,5 +1,4 @@
 import { ReactNode, useEffect, useCallback } from 'react';
-import CloseSvg from '../../Icon/CloseSvg';
 
 interface ModalProps {
 	open: boolean;
@@ -43,15 +42,12 @@ const Modal: React.FC<ModalProps> = ({ open, onCancel, children }) => {
 
 	useEffect(() => {
 		document.body.classList.toggle('popup__show', open);
-	}, [open]);
+	}, [open, onCancel]);
 
 	return (
 		<div className={generateClassName(open)}>
 			<div className='popup__wrapper'>
 				{children}
-				<button className='popup__close' onClick={onCancel}>
-					<CloseSvg />
-				</button>
 			</div>
 		</div>
 	);

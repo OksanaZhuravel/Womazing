@@ -18,7 +18,10 @@ body {
     }
   }
 }
+//==========================================================================================================================================
 .popup {
+  display: flex;
+  justify-content: center;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -26,40 +29,58 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px 10px;
-  transition: visibility 0.8s ease 0s;
+  transition: visibility 0.5s ease 0s;
   visibility: hidden;
   pointer-events: none;
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 495px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  &__content {
+    visibility: hidden;
+    transform: scale(0);
+    transition: transform 0.5s ease 0s;
+    background-color: $colorWrite;
+    padding: 70px;
+    width: 100%;
+
+    .lock & {
+      visibility: visible;
+    }
+    .popup_show & {
+      visibility: visible;
+      transform: scale(1);
+    }
+  }
+  &__title {
+  }
+  &__show {
+  }
+  &__close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 32px;
+    right: 32px;
+    transform: scale(0);
+    transition: transform 0.5s ease 0s;
+    .popup_show & {
+      transform: scale(1);
+    }
+  }
 }
+//==========================================================================================================================================
+
 .popup_show {
   z-index: 150;
   visibility: visible;
-  overflow: auto;
   pointer-events: auto;
-}
-.popup_show .popup__content {
-  visibility: visible;
-  transform: scale(1);
-}
-.popup__wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100%;
-  flex: 1 1 auto;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.popup__content {
-  visibility: hidden;
-  transform: scale(0);
-  transition: transform 0.3s ease 0s;
-  background-color: $colorWrite;
-  padding: 20px;
-  width: 100%;
-  max-width: 495px;
-  .lock & {
-    visibility: visible;
-  }
 }

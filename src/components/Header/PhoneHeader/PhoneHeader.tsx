@@ -10,7 +10,6 @@ const PhoneHeader = () => {
     console.log('showModal');
     setIsModalOpen(true);
   };
-
   const handleOk = () => {
     console.log('handleOk');
     setIsModalOpen(false);
@@ -32,17 +31,15 @@ const PhoneHeader = () => {
       <Modal
         open={isModalOpen}
         onCancel={handleCancel}>
-        <div className="popup__wraper">
-          <div className="popup__content">
-            <h2 className='popup__title'>Заказать обратный звонок</h2>
-            <div className='form'>FORM</div>
-            <Button onClick={handleOk} className='button'>
-              <span className='button__text'>Заказать звонок</span>
-            </Button>
-          </div>
 
-
+        <div className="popup__content">
+          <h2 className='popup__title'>Заказать обратный звонок</h2>
+          <div className='form'>FORM</div>
+          <Button onClick={handleOk} className='button'>
+            <span className='button__text'>Заказать звонок</span>
+          </Button>
         </div>
+
       </Modal>
     </>
   );

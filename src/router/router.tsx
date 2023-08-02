@@ -8,7 +8,7 @@ import Cart from '../pages/Cart';
 import Shop from '../pages/Shop';
 import Contacts from '../pages/Contacts';
 
-export default createBrowserRouter([
+const routerConfig = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
@@ -37,3 +37,5 @@ export default createBrowserRouter([
     ],
   },
 ]);
+
+export default routerConfig;

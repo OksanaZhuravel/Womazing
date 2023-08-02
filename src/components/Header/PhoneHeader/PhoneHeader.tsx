@@ -10,7 +10,7 @@ interface formDataProps {
   email: string;
   phone: string;
 }
-const PhoneHeader = () => {
+const PhoneHeader = ({ className }: { className: string }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const showModal = () => {
@@ -28,7 +28,7 @@ const PhoneHeader = () => {
 
   return (
     <>
-      <div className='header__phone phone-header' onClick={showModal}>
+      <div className={`${className} phone-header`} onClick={showModal}>
         <span className='phone-header__icon'>
           <Phone />
         </span>

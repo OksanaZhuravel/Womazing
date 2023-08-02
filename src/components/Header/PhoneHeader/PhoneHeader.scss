@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: flex-start;
   gap: 9px;
-  &:hover {
+  &.header__phone:hover {
     & .phone-header__icon {
       background-color: $colorAccent;
       path {

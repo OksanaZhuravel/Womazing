@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import LogoSVG from './../../Icon/LogoSvg';
+import LogoSVG from '../Icon/LogoSvg';
 
-const Logo = () => {
+const Logo = ({ className }: { className: string }) => {
   return (
-    <Link to='/' className='header__logo logo'>
+    <Link to='/' className={`${className} logo`}>
       <span className='logo__img'>
         <LogoSVG />
       </span>

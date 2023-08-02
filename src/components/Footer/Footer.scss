@@ -1,0 +1,49 @@
+.footer {
+  background-color: $colorPearl;
+  &__container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  &__wrap,
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__logo {
+  }
+
+  &__menu {
+  }
+
+  &__contact {
+  }
+  &__copy {
+    display: flex;
+    flex-flow: column;
+    gap: 6px;
+  }
+  &__link {
+    transition: color 0.5s ease 0s;
+    &:hover {
+      color: $colorAccent;
+    }
+  }
+  &__text {
+    font-size: 13px;
+    letter-spacing: 0.26px;
+  }
+}
+//==========================================================================================================================================
+.contact-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  justify-content: center;
+  align-items: flex-end;
+  &__text {
+    font-size: 15px;
+    letter-spacing: 0.3px;
+  }
+}

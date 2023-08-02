@@ -8,11 +8,11 @@ const menuItem = [
   { id: 4, path: '/contacts', text: 'Контакты' },
 ];
 
-const NavBar = () => {
+const NavBar = ({ className }: { className: string }) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
 
   return (
-    <nav className='header__menu menu'>
+    <nav className={`${className} menu`}>
       <ul className='menu__list'>
         {menuItem.map((item) => (
           <li

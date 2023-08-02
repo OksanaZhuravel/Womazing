@@ -3,6 +3,8 @@
   &__container {
     padding-top: 100px;
     padding-bottom: 100px;
+    display: grid;
+    gap: 9px;
   }
   &__wrap,
   &__bottom {
@@ -19,6 +21,12 @@
 
   &__contact {
   }
+  &__inner {
+    display: grid;
+    gap: 30px;
+    justify-items: end;
+    align-items: center;
+  }
   &__copy {
     display: flex;
     flex-flow: column;
@@ -33,6 +41,16 @@
   &__text {
     font-size: 13px;
     letter-spacing: 0.26px;
+  }
+  &__list {
+    display: grid;
+    gap: 10px;
+  }
+  &__item {
+  }
+  &__link {
+  }
+  &__text {
   }
 }
 //==========================================================================================================================================

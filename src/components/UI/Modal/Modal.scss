@@ -51,7 +51,11 @@ body {
     background-color: $colorWrite;
     padding: 70px;
     width: 100%;
-
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 35px;
     .lock & {
       visibility: visible;
     }
@@ -61,6 +65,10 @@ body {
     }
   }
   &__title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
   }
   &__show {
   }

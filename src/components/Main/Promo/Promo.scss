@@ -1,0 +1,133 @@
+@import 'swiper/scss';
+@import 'swiper/scss/autoplay';
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  position: static;
+}
+.swiper-pagination {
+  position: absolute;
+  left: 285px;
+  text-align: center;
+  transition: 300ms opacity;
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  &-bullet {
+    width: 30px;
+    height: 4px;
+    background-color: #d1d1d1;
+    &-active {
+      background-color: $colorBlack;
+    }
+  }
+}
+.swiper-slide {
+  background-color: $colorWrite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+//==========================================================================================================================================
+.promo {
+  position: relative;
+
+  &__container {
+    position: relative;
+    padding-top: 120px;
+    padding-bottom: 130px;
+    &::after {
+      content: '';
+      width: 630px;
+      height: 826px;
+      background-color: $colorPearl;
+      position: absolute;
+      top: 0;
+      right: -230px;
+    }
+  }
+
+  &__swiper {
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 3;
+    }
+    &::after {
+      width: 190px;
+      height: 318px;
+      bottom: 70px;
+      right: 310px;
+      background: url('/assets/img/home/promo_bg1.png') center / cover no-repeat;
+    }
+    &::before {
+      width: 197px;
+      height: 197px;
+      top: 240px;
+      right: -95px;
+      background: url('/assets/img/home/promo_bg2.png') center / cover no-repeat;
+    }
+  }
+
+  &__slide {
+  }
+
+  &__boby {
+    max-width: 563px;
+    max-height: 385px;
+  }
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 410px;
+    gap: 95px;
+    align-items: center;
+    justify-items: center;
+  }
+
+  &__title {
+    max-width: 585px;
+    font-size: 55px;
+    font-weight: 500;
+    line-height: 110%; /* 60.5px */
+    letter-spacing: 1.1px;
+    &:not(:last-child) {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__text {
+    max-width: 385px;
+    text-align: right;
+    font-size: 20px;
+    letter-spacing: 0.4px;
+    &:not(:last-child) {
+      margin-bottom: 52px;
+    }
+  }
+
+  &__img {
+  }
+  &__controller {
+    margin-left: 75px;
+    max-height: 68px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  &__arrow {
+  }
+  &__button {
+  }
+}

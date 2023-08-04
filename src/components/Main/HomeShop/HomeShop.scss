@@ -38,7 +38,11 @@
   gap: 24px;
   max-width: 350px;
   min-height: 558px;
-  &__img {
+  &:hover {
+    .cart__link {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
   &__title {
@@ -65,7 +69,24 @@
   }
   &__number {
   }
-
+  &__inner {
+    position: relative;
+  }
+  &__img {
+  }
   &__link {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba($color: $colorAccent, $alpha: 0.77);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease 0s;
   }
 }

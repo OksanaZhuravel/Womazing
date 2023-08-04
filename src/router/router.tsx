@@ -7,6 +7,7 @@ import AboutBrand from '../pages/AboutBrand';
 import Cart from '../pages/Cart';
 import Shop from '../pages/Shop';
 import Contacts from '../pages/Contacts';
+import OneProduct from '../pages/OneProduct';
 
 const routerConfig = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const routerConfig = createBrowserRouter([
         path: RoutePath.SHOP,
         element: <Shop />,
       },
+      {
+        path: RoutePath.ONEPRODUCT,
+        element: <OneProduct />,
+      }
     ],
   },
 ]);

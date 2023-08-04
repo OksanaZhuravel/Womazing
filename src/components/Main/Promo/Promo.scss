@@ -127,6 +127,20 @@
     align-items: flex-start;
   }
   &__arrow {
+    & svg path,
+    & svg rect {
+      transition: all 0.5s ease 0s;
+    }
+    &:hover {
+      svg {
+        & path {
+          stroke: $colorWrite;
+        }
+        & rect {
+          fill-opacity: 0.6;
+        }
+      }
+    }
   }
   &__button {
   }

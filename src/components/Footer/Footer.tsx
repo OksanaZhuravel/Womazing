@@ -6,7 +6,7 @@ import Social from "../Social/Social";
 
 const Footer = () => {
   return (
-    <footer className='footer' id="footer">
+    <footer className='footer'>
       <div className='footer__container'>
         <div className="footer__wrap">
           <Logo className='footer__logo' />

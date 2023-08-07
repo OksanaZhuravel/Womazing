@@ -45,7 +45,8 @@
 
   &__container {
     position: relative;
-    padding-top: 120px;
+    padding-top: 0;
+    // padding-top: 120px;
     padding-bottom: 130px;
     &::after {
       content: '';
@@ -53,8 +54,9 @@
       height: 826px;
       background-color: $colorPearl;
       position: absolute;
-      top: 0;
+      top: -96px;
       right: -230px;
+      z-index: -1;
     }
   }
 
@@ -91,7 +93,7 @@
   &__inner {
     display: grid;
     grid-template-columns: 1fr 410px;
-    gap: 95px;
+    gap: 105px;
     align-items: center;
     justify-items: center;
   }

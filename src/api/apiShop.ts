@@ -1,25 +1,41 @@
 import axios from 'axios';
 export const API_URL = `https://api.escuelajs.co/api/v1/`;
+
+// https://dummyjson.com/products/1
 const instance = axios.create({
   baseURL: API_URL,
 });
+     const oneMonthAgo = new Date();
+      oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+      const updatedAtFilter = oneMonthAgo.toISOString();
 class Api {
   getInstance() {
     return instance;
   }
-  async getAll() {
+  async getPromo() {
     try {
-      const response = await instance.get('products?offset=0&limit=3');
-	//   console.log(response.data);
+      const categoryID = 1;
+      const limit = 3;
+      const params = {
+        offset: 0,
+        limit: limit,
+        updatedAt: {
+          gte: updatedAtFilter,
+        },
+      };
+      const apiUrl = `categories/${categoryID}/products`;
+      const response = await instance.get(apiUrl, { params: params });
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
     }
   }
-    async getProductId(id:number) {
+  async getProductId(id:string) {
     try {
       const response = await instance.get(`/products/${id}`);
-	//   console.log(response.data);
+      //   console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);

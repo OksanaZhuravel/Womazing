@@ -3,7 +3,7 @@ export const RoutePath = {
   CONTACTS:'contacts',
   CART: 'cart',
   CHECKOUT: 'checkout',
-  ONEPRODUCT: 'product/:id',
+  ONEPRODUCT: 'product/:productId',
   SHOP: 'shop',
   SUCCESS: 'success',
 } as const;

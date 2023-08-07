@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../../api/apiShop';
+import Arrow from '../../Icon/Arrow';
+
 
 interface ProductProps {
-	category: number;
+	category: string;
 	description: string;
 	id: number;
 	images: string[];
@@ -13,11 +15,13 @@ interface ProductProps {
 const HomeShop = () => {
 	const diccort = 0.9
 	const [products, setProducts] = useState<ProductProps[]>([]);
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const productAll = await api.getAll();
+				const productAll = await api.getPromo();
 				console.log(productAll);
+
 				setProducts(productAll);
 			} catch (error) {
 				console.log(error);
@@ -25,8 +29,6 @@ const HomeShop = () => {
 		};
 		fetchData();
 	}, []);
-
-
 	return (
 		<section className='home-shop' id='shop'>
 			<div className='home-shop__container'>
@@ -44,21 +46,11 @@ const HomeShop = () => {
 									className='cart__img'
 								/>
 								<Link to={`/product/${product.id}`} className='cart__link'>
-									<svg
-										xmlns='http://www.w3.org/2000/svg'
-										width='32'
-										height='24'
-										viewBox='0 0 32 24'
-										fill='none'>
-										<path
-											d='M0 12H31M31 12L20.186 1M31 12L20.186 23'
-											stroke='white'
-										/>
-									</svg>
+									<Arrow />
 								</Link>
 							</div>
 							<div className='cart__boby'>
-								<h2 className='cart__title'>{product.title}</h2>
+								<h3 className='cart__title'>{product.title}</h3>
 								<div className='cart__prace'>
 									<span className='cart__discort'>${product.price}</span>
 									<span className='cart__number'>${(product.price * diccort).toFixed(2)}</span>

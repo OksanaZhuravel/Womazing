@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import api from '../api/apiShop';
-
+import { useParams } from 'react-router-dom';
+import Breadcrumbs from '../components/UI/Breadcrumbs/Breadcrumbs';
 interface ProductProps {
-  category: number;
+  category: {
+    id: number;
+    name: string;
+  };
   description: string;
   id: number;
   images: string[];
@@ -11,27 +15,36 @@ interface ProductProps {
 }
 const OneProduct = () => {
   const [product, setProduct] = useState<ProductProps | null>(null);
+  const { productId } = useParams<{ productId?: string }>();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productId = 4;
-        const productData = await api.getProductId(productId);
-        // console.log(productData);
-        setProduct(productData);
+        if (productId) {
+          const productData = await api.getProductId(productId);
+          setProduct(productData);
+        }
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, []);
+  }, [productId]);
   if (!product) {
     return <div>Loading...</div>;
   }
   return (
     <>
-      <div>OneProduct</div>
-      <div>{product.id} {product.title}</div>
-
+      <h2>{product.title}</h2>
+      <Breadcrumbs category={product.category} title={product.title} />
+      <img
+        src={product.images[0]}
+        width={536}
+        height={729}
+        alt={product.title}
+      />
+      <div>
+        <p>{product.price} $</p>
+      </div>
     </>
   );
 };

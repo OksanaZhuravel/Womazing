@@ -1,0 +1,51 @@
+.importance {
+  &__container {
+    padding-bottom: 130px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 92px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    width: 100%;
+    text-align: left;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 110%; /* 44px */
+    letter-spacing: 0.8px;
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    display: grid;
+    gap: 24px;
+  }
+
+  &__svg {
+    width: 61px;
+    height: 61px;
+  }
+
+  &__subtitle {
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    &:not(:last-child) {
+      margin-bottom: 13px;
+    }
+  }
+
+  &__text {
+    max-width: 305px;
+    font-weight: 500;
+    letter-spacing: 0.34px;
+  }
+}

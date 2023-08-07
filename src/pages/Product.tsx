@@ -13,7 +13,7 @@ interface ProductProps {
   price: number;
   title: string;
 }
-const OneProduct = () => {
+const Product = () => {
   const [product, setProduct] = useState<ProductProps | null>(null);
   const { productId } = useParams<{ productId?: string }>();
   useEffect(() => {
@@ -48,4 +48,4 @@ const OneProduct = () => {
     </>
   );
 };
-export default OneProduct;
+export default Product;

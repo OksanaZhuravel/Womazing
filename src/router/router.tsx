@@ -7,7 +7,7 @@ import AboutBrand from '../pages/AboutBrand';
 import Cart from '../pages/Cart';
 import Shop from '../pages/Shop';
 import Contacts from '../pages/Contacts';
-import OneProduct from '../pages/OneProduct';
+import Product from '../pages/Product';
 
 const routerConfig = createBrowserRouter([
   {
@@ -36,8 +36,8 @@ const routerConfig = createBrowserRouter([
         element: <Shop />,
       },
       {
-        path: RoutePath.ONEPRODUCT,
-        element: <OneProduct />,
+        path: RoutePath.PRODUCT,
+        element: <Product />,
       }
     ],
   },

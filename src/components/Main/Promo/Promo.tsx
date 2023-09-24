@@ -8,6 +8,7 @@ const Promo: React.FC = () => {
 			<div className='promo__container'>
 				<Swiper
 					pagination={{ clickable: true }}
+					spaceBetween={5}
 					autoplay={{ delay: 5000 }}
 					loop={true}
 					centeredSlides={true}
@@ -16,7 +17,7 @@ const Promo: React.FC = () => {
 					<SwiperSlide className='promo__slide'>
 						<div className='promo__inner'>
 							<div className='promo__boby'>
-								<h1 className='promo__title'>
+								<h1 className='promo__title title'>
 									Новые поступления в этом сезоне
 								</h1>
 								<p className='promo__text'>

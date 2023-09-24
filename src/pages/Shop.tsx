@@ -1,4 +1,13 @@
+import ShopProducts from "../components/Shop/ShopProducts/ShopProducts";
+import ShopTitle from "../components/Shop/ShopTitle/ShopTitle";
+
+
+
 const Shop = () => {
-  return <div>Shop</div>;
+  return <>
+    <ShopTitle />
+    <ShopProducts />
+  </>
+
 };
 export default Shop;

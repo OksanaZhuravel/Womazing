@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from 'swiper/modules';
+import { Link } from "react-router-dom";
 
 const Teams = () => {
 	return (
@@ -40,7 +41,7 @@ const Teams = () => {
 						<p className="teams__subtitle">Для каждой</p>
 						<p className="teams__text">Каждая девушка уникальна. Однако, мы схожи в миллионе мелочей.</p>
 						<p className="teams__text">Womazing ищет эти мелочи и создает прекрасные вещи, которые выгодно подчеркивают достоинства каждой девушки.</p>
-						<a href="/" className="teams__link link"><span className="link__text">Подробнее о бренде</span></a>
+						<Link to="/about" className="teams__link link"><span className="link__text">Подробнее о бренде</span></Link>
 					</div>
 				</div>
 			</div>

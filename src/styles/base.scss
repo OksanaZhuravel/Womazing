@@ -33,7 +33,7 @@ $fontSize: 17px;
 $minWidth: 360;
 $maxWidth: 1600;
 $maxWidthContainer: 1140;
-$containerPadding: 60;
+$containerPadding: 30;
 $containerWidth: $maxWidthContainer + $containerPadding;
 
 // Break point
@@ -143,4 +143,25 @@ $mobileSmall: 479.98px; //em(479.98)
   &:hover {
     border-bottom-color: $colorAccentBacg;
   }
+}
+//==========================================================================================================================================
+.title {
+  font-size: 55px;
+  font-weight: 500;
+  line-height: 110%; /* 60.5px */
+  letter-spacing: 1.1px;
+}
+//==========================================================================================================================================
+.breadcrumbs {
+  &__active {
+    color: $colorGrey;
+  }
+}
+//==========================================================================================================================================
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }

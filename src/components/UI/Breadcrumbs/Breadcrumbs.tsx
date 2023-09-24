@@ -19,13 +19,13 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ category, title }) => {
 		</Link>,
 		category && (
 			<span key='category'>
-				&nbsp;&gt;&nbsp;
+				&nbsp;—&nbsp;
 				<Link to={`/category/${category.id}`}>{category.name}</Link>
 			</span>
 		),
 		title && (
 			<span key='product'>
-				&nbsp;&gt;&nbsp;
+				&nbsp;—&nbsp;
 				{title}
 			</span>
 		),

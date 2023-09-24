@@ -33,9 +33,13 @@
     gap: 6px;
   }
   &__link {
-    transition: color 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
     &:hover {
       color: $colorAccent;
+      // padding-bottom: 5px;
+      border-bottom: 1px solid $colorAccentBacg;
     }
   }
   &__text {
@@ -44,7 +48,7 @@
   }
   &__list {
     display: grid;
-    gap: 10px;
+    gap: 5px;
   }
   &__item {
   }

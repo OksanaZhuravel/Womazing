@@ -1,0 +1,15 @@
+.shop-title {
+  &__container {
+    padding-top: 173px;
+    padding-bottom: 84px;
+  }
+
+  &__title {
+    &:not(:last-child) {
+      padding-bottom: 26px;
+    }
+  }
+
+  &__breadcrumbs {
+  }
+}

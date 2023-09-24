@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import api from '../../../api/apiShop';
-import Arrow from '../../Icon/Arrow';
-
+import { useEffect, useState } from "react";
+import api from "../../../api/apiShop";
+import { Link } from "react-router-dom";
+import Arrow from "../../Icon/Arrow";
 
 interface ProductProps {
 	category: string;
@@ -12,15 +11,18 @@ interface ProductProps {
 	price: number;
 	title: string;
 }
-const HomeShop = () => {
+const ShopProducts = () => {
 	const diccort = 0.9
+	const pageSize = 9;
 	const [products, setProducts] = useState<ProductProps[]>([]);
+	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const productAll = await api.getPromo();
-				console.log(productAll);
+				const offset = (currentPage - 1) * pageSize;
+				const productAll = await api.getAll(offset, pageSize);
+				// console.log(productAll);
 
 				setProducts(productAll);
 			} catch (error) {
@@ -28,17 +30,15 @@ const HomeShop = () => {
 			}
 		};
 		fetchData();
-	}, []);
+	}, [currentPage]);
 	return (
-		<section className='home-shop' id='shop'>
-			<div className='home-shop__container'>
-				<h2 className='home-shop__title'>Новая коллекция</h2>
-				<div className='home-shop__inner inner'>
-					{products.map((product) =>
+		<section className='shop' id='shop'>
+			<div className='shop__container'>
+				<div className='shop__inner inner'>
+					{products.map((product) => (
 						<article className='home-cart cart' key={product.id}>
 							<div className='cart__inner'>
 								<img
-									// src='/assets/img/home/catalog1.png'
 									src={product.images[0]}
 									width={350}
 									height={478}
@@ -57,14 +57,29 @@ const HomeShop = () => {
 								</div>
 							</div>
 						</article>
-					)
-					}
+					))}
 				</div>
-				<Link to={'/shop'} className='button button--outline'>
-					<span className='button__text'>Открыть магазин</span>
-				</Link>
+				<div className='pagination'>
+					<button
+						onClick={() => {
+							if (currentPage > 1) {
+								setCurrentPage(currentPage - 1);
+							}
+						}}
+						disabled={currentPage === 1}
+					>
+						Предыдущая
+					</button>
+					<button
+						onClick={() => {
+							setCurrentPage(currentPage + 1);
+						}}
+					>
+						Следующая
+					</button>
+				</div>
 			</div>
 		</section>
 	);
 };
-export default HomeShop;
+export default ShopProducts;

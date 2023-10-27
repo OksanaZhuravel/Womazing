@@ -14,17 +14,20 @@ interface ProductProps {
 const ShopProducts = () => {
 	const diccort = 0.9
 	const pageSize = 9;
+	const maxPage = 8;
 	const [products, setProducts] = useState<ProductProps[]>([]);
 	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
+
 				const offset = (currentPage - 1) * pageSize;
 				const productAll = await api.getAll(offset, pageSize);
-				// console.log(productAll);
+				console.log(productAll);
 
 				setProducts(productAll);
+
 			} catch (error) {
 				console.log(error);
 			}
@@ -32,8 +35,10 @@ const ShopProducts = () => {
 		fetchData();
 	}, [currentPage]);
 	return (
+
 		<section className='shop' id='shop'>
 			<div className='shop__container'>
+				<div className="shop__pagination text">Показано: <span>{pageSize}</span> из <span>70</span> товаров</div>
 				<div className='shop__inner inner'>
 					{products.map((product) => (
 						<article className='home-cart cart' key={product.id}>
@@ -59,8 +64,8 @@ const ShopProducts = () => {
 						</article>
 					))}
 				</div>
-				<div className='pagination'>
-					<button
+				<div className="pagination">
+					<button className="pagination__page"
 						onClick={() => {
 							if (currentPage > 1) {
 								setCurrentPage(currentPage - 1);
@@ -68,18 +73,33 @@ const ShopProducts = () => {
 						}}
 						disabled={currentPage === 1}
 					>
-						Предыдущая
+						{currentPage}
 					</button>
-					<button
-						onClick={() => {
-							setCurrentPage(currentPage + 1);
-						}}
-					>
-						Следующая
-					</button>
+					{currentPage < maxPage && (
+						<button className="pagination__next"
+							onClick={() => {
+								setCurrentPage(currentPage + 1);
+							}}
+						>
+							{currentPage + 1}
+						</button>
+					)}
+					{currentPage < maxPage && (
+						<button className="pagination__arrow"
+							onClick={() => {
+								setCurrentPage(currentPage + 1);
+							}}
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" width="21" height="11" viewBox="0 0 21 11" fill="none">
+								<path d="M-2.18557e-07 5.5L20 5.5M20 5.5L14.8649 10.5M20 5.5L14.8649 0.499999" stroke="black" />
+							</svg>
+						</button>
+					)}
 				</div>
+
 			</div>
 		</section>
+
 	);
 };
 export default ShopProducts;

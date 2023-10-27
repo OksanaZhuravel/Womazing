@@ -14,7 +14,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ category, title }) => {
 		.filter((segment) => segment !== '');
 
 	const breadcrumbs = [
-		<Link key='home' to='/'>
+		<Link key='home' to='/' className='text'>
 			Главная
 		</Link>,
 		category && (

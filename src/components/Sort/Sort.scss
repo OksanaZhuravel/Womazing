@@ -1,0 +1,27 @@
+.sort {
+  &__container {
+    padding-top: 130px;
+    padding-bottom: 92px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 10px;
+    flex-flow: row wrap;
+  }
+
+  &__item {
+    padding: 19px 65px;
+    border: 1px solid #000;
+    &.active {
+      color: $colorWrite;
+      background-color: $colorBlack;
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0.34px;
+  }
+}

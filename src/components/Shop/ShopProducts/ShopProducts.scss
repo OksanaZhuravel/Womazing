@@ -1,7 +1,11 @@
 .shop {
   &__container {
+    padding-bottom: 130px;
   }
-
+  &__pagination {
+    padding-bottom: 65px;
+    color: #808080;
+  }
   &__inner {
     display: flex;
   }
@@ -34,4 +38,31 @@
   }
 }
 .pagination {
+  padding-top: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  // & button {
+  //   display: flex;
+  //   width: 41px;
+  //   padding: 9px 0px 8px 0px;
+  //   justify-content: center;
+  //   align-items: center;
+  //   border: 1px solid #000;
+  // }
+  &__page {
+    color: $colorWrite;
+    width: 41px;
+    padding: 9px 0px 8px 0px;
+    border: 1px solid $colorBlack;
+    background-color: $colorBlack;
+  }
+  &__next {
+    width: 41px;
+    padding: 9px 0px 8px 0px;
+    border: 1px solid $colorBlack;
+  }
+  &__arrow {
+  }
 }

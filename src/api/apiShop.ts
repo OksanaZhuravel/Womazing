@@ -41,7 +41,7 @@ class Api {
       console.log(error);
     }
   }
-  async getAll(offset:number, limit:number) {
+  async getAll(offset: number, limit: number) {
     try {
       const categoryID = 1;
       const params = {
@@ -53,7 +53,22 @@ class Api {
       };
       const apiUrl = `categories/${categoryID}/products`;
       const response = await instance.get(apiUrl, { params: params });
-      console.log(response.data);
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  async getSort() {
+    try {
+      const categoryID = 1;
+      const params = {
+        categoryID:categoryID,
+      };
+      const apiUrl = `/products/`;
+      const response = await instance.get(apiUrl, { params: params });
+      console.log(response);
       return response.data;
     } catch (error) {
       console.log(error);

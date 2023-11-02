@@ -1,0 +1,38 @@
+.about {
+  &__container {
+    padding-top: 130px;
+    padding-bottom: 130px;
+    display: grid;
+    justify-items: center;
+    gap: 130px;
+  }
+
+  &__wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:nth-child(2) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 442px;
+  }
+
+  &__boby {
+    max-width: 542px;
+  }
+
+  &__subtitle {
+    padding-bottom: 46px;
+  }
+
+  &__text {
+    &:not(:last-child) {
+      padding-bottom: 26px;
+    }
+  }
+}

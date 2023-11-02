@@ -1,4 +1,10 @@
+import Title from '../components/Title/Title';
+
 const AboutBrand = () => {
-  return <div>AboutBrand</div>;
+  return (
+    <>
+      <Title title='О бренде' activeTitle='О бренде' activeLink='/about' />
+    </>
+  );
 };
 export default AboutBrand;

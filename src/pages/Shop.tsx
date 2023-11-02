@@ -1,12 +1,12 @@
 import ShopProducts from "../components/Shop/ShopProducts/ShopProducts";
-import ShopTitle from "../components/Shop/ShopTitle/ShopTitle";
+import Title from "../components/Title/Title";
 import Sort from "../components/Sort/Sort";
 
 
 
 const Shop = () => {
   return <>
-    <ShopTitle />
+    <Title title="Магазин" activeTitle="Магазин" activeLink='/shop' />
     <Sort />
     <ShopProducts />
   </>

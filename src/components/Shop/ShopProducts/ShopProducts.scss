@@ -10,47 +10,15 @@
     display: flex;
   }
 }
-.home-cart {
-}
-.cart {
-  &__inner {
-  }
+//==========================================================================================================================================
 
-  &__img {
-  }
-
-  &__link {
-  }
-
-  &__boby {
-  }
-
-  &__title {
-  }
-
-  &__prace {
-  }
-
-  &__discort {
-  }
-
-  &__number {
-  }
-}
 .pagination {
   padding-top: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 14px;
-  // & button {
-  //   display: flex;
-  //   width: 41px;
-  //   padding: 9px 0px 8px 0px;
-  //   justify-content: center;
-  //   align-items: center;
-  //   border: 1px solid #000;
-  // }
+
   &__page {
     color: $colorWrite;
     width: 41px;

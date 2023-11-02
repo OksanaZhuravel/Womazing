@@ -1,0 +1,49 @@
+.product {
+  &__container {
+    padding-top: 110px;
+    padding-bottom: 130px;
+  }
+  &__title {
+    &:not(:last-child) {
+      padding-bottom: 26px;
+    }
+  }
+  &__breadcrumbs {
+    &:not(:last-child) {
+      padding-bottom: 102px;
+    }
+  }
+  &__wrap {
+    display: flex;
+    gap: 74px;
+    align-items: center;
+  }
+  &__img {
+    img {
+      max-width: 100%;
+    }
+    max-width: 536px;
+    height: 100%;
+  }
+  &__boby {
+    display: grid;
+    gap: 59px;
+  }
+  &__prace {
+    display: flex;
+    gap: 29px;
+    color: $colorBeaver;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 110%;
+    letter-spacing: 0.8px;
+  }
+  &__discort {
+    text-decoration: line-through;
+    color: $colorDiscort;
+    font-size: 30px;
+    letter-spacing: 0.6px;
+  }
+  &__number {
+  }
+}

@@ -1,4 +1,8 @@
+import Title from "../components/Title/Title";
+
 const Cart = () => {
-  return <div>Cart User</div>;
+  return <>
+    <Title title='Корзина' activeTitle='Корзина' activeLink='/cart' />
+  </>
 };
 export default Cart;

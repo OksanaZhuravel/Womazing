@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import api from '../api/apiShop';
 import { useParams } from 'react-router-dom';
 import Breadcrumbs from '../components/UI/Breadcrumbs/Breadcrumbs';
+import ProductItem from '../components/ProductItem/ProductItem';
 interface ProductProps {
   category: {
     id: number;
@@ -34,17 +35,14 @@ const Product = () => {
   }
   return (
     <>
-      <h2>{product.title}</h2>
-      <Breadcrumbs category={product.category} title={product.title} />
-      <img
-        src={product.images[0]}
-        width={536}
-        height={729}
-        alt={product.title}
-      />
-      <div>
-        <p>{product.price} $</p>
-      </div>
+      <section className='product'>
+        <div className="product__container">
+          <h2 className='product__title title'>{product.title}</h2>
+          <Breadcrumbs category={product.category} title={product.title} className='product__breadcrumbs' />
+
+          <ProductItem item={product} />
+        </div>
+      </section>
     </>
   );
 };

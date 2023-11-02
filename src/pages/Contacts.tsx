@@ -1,4 +1,10 @@
+import Title from '../components/Title/Title';
+
 const Contacts = () => {
-  return <div>Contacts</div>;
+  return (
+    <>
+      <Title title='Контакты' activeTitle='Контакты' activeLink='/contacts' />
+    </>
+  );
 };
 export default Contacts;

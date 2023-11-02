@@ -1,4 +1,8 @@
+import Title from "../components/Title/Title";
+
 const Checkout = () => {
-  return <div>Checkout</div>;
+  return <>
+    <Title title='Оформление заказа' activeTitle='Оформление заказа' activeLink='/checkout' />
+  </>
 };
 export default Checkout;

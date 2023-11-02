@@ -5,9 +5,10 @@ interface BreadcrumbsProps {
 		name: string;
 	};
 	title: string;
+	className: string;
 }
 
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ category, title }) => {
+const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ category, title, className }) => {
 	const location = useLocation();
 	const pathSegments = location.pathname
 		.split('/')
@@ -18,20 +19,20 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ category, title }) => {
 			Главная
 		</Link>,
 		category && (
-			<span key='category'>
+			<span key='category' className='text'>
 				&nbsp;—&nbsp;
 				<Link to={`/category/${category.id}`}>{category.name}</Link>
 			</span>
 		),
 		title && (
-			<span key='product'>
+			<span key='product' className='breadcrumbs__active text'>
 				&nbsp;—&nbsp;
 				{title}
 			</span>
 		),
 	];
 
-	return <div className='breadcrumbs'>{breadcrumbs}</div>;
+	return <div className={`breadcrumbs ${className}`}>{breadcrumbs}</div>;
 };
 
 export default Breadcrumbs;

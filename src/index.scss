@@ -16,6 +16,10 @@
 
 // Shop page
 
-@import './components/Shop/ShopTitle/ShopTitle';
+@import './components/Title/Title';
 @import './components/Shop/ShopProducts/ShopProducts';
 @import './components/Sort/Sort';
+
+// Product page
+
+@import './components/ProductItem/ProductItem';

@@ -17,7 +17,7 @@ const Promo: React.FC = () => {
 					<SwiperSlide className='promo__slide'>
 						<div className='promo__inner'>
 							<div className='promo__boby'>
-								<h1 className='promo__title title'>
+								<h1 className='promo__title title-big'>
 									Новые поступления в этом сезоне
 								</h1>
 								<p className='promo__text'>
@@ -36,7 +36,7 @@ const Promo: React.FC = () => {
 					<SwiperSlide className='promo__slide'>
 						<div className='promo__inner'>
 							<div className='promo__boby'>
-								<h1 className='promo__title title'>
+								<h1 className='promo__title  title-big'>
 									Что-то новенькое. Мы&nbsp;заждались тебя.
 								</h1>
 								<p className='promo__text'>
@@ -55,7 +55,7 @@ const Promo: React.FC = () => {
 					<SwiperSlide className='promo__slide'>
 						<div className='promo__inner'>
 							<div className='promo__boby'>
-								<h1 className='promo__title title'>
+								<h1 className='promo__title  title-big'>
 									Включай новый сезон с&nbsp;WOMAZING
 								</h1>
 								<p className='promo__text'>

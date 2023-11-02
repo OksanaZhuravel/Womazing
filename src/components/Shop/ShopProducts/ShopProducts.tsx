@@ -24,7 +24,7 @@ const ShopProducts = () => {
 
 				const offset = (currentPage - 1) * pageSize;
 				const productAll = await api.getAll(offset, pageSize);
-				console.log(productAll);
+				// console.log(productAll);
 
 				setProducts(productAll);
 

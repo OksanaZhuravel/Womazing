@@ -2,6 +2,7 @@ import axios from 'axios';
 export const API_URL = `https://api.escuelajs.co/api/v1/`;
 
 // https://dummyjson.com/products/1
+
 const instance = axios.create({
   baseURL: API_URL,
 });
@@ -26,7 +27,7 @@ class Api {
       };
       const apiUrl = `categories/${categoryID}/products`;
       const response = await instance.get(apiUrl, { params: params });
-      // console.log(response.data);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -53,7 +54,7 @@ class Api {
       };
       const apiUrl = `categories/${categoryID}/products`;
       const response = await instance.get(apiUrl, { params: params });
-      console.log(response);
+      // console.log(response);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -68,7 +69,7 @@ class Api {
       };
       const apiUrl = `/products/`;
       const response = await instance.get(apiUrl, { params: params });
-      console.log(response);
+      // console.log(response);
       return response.data;
     } catch (error) {
       console.log(error);

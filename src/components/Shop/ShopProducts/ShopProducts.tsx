@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import api from "../../../api/apiShop";
 import { Link } from "react-router-dom";
 import Arrow from "../../Icon/Arrow";
+import { ProductProps } from "../../../types/types";
 
-interface ProductProps {
-	category: string;
-	description: string;
-	id: number;
-	images: string[];
-	price: number;
-	title: string;
-}
+// interface ProductProps {
+// 	category: string;
+// 	description: string;
+// 	id: number;
+// 	images: string[];
+// 	price: number;
+// 	title: string;
+// }
 const ShopProducts = () => {
 	const diccort = 0.9
 	const pageSize = 9;

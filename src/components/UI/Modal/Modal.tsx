@@ -1,10 +1,7 @@
-import { ReactNode, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
+import { ModalProps } from '../../../types/types';
 
-interface ModalProps {
-	open: boolean;
-	onCancel: () => void;
-	children: ReactNode;
-}
+
 
 const generateClassName = (open: boolean) => {
 	return open ? 'popup popup_show' : 'popup';

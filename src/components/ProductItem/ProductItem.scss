@@ -17,6 +17,9 @@
     display: flex;
     gap: 74px;
     align-items: center;
+    &:not(:last-child) {
+      padding-bottom: 130px;
+    }
   }
   &__img {
     img {
@@ -28,6 +31,7 @@
   &__boby {
     display: grid;
     gap: 59px;
+    min-width: 347px;
   }
   &__prace {
     display: flex;
@@ -44,6 +48,109 @@
     font-size: 30px;
     letter-spacing: 0.6px;
   }
-  &__number {
+
+  &__form {
+    display: grid;
+    gap: 59px;
+  }
+  &__size,
+  &__color {
+    display: grid;
+    gap: 34px;
+    justify-items: start;
+    justify-content: start;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // &__quantity {
+  // }
+}
+//==========================================================================================================================================
+
+.size {
+  &__options {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item {
+    &.active {
+      color: $colorWrite;
+      background-color: $colorBlack;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    border: 1px solid $colorBlack;
+    display: flex;
+    min-width: 41px;
+    width: max-content;
+    padding: 9px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+//==========================================================================================================================================
+
+.color {
+  &__options {
+    display: flex;
+    gap: 14px;
+  }
+
+  &__item {
+    &.active {
+      border: 1px solid $colorBlack;
+      border-radius: 50%;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    display: flex;
+    border-radius: 50%;
+    width: 41px;
+    height: 41px;
+    border: 1px solid transparent;
+  }
+}
+//==========================================================================================================================================
+
+.quantity {
+  &__input {
+    text-align: center;
+    display: flex;
+    max-width: 68px;
+    padding: 20px;
+
+    border: 1px solid $colorQuanBorder;
+    font-weight: 400;
+  }
+}
+//==========================================================================================================================================
+.related {
+  &__container {
+    & .subtitle-h2 {
+      &:not(:last-child) {
+        padding-bottom: 67px;
+      }
+    }
+  }
+  &__inner {
+    justify-content: flex-start;
   }
 }

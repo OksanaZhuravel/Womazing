@@ -14,10 +14,9 @@ class Api {
   getInstance() {
     return instance;
   }
-  async getPromo() {
+  async getPromo(limit: number = 3) {
     try {
       const categoryID = 1;
-      const limit = 3;
       const params = {
         offset: 0,
         limit: limit,
@@ -27,7 +26,7 @@ class Api {
       };
       const apiUrl = `categories/${categoryID}/products`;
       const response = await instance.get(apiUrl, { params: params });
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);

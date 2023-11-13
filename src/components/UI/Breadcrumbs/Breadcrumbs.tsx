@@ -1,12 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
-interface BreadcrumbsProps {
-	category: {
-		id: number;
-		name: string;
-	};
-	title: string;
-	className: string;
-}
+import { BreadcrumbsProps } from '../../../types/types';
+
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ category, title, className }) => {
 	const location = useLocation();

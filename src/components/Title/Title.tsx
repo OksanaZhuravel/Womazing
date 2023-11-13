@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
+import { TitleProps } from "../../types/types";
 
-interface TitleProps {
-	title: string;
-	activeTitle: string;
-	activeLink: string;
 
-}
 const Title = ({ title, activeTitle, activeLink }: TitleProps) => {
 	return (
 		<section className="title">

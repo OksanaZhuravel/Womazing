@@ -4,12 +4,9 @@ import Modal from '../../UI/Modal/Modal';
 import PopupForm from '../../PopupForm/PopupForm';
 import Button from '../../UI/Button/Button';
 import CloseSvg from '../../Icon/CloseSvg';
+import { formDataProps } from '../../../types/types';
 
-interface formDataProps {
-  name: string;
-  email: string;
-  phone: string;
-}
+
 const PhoneHeader = ({ className }: { className: string }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);

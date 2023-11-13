@@ -1,6 +1,8 @@
 .home-shop {
+  padding-bottom: 65px;
+  display: grid;
+  justify-items: center;
   &__container {
-    padding-bottom: 130px;
     display: flex;
     flex-flow: column nowrap;
     gap: 65px;
@@ -8,22 +10,19 @@
     align-items: center;
   }
 
-  &__title {
+  & .subtitle-h2 {
     width: 100%;
     text-align: left;
-    font-size: 40px;
-    font-weight: 500;
-    line-height: 110%; /* 44px */
-    letter-spacing: 0.8px;
+
     &:not(:last-child) {
       margin-bottom: 27px;
     }
   }
-  &__inner {
-  }
+  // &__inner {
+  // }
 }
-.home-cart {
-}
+// .home-cart {
+// }
 //==========================================================================================================================================
 
 .cart {
@@ -32,6 +31,8 @@
   align-items: center;
   justify-items: center;
   gap: 24px;
+  // width: 350px;
+
   max-width: 350px;
   min-height: 558px;
   &:hover {
@@ -64,13 +65,15 @@
   &__discort {
     text-decoration: line-through;
   }
-  &__number {
-  }
+  // &__number {
+  // }
   &__inner {
     position: relative;
+    width: 350px;
+    height: 478px;
   }
-  &__img {
-  }
+  // &__img {
+  // }
   &__link {
     visibility: hidden;
     opacity: 0;

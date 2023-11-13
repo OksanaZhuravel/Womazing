@@ -157,10 +157,27 @@ $mobileSmall: 479.98px; //em(479.98)
   line-height: 140%; /* 35px */
   letter-spacing: 0.5px;
 }
+.subtitle-h2 {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 110%;
+  letter-spacing: 0.8px;
+}
+.subtitle-h4 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 140%; /* 28px */
+  letter-spacing: 0.4px;
+}
 .text {
   font-weight: 500;
   line-height: 140%;
   letter-spacing: 0.34px;
+}
+.text-big {
+  font-size: 20px;
+  line-height: 140%; /* 28px */
+  letter-spacing: 0.4px;
 }
 //==========================================================================================================================================
 .breadcrumbs {

@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
-
-interface formDataProps {
-	name: string;
-	email: string;
-	phone: string;
-}
+import { formDataProps } from '../../types/types';
 
 const PopupForm = ({
 	create,

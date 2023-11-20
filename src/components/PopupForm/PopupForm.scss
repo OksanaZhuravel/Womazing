@@ -28,6 +28,30 @@
       border-color: $colorAccent;
     }
   }
+  &__texarea {
+    width: 350px;
+    height: 134px;
+    border-bottom: 1px solid $colorBlack;
+    transition: border-color 0.5s ease 0s, color 0.5s ease 0s;
+    &::placeholder {
+      color: #868686;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.34px;
+    }
+    &:focus,
+    &:hover {
+      color: $colorAccent;
+      &::placeholder {
+        color: $colorAccent;
+      }
+    }
+    &:focus,
+    &:hover {
+      outline: none;
+      border-color: $colorAccent;
+    }
+  }
 }
 //==========================================================================================================================================
 .error-message {

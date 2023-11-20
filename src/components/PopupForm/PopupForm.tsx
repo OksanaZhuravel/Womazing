@@ -2,19 +2,21 @@ import { useState } from 'react';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import { formDataProps } from '../../types/types';
-
-const PopupForm = ({
-	create,
-}: {
+interface PopupFormProps {
 	create: (formData: formDataProps) => void;
-}) => {
-	const [form, setForm] = useState({ name: '', email: '', phone: '' });
+	title: string;
+	text_btn: string;
+	showMessage?: boolean;
+}
+const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMessage = false }) => {
+	const [form, setForm] = useState({ name: '', email: '', phone: '', messange: '' });
 	const [errors, setErrors] = useState<{ [key: string]: string }>({
 		name: '',
 		email: '',
 		phone: '',
+		messange: '',
 	});
-
+	const [isFormSubmitted, setFormSubmitted] = useState(true);
 	const addForm = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 
@@ -40,15 +42,16 @@ const PopupForm = ({
 		} else {
 			const newForm = { ...form, id: Date.now() };
 			create(newForm);
-			setForm({ name: '', email: '', phone: '' });
+			setForm({ name: '', email: '', phone: '', messange: '' });
 			setErrors({});
+			setFormSubmitted(false);
 		}
 	};
 
 	return (
 		<>
 			<form className='popup__form form'>
-				<h2 className='popup__title'>Заказать обратный звонок</h2>
+				<h2 className='popup__title'>{title}</h2>
 				<Input
 					type='text'
 					placeholder='Имя'
@@ -75,10 +78,19 @@ const PopupForm = ({
 				/>
 				{errors.phone && <span className='error-message'>{errors.phone}</span>}
 
-				<Button onClick={addForm} className='button'>
-					<span className='button__text'>Заказать звонок</span>
+				{showMessage && (
+					<textarea
+						placeholder='Сообщение'
+						className='form__texarea'
+						value={form.messange}
+						onChange={(e) => setForm({ ...form, messange: e.target.value })}
+					>
+					</textarea>
+				)}
+				<Button onClick={addForm} className={`button ${isFormSubmitted ? '' : 'disabled'}`}>
+					<span className='button__text'>{text_btn}</span>
 				</Button>
-			</form>
+			</form >
 		</>
 	);
 };

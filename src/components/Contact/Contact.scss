@@ -1,0 +1,28 @@
+.contact {
+  &__container {
+    padding: 130px 0;
+  }
+  iframe {
+    width: 100%;
+    border: 0;
+  }
+  & .form {
+    align-items: flex-start;
+  }
+  & .button--color {
+    margin-top: 62px;
+  }
+}
+//==========================================================================================================================================
+
+.address {
+  margin: 130px 0;
+  display: flex;
+  max-width: 943px;
+  justify-content: space-between;
+  align-items: center;
+  &__item {
+    display: grid;
+    gap: 19px;
+  }
+}

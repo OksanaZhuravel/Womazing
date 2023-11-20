@@ -109,6 +109,17 @@ $mobileSmall: 479.98px; //em(479.98)
       color: $colorAccent;
     }
   }
+  &--color {
+    max-width: 438px;
+    padding: 30px 76px;
+    background-color: $colorPearl;
+    border: 1px solid $colorPearl;
+  }
+  &.disabled {
+    background-color: $colorDiscort;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 //==========================================================================================================================================
 .social {

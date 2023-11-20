@@ -33,7 +33,7 @@ const PhoneHeader = ({ className }: { className: string }) => {
       </div>
       <Modal open={isModalOpen} onCancel={handleCancel}>
         <div className='popup__content'>
-          <PopupForm create={create} />
+          <PopupForm create={create} title='Заказать обратный звонок' text_btn='Заказать звонок' />
         </div>
         <Button className='popup__close' onClick={handleCancel}>
           <CloseSvg />

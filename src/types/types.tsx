@@ -21,6 +21,7 @@ export interface formDataProps {
 	name: string;
 	email: string;
 	phone: string;
+	messange?: string;
 }
 
 export interface ProductItemProps {

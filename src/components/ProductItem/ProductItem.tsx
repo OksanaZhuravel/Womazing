@@ -88,7 +88,6 @@ const ProductItem = ({ item }: ProductItemProps) => {
 										htmlFor={color}
 										className='color__label'
 										style={{ backgroundColor: color }}>
-
 									</label>
 								</div>
 							))}

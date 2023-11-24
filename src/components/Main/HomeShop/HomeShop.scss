@@ -21,11 +21,11 @@
   // &__inner {
   // }
 }
-// .home-cart {
+// .home-card {
 // }
 //==========================================================================================================================================
 
-.cart {
+.card {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -36,7 +36,7 @@
   max-width: 350px;
   min-height: 558px;
   &:hover {
-    .cart__link {
+    .card__link {
       visibility: visible;
       opacity: 1;
     }

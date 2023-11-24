@@ -1,33 +1,37 @@
-@import './styles/base';
-@import './components/Header/Header';
-@import './components/Logo/Logo';
-@import './components/NavBar/NavBar';
-@import './components/Header/PhoneHeader/PhoneHeader';
-@import './components/Header/CartHeader/CartHeader';
-@import './components/UI/Modal/Modal';
-@import './components/PopupForm/PopupForm';
-@import './components/Footer/Footer';
-@import './components/Title/Title';
+@import "./styles/base";
+@import "./components/Header/Header";
+@import "./components/Logo/Logo";
+@import "./components/NavBar/NavBar";
+@import "./components/Header/PhoneHeader/PhoneHeader";
+@import "./components/Header/CartHeader/CartHeader";
+@import "./components/UI/Modal/Modal";
+@import "./components/PopupForm/PopupForm";
+@import "./components/Footer/Footer";
+@import "./components/Title/Title";
 //==========================================================================================================================================
 // Home Main page
-@import './components/Main/Promo/Promo';
-@import './components/Main/HomeShop/HomeShop';
-@import './components/Main/Importance/Importance';
-@import './components/Main/Teams/Teams';
+@import "./components/Main/Promo/Promo";
+@import "./components/Main/HomeShop/HomeShop";
+@import "./components/Main/Importance/Importance";
+@import "./components/Main/Teams/Teams";
 
 // Shop page
 
-@import './components/Shop/ShopProducts/ShopProducts';
-@import './components/Sort/Sort';
+@import "./components/Shop/ShopProducts/ShopProducts";
+@import "./components/Sort/Sort";
 
 // Product page
 
-@import './components/ProductItem/ProductItem';
+@import "./components/ProductItem/ProductItem";
 
 // AboutBrand page
 
-@import './components/About/About';
+@import "./components/About/About";
 
 // Contact page
 
-@import './components/Contact/Contact.scss';
+@import "./components/Contact/Contact.scss";
+
+// Cart page
+
+@import "./components/Cart/Cart.scss";

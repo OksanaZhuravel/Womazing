@@ -42,24 +42,24 @@ const ShopProducts = () => {
 				<div className="shop__pagination text">Показано: <span>{pageSize}</span> из <span>70</span> товаров</div>
 				<div className='shop__inner inner'>
 					{products.map((product) => (
-						<article className='home-cart cart' key={product.id}>
-							<div className='cart__inner'>
+						<article className='home-card card' key={product.id}>
+							<div className='card__inner'>
 								<img
 									src={product.images[0]}
 									width={350}
 									height={478}
 									alt={product.title}
-									className='cart__img'
+									className='card__img'
 								/>
-								<Link to={`/product/${product.id}`} className='cart__link'>
+								<Link to={`/product/${product.id}`} className='card__link'>
 									<Arrow />
 								</Link>
 							</div>
-							<div className='cart__boby'>
-								<h3 className='cart__title'>{product.title}</h3>
-								<div className='cart__prace'>
-									<span className='cart__discort'>${product.price}</span>
-									<span className='cart__number'>${(product.price * diccort).toFixed(2)}</span>
+							<div className='card__boby'>
+								<h3 className='card__title'>{product.title}</h3>
+								<div className='card__prace'>
+									<span className='card__discort'>${product.price}</span>
+									<span className='card__number'>${(product.price * diccort).toFixed(2)}</span>
 								</div>
 							</div>
 						</article>

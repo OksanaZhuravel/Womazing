@@ -1,13 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BreadcrumbsProps } from '../../../types/types';
 
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ category, title, className }) => {
-	const location = useLocation();
-	const pathSegments = location.pathname
-		.split('/')
-		.filter((segment) => segment !== '');
-
 	const breadcrumbs = [
 		<Link key='home' to='/' className='text'>
 			Главная
@@ -15,7 +10,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ category, title, className })
 		category && (
 			<span key='category' className='text'>
 				&nbsp;—&nbsp;
-				<Link to={`/category/${category.id}`}>{category.name}</Link>
+				<Link to='/shop'>Магазин</Link>
 			</span>
 		),
 		title && (

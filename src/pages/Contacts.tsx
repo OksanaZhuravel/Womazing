@@ -1,54 +1,32 @@
-// import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import Contact from '../components/Contact/Contact';
 import Title from '../components/Title/Title';
-// import { decrement, increment, incrementByAmount, selectCount } from '../store/cout';
-// import { useState } from 'react';
-
-
+// import { fetchAllProducts } from '../store/product';
+// import { unwrapResult } from '@reduxjs/toolkit';
+// import { AppDispatch } from '../store/store';
 const Contacts = () => {
-  // const count = useSelector(selectCount);
-  // const dispatch = useDispatch();
-  // const [incrementAmount, setIncrementAmount] = useState('1');
+
+  // const dispatch: AppDispatch = useDispatch();
+  // const handleAddProduct = async () => {
+  //   try {
+  //     const resultAction = await dispatch(fetchAllProducts());
+  //     const result = unwrapResult(resultAction);
+  //     console.log(result);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   return (
     <>
       <Title title='Контакты' activeTitle='Контакты' activeLink='/contacts' />
       <Contact />
-      {/* <div>
-        <div >
-          <button
-            className='button'
-            aria-label="Increment value"
-            onClick={() => dispatch(increment())}
-          >
-            +
-          </button>
-          <span className='title-big'>{count}</span>
-          <button
-            className='button'
-            aria-label="Decrement value"
-            onClick={() => dispatch(decrement())}
-          >
-            -
-          </button>
-        </div>
-        <div >
-          <input
-            className='form__input'
-            aria-label="Set increment amount"
-            value={incrementAmount}
-            onChange={e => setIncrementAmount(e.target.value)}
-          />
-          <button
-            className='button'
-            onClick={() =>
-              dispatch(incrementByAmount(Number(incrementAmount) || 0))
-            }
-          >
-            Add Amount
-          </button>
+      {/* <button
+        className='button'
+        onClick={handleAddProduct}
+      >
+        Add Product
+      </button> */}
 
-        </div>
-      </div> */}
     </>
   );
 };

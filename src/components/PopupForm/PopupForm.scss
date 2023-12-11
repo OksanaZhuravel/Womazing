@@ -4,6 +4,10 @@
   justify-content: center;
   align-items: stretch;
   gap: 35px;
+  .order__container & {
+    align-items: flex-start;
+  }
+
   &__input {
     width: 350px;
     height: 40px;
@@ -33,6 +37,7 @@
     height: 134px;
     border-bottom: 1px solid $colorBlack;
     transition: border-color 0.5s ease 0s, color 0.5s ease 0s;
+    resize: none;
     &::placeholder {
       color: #868686;
       font-size: 17px;

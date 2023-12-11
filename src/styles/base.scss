@@ -100,6 +100,7 @@ $mobileSmall: 479.98px; //em(479.98)
   &--outline {
     background-color: transparent;
     border: 1px solid $colorAccent;
+    color: $colorAccent;
     &:hover {
       & .button__text {
         color: $colorWrite;
@@ -225,3 +226,25 @@ $mobileSmall: 479.98px; //em(479.98)
   gap: 30px;
 }
 //==========================================================================================================================================
+.success {
+  &__container {
+    padding: 130px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__inner {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 32px;
+  }
+  &__box {
+    p {
+      &:not(:last-child) {
+        padding-bottom: 17px;
+      }
+    }
+  }
+}

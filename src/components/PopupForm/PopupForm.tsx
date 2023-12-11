@@ -5,10 +5,11 @@ import { formDataProps } from '../../types/types';
 interface PopupFormProps {
 	create: (formData: formDataProps) => void;
 	title: string;
-	text_btn: string;
+	text_btn?: string;
 	showMessage?: boolean;
+	showButton?: boolean;
 }
-const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMessage = false }) => {
+const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMessage = false, showButton = true }) => {
 	const [form, setForm] = useState({ name: '', email: '', phone: '', messange: '' });
 	const [errors, setErrors] = useState<{ [key: string]: string }>({
 		name: '',
@@ -87,9 +88,11 @@ const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMess
 					>
 					</textarea>
 				)}
-				<Button onClick={addForm} className={`button ${isFormSubmitted ? '' : 'disabled'}`}>
-					<span className='button__text'>{text_btn}</span>
-				</Button>
+				{showButton && (
+					<Button onClick={addForm} className={`button ${isFormSubmitted ? '' : 'disabled'}`}>
+						<span className='button__text'>{text_btn}</span>
+					</Button>
+				)}
 			</form >
 		</>
 	);

@@ -42,6 +42,7 @@ export interface TitleProps {
 	title: string;
 	activeTitle: string;
 	activeLink: string;
+	interim?: string;
 }
 export interface BreadcrumbsProps {
 	category: {
@@ -61,4 +62,19 @@ export interface ModalProps {
 	open: boolean;
 	onCancel: () => void;
 	children: ReactNode;
+}
+
+export interface FormBuyer {
+	name: string;
+	email: string;
+	phone: string;
+	messange: string;
+	country: string;
+	city: string;
+	street: string;
+	house: string;
+	apartment: string;
+}
+export interface BuyerProps {
+	onFormSubmit: (formBuyer: { id: number } & Omit<FormBuyer, 'id'>) => void;
 }

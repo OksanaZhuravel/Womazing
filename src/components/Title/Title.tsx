@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { TitleProps } from "../../types/types";
 
 
-const Title = ({ title, activeTitle, activeLink }: TitleProps) => {
+const Title = ({ title, activeTitle, activeLink, interim }: TitleProps) => {
 	return (
 		<section className="title">
 			<div className="title__container">
@@ -12,6 +12,14 @@ const Title = ({ title, activeTitle, activeLink }: TitleProps) => {
 						Главная
 					</Link>
 					&nbsp;—&nbsp;
+					{interim && (
+						<>
+							<Link key={interim} to='' className="text">
+								{interim}
+							</Link>
+							&nbsp;—&nbsp;
+						</>
+					)}
 					<Link key='shop' to={activeLink} className="breadcrumbs__active text">
 						{activeTitle}
 					</Link>

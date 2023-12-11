@@ -9,6 +9,7 @@ import Shop from '../pages/Shop';
 import Contacts from '../pages/Contacts';
 import Product from '../pages/Product';
 import Checkout from '../pages/Checkout';
+import Success from '../pages/Success';
 
 const routerConfig = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const routerConfig = createBrowserRouter([
       {
         path: RoutePath.PRODUCT,
         element: <Product />,
+      },
+      {
+        path: RoutePath.SUCCESS,
+        element: <Success />,
       }
     ],
   },

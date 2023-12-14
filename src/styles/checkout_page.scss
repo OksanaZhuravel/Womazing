@@ -2,22 +2,7 @@
   &__container {
     padding: 130px 0;
   }
-  &__title {
-    font-size: 25px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    line-height: 140%;
-    &:not(:last-child) {
-      padding-bottom: 12px;
-    }
-  }
-  &__inner {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: stretch;
-    gap: 35px;
-  }
+
   &__left {
     display: flex;
     flex-direction: column;
@@ -25,11 +10,96 @@
     align-items: center;
     gap: 81px;
   }
+
+  &__inner {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 35px;
+    &--gap {
+      gap: 47px;
+    }
+  }
+
+  &__title {
+    &:not(:last-child) {
+      padding-bottom: 12px;
+      .buyer__inner--gap & {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 159px;
+  }
+
+  // &__checkbox {
+  // }
   &__form {
     max-width: 918px;
     width: 100%;
     display: grid;
     justify-content: space-between;
     grid-template-columns: repeat(2, auto);
+  }
+}
+
+//==========================================================================================================================================
+
+.buyer-cart {
+  // display: grid;
+  // gap: 30px;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  // &__text {
+  // }
+
+  &__list {
+    display: grid;
+    gap: 30px;
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__subtotal {
+    display: flex;
+    justify-content: space-between;
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__total {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -15px;
+      min-width: 284px;
+      min-height: 57px;
+      background-color: $colorPearl;
+      z-index: -1;
+    }
   }
 }

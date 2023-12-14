@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import { formDataProps } from '../../types/types';
+import { validateForm } from '../../utils/validationUtils';
 interface PopupFormProps {
 	create: (formData: formDataProps) => void;
 	title: string;
@@ -10,40 +11,29 @@ interface PopupFormProps {
 	showButton?: boolean;
 }
 const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMessage = false, showButton = true }) => {
-	const [form, setForm] = useState({ name: '', email: '', phone: '', messange: '' });
+	const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
 	const [errors, setErrors] = useState<{ [key: string]: string }>({
 		name: '',
 		email: '',
 		phone: '',
-		messange: '',
+		message: '',
 	});
 	const [isFormSubmitted, setFormSubmitted] = useState(true);
 	const addForm = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-
-		const validationErrors: { [key: string]: string } = {};
-		if (form.name.trim() === '') {
-			validationErrors.name = 'Введите Имя';
-		}
-
-		if (form.email.trim() === '') {
-			validationErrors.email = 'Введите Email';
-		} else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(form.email)) {
-			validationErrors.email = 'Неверный формат почты';
-		}
-
-		if (form.phone.trim() === '') {
-			validationErrors.phone = 'Ваш номер телефона';
-		} else if (!/^\+?[0-9]+$/.test(form.phone)) {
-			validationErrors.phone = 'только + и цифры';
-		}
+		const validationRules: Array<{ fields: Array<string>; condition: (value: string) => boolean; errorMessage: string }> = [
+			{ fields: ['name'], condition: (value) => value.trim() !== '', errorMessage: 'Введите Имя' },
+			{ fields: ['email'], condition: (value) => value.trim() !== '', errorMessage: 'Введите Email' },
+			{ fields: ['phone'], condition: (value) => /^\+?[0-9]+$/.test(value), errorMessage: 'Только + и цифры для номера телефона' },
+		];
+		const validationErrors = validateForm(form, validationRules);
 
 		if (Object.keys(validationErrors).length > 0) {
 			setErrors(validationErrors);
 		} else {
 			const newForm = { ...form, id: Date.now() };
 			create(newForm);
-			setForm({ name: '', email: '', phone: '', messange: '' });
+			setForm({ name: '', email: '', phone: '', message: '' });
 			setErrors({});
 			setFormSubmitted(false);
 		}
@@ -83,8 +73,8 @@ const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMess
 					<textarea
 						placeholder='Сообщение'
 						className='form__texarea'
-						value={form.messange}
-						onChange={(e) => setForm({ ...form, messange: e.target.value })}
+						value={form.message}
+						onChange={(e) => setForm({ ...form, message: e.target.value })}
 					>
 					</textarea>
 				)}

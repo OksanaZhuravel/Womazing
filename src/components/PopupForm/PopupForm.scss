@@ -57,8 +57,53 @@
       border-color: $colorAccent;
     }
   }
+  // &__checkbox {
+
+  // }
 }
 //==========================================================================================================================================
 .error-message {
   color: red;
+}
+//==========================================================================================================================================
+
+.checkbox {
+  position: relative;
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    &:checked + .checkbox__label:after {
+      transform: scale(1);
+    }
+  }
+  &__label {
+    cursor: pointer;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    display: flex;
+    gap: 14px;
+
+    &:before {
+      content: "";
+      align-self: flex-start;
+      flex: 0 0 22px;
+      height: 22px;
+      background-color: transparent;
+      border: 1px solid $colorBlack;
+    }
+    &::after {
+      content: "";
+      background-color: $colorBlack;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      transform: scale(0);
+      transition: transform 0.3s ease 0s;
+    }
+  }
 }

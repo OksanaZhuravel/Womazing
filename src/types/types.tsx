@@ -21,7 +21,7 @@ export interface formDataProps {
 	name: string;
 	email: string;
 	phone: string;
-	messange?: string;
+	message?: string;
 }
 
 export interface ProductItemProps {
@@ -68,13 +68,24 @@ export interface FormBuyer {
 	name: string;
 	email: string;
 	phone: string;
-	messange: string;
+	message?: string;
 	country: string;
 	city: string;
 	street: string;
 	house: string;
 	apartment: string;
+	iscash: boolean;
 }
 export interface BuyerProps {
 	onFormSubmit: (formBuyer: { id: number } & Omit<FormBuyer, 'id'>) => void;
+}
+
+export interface ValidationRule {
+	fields: string[];
+	condition: (value: string) => boolean;
+	errorMessage: string;
+}
+
+export interface FormErrors {
+	[key: string]: string;
 }

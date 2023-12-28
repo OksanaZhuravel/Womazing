@@ -1,47 +1,31 @@
 import { useEffect, useState } from "react";
-import api from "../../../api/apiShop";
 import { Link } from "react-router-dom";
 import Arrow from "../../Icon/Arrow";
 import { ProductProps } from "../../../types/types";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../state/store";
+import { fetchProductsAll } from "../../../state/product/productSlice";
 
-// interface ProductProps {
-// 	category: string;
-// 	description: string;
-// 	id: number;
-// 	images: string[];
-// 	price: number;
-// 	title: string;
-// }
 const ShopProducts = () => {
 	const diccort = 0.9
 	const pageSize = 9;
-	const maxPage = 8;
-	const [products, setProducts] = useState<ProductProps[]>([]);
 	const [currentPage, setCurrentPage] = useState(1);
-
+	const products = useSelector((state: RootState) => state.products.item as ProductProps[]);
+	const maxPage = Math.ceil(products.length / pageSize)
+	const startIndex = (currentPage - 1) * pageSize;
+	const endIndex = startIndex + pageSize;
+	const currentProducts = products.slice(startIndex, endIndex);
+	const dispatch = useDispatch<AppDispatch>();
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-
-				const offset = (currentPage - 1) * pageSize;
-				const productAll = await api.getAll(offset, pageSize);
-				// console.log(productAll);
-
-				setProducts(productAll);
-
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchData();
-	}, [currentPage]);
+		dispatch(fetchProductsAll());
+	}, [dispatch]);
 	return (
 
 		<section className='shop' id='shop'>
 			<div className='shop__container'>
-				<div className="shop__pagination text">Показано: <span>{pageSize}</span> из <span>70</span> товаров</div>
+				<div className="shop__pagination text">Показано: <span>{pageSize}</span> из <span>{products.length}</span> товаров</div>
 				<div className='shop__inner inner'>
-					{products.map((product) => (
+					{currentProducts.map((product) => (
 						<article className='home-card card' key={product.id}>
 							<div className='card__inner'>
 								<img
@@ -100,7 +84,6 @@ const ShopProducts = () => {
 
 			</div>
 		</section>
-
 	);
 };
 export default ShopProducts;

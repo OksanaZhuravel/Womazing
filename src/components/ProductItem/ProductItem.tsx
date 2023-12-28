@@ -2,10 +2,13 @@ import { useState } from 'react';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import { ProductItemProps } from '../../types/types';
+import { addCart } from '../../state/cart/cartSlice';
+import { useDispatch } from "react-redux";
+import { AppDispatch } from '../../state/store';
 
 
 const ProductItem = ({ item }: ProductItemProps) => {
-
+	const dispatch = useDispatch<AppDispatch>();
 	const diccort = 0.9;
 	const [selectedSize, setSelectedSize] = useState('M');
 	const [selectedColor, setSelectedColor] = useState('#D4D4D4');
@@ -22,14 +25,18 @@ const ProductItem = ({ item }: ProductItemProps) => {
 		const value = e.target.value;
 		setQuantity(value);
 	};
-	const onCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const onCart = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-		console.log('Product added to cart:', {
-			...item,
+		const cartData = {
+			id: item.id,
+			images: item.images,
+			price: item.price,
+			title: item.title,
 			selectedSize,
 			selectedColor,
-			quantity,
-		});
+			quantity: Number(quantity)
+		};
+		dispatch(addCart(cartData))
 	};
 
 	return (

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Arrow from "../../Icon/Arrow";
 import { ProductProps } from "../../../types/types";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../state/store";
-import { fetchProductsAll } from "../../../state/product/productSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../state/store";
+
 
 const ShopProducts = () => {
 	const diccort = 0.9
@@ -15,12 +15,8 @@ const ShopProducts = () => {
 	const startIndex = (currentPage - 1) * pageSize;
 	const endIndex = startIndex + pageSize;
 	const currentProducts = products.slice(startIndex, endIndex);
-	const dispatch = useDispatch<AppDispatch>();
-	useEffect(() => {
-		dispatch(fetchProductsAll());
-	}, [dispatch]);
+	// console.log(products);
 	return (
-
 		<section className='shop' id='shop'>
 			<div className='shop__container'>
 				<div className="shop__pagination text">Показано: <span>{pageSize}</span> из <span>{products.length}</span> товаров</div>

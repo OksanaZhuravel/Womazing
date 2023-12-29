@@ -8,6 +8,7 @@ export const store = configureStore({
     carts: counterReducer,
   },
 });
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 

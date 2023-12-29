@@ -1,29 +1,27 @@
-import { useEffect, useState } from 'react';
-import api from '../../api/apiShop';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Icon/Arrow';
 import { ProductPromoProps, ProductProps } from '../../types/types';
+import { AppDispatch, RootState } from '../../state/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProductsAll } from '../../state/product/productSlice';
 
 
 const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 	const diccort = 0.9;
-	const [products, setProducts] = useState<ProductProps[]>([]);
+	const products = useSelector((state: RootState) => state.products.item as ProductProps[]);
+	const dispatch = useDispatch<AppDispatch>();
+	const currentProducts = products.slice(0, limit);
+
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const productAll = await api.getPromo(limit);
-				setProducts(productAll);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchData();
-	}, []);
+		dispatch(fetchProductsAll());
+	}, [dispatch]);
+
 	return (
 		<div className={`${className}__container`}>
 			<h2 className='subtitle-h2'>{subtitle}</h2>
 			<div className={`inner ${className}__inner`}>
-				{products.map((product) => (
+				{currentProducts.map((product) => (
 					<article className={`${className} card`} key={product.id}>
 						<div className='card__inner'>
 							<img

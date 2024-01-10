@@ -34,7 +34,11 @@ const ShopProducts = ({ currentRange }: RangeProps) => {
 	return (
 		<section className='shop' id='shop'>
 			<div className='shop__container'>
-				<div className="shop__pagination text">Показано: <span>{pageSize}</span> из <span>{sortedArray.length}</span> товаров</div>
+				<div className="shop__pagination text">
+					{sortedArray.length < pageSize
+						? `Показано: ${sortedArray.length} из ${sortedArray.length} товаров`
+						: `Показано: ${pageSize} из ${sortedArray.length} товаров`}
+				</div>
 				<div className='shop__inner inner'>
 					{currentProducts.map((product) => (
 						<article className='home-card card' key={product.id}>

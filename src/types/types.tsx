@@ -90,3 +90,15 @@ export interface ValidationRule {
 export interface FormErrors {
 	[key: string]: string;
 }
+export interface RangeProps {
+	currentRange: string
+}
+export interface PaginationProps {
+	currentPage: number;
+	maxPage: number;
+	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export interface SortProps {
+	onSortChange: (range: string) => void
+}

@@ -22,13 +22,13 @@ const Footer = () => {
             <Link to="/" className="footer__link"><span className="footer__text">Политика конфиденциальности</span></Link>
             <Link to="/" className="footer__link"><span className="footer__text">Публичная оферта</span></Link>
           </div>
-          <ul className="footer__list">
+          {/* <ul className="footer__list">
             <li className="footer__item"><Link className="footer__link" to='/'><span className="footer__text">Пальто</span></Link></li>
             <li className="footer__item"><Link className="footer__link" to='/'><span className="footer__text">Свитшоты</span></Link></li>
             <li className="footer__item"><Link className="footer__link" to='/'><span className="footer__text">Кардиганы</span></Link></li>
             <li className="footer__item"><Link className="footer__link" to='/'><span className="footer__text">Толстовки</span></Link></li>
 
-          </ul>
+          </ul> */}
           <div className="footer__inner">
             <Social />
             <div className="footer__pay">

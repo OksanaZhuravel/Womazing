@@ -1,40 +1,42 @@
 
-import api from "../../api/apiShop";
+import { SortProps } from "../../types/types";
+import { useState } from "react";
 
-const Sort = () => {
-	const handleSort = () => {
-		const fetchData = async () => {
-			try {
-				const productSort = await api.getSort();
-				console.log(productSort);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchData();
+const Sort = ({ onSortChange }: SortProps) => {
+	const [activeItems, setActiveItems] = useState([true, false, false, false, false]);
+	const getLabelText = (range: string) => ({
+		all: "Все",
+		"100": "До 100$",
+		"500": "от 100$ до 500$",
+		"1000": "от 500$ до 1000$",
+		moreThan1000: "Более 1000$",
+	}[range] || "");
+
+	const handleSort = (range: string, index: number) => {
+		const newActiveItems = activeItems.map((_isActive, i) => i === index);
+		setActiveItems(newActiveItems);
+		onSortChange(range);
 	};
+
 	return (
-		<section className='sort'>
-			<div className='sort__container'>
-				<ul className='sort__list'>
-					<li className='sort__item active'>
-						<span className="sort__text">Все</span>
-					</li>
-					<li className='sort__item' onClick={() => handleSort()}>
-						<span className="sort__text">Пальто</span>
-					</li>
-					<li className='sort__item'>
-						<span className="sort__text">Свитшоты</span>
-					</li>
-					<li className='sort__item'>
-						<span className="sort__text">Кардиганы</span>
-					</li>
-					<li className='sort__item'>
-						<span className="sort__text">Толстовки</span>
-					</li>
-				</ul>
-			</div>
-		</section>
+		<>
+			<section className="sort">
+				<div className="sort__container">
+					<ul className="sort__list">
+						{["all", "100", "500", "1000", "moreThan1000"].map((range, index) => (
+							<li
+								key={range}
+								className={activeItems[index] ? 'sort__item active' : 'sort__item'}
+								onClick={() => handleSort(range, index)}
+							>
+								<span className="sort__text">{getLabelText(range)}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			</section>
+		</>
 	);
 };
+
 export default Sort;

@@ -1,25 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Arrow from "../../Icon/Arrow";
-import { ProductProps } from "../../../types/types";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../state/store";
+import { ProductProps, RangeProps } from "../../../types/types";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../state/store";
+import { fetchProductsAll } from "../../../state/product/productSlice";
+import { ranges } from "../../../utils/productUtils";
+import Pagination from "../../UI/Pagination/Pagination";
 
 
-const ShopProducts = () => {
+const ShopProducts = ({ currentRange }: RangeProps) => {
 	const diccort = 0.9
 	const pageSize = 9;
 	const [currentPage, setCurrentPage] = useState(1);
 	const products = useSelector((state: RootState) => state.products.item as ProductProps[]);
-	const maxPage = Math.ceil(products.length / pageSize)
 	const startIndex = (currentPage - 1) * pageSize;
 	const endIndex = startIndex + pageSize;
-	const currentProducts = products.slice(startIndex, endIndex);
-	// console.log(products);
+	const [sortedArray, setSortedArray] = useState<ProductProps[]>(products);
+	const maxPage = Math.ceil(sortedArray.length / pageSize)
+	const currentProducts = sortedArray.slice(startIndex, endIndex);
+	const dispatch = useDispatch<AppDispatch>();
+
+	useEffect(() => {
+		const updatedArray = ranges[currentRange]?.(products) || products;
+		setSortedArray(updatedArray);
+		setCurrentPage(1)
+	}, [currentRange, products]);
+
+	useEffect(() => {
+		dispatch(fetchProductsAll());
+	}, [dispatch]);
+
 	return (
 		<section className='shop' id='shop'>
 			<div className='shop__container'>
-				<div className="shop__pagination text">Показано: <span>{pageSize}</span> из <span>{products.length}</span> товаров</div>
+				<div className="shop__pagination text">Показано: <span>{pageSize}</span> из <span>{sortedArray.length}</span> товаров</div>
 				<div className='shop__inner inner'>
 					{currentProducts.map((product) => (
 						<article className='home-card card' key={product.id}>
@@ -45,39 +60,7 @@ const ShopProducts = () => {
 						</article>
 					))}
 				</div>
-				<div className="pagination">
-					<button className="pagination__page"
-						onClick={() => {
-							if (currentPage > 1) {
-								setCurrentPage(currentPage - 1);
-							}
-						}}
-						disabled={currentPage === 1}
-					>
-						{currentPage}
-					</button>
-					{currentPage < maxPage && (
-						<button className="pagination__next"
-							onClick={() => {
-								setCurrentPage(currentPage + 1);
-							}}
-						>
-							{currentPage + 1}
-						</button>
-					)}
-					{currentPage < maxPage && (
-						<button className="pagination__arrow"
-							onClick={() => {
-								setCurrentPage(currentPage + 1);
-							}}
-						>
-							<svg xmlns="http://www.w3.org/2000/svg" width="21" height="11" viewBox="0 0 21 11" fill="none">
-								<path d="M-2.18557e-07 5.5L20 5.5M20 5.5L14.8649 10.5M20 5.5L14.8649 0.499999" stroke="black" />
-							</svg>
-						</button>
-					)}
-				</div>
-
+				<Pagination currentPage={currentPage} maxPage={maxPage} setCurrentPage={setCurrentPage} />
 			</div>
 		</section>
 	);

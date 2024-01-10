@@ -1,14 +1,7 @@
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../../api/apiShop";
-import { ProductProps } from "../../types/types";
-
-
-interface ProductState {
-  item: ProductProps[];
-  status: string;
-  error?: string;
-}
+import { ProductState } from "../../types/types";
 
 const initialState: ProductState = {
   item: [],

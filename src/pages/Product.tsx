@@ -5,17 +5,8 @@ import Breadcrumbs from '../components/UI/Breadcrumbs/Breadcrumbs';
 import ProductItem from '../components/ProductItem/ProductItem';
 
 import ProductPromo from '../components/ProductPromo/ProductPromo';
-interface ProductProps {
-  category: {
-    id: number;
-    name: string;
-  };
-  description: string;
-  id: number;
-  images: string[];
-  price: number;
-  title: string;
-}
+import { ProductProps } from '../types/types';
+
 const Product = () => {
 
   const [product, setProduct] = useState<ProductProps | null>(null);

@@ -1,21 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-
-interface CartState {
-  items: Array<{
-    id: number;
-    images?: string[];
-    price: number;
-    title: string;
-    selectedSize: string;
-    selectedColor: string;
-    quantity: number;
-  }>;
-}
+import { CartState } from "../../types/types";
 
 const initialState: CartState = {
-  items: [],
+  cart: [],
 };
-
 
 const cartSlice = createSlice({
   name: "cart",
@@ -30,11 +18,17 @@ const cartSlice = createSlice({
       selectedColor: string;
       quantity: number;
     }>) => {
-      state.items.push(action.payload);
+      const { id, quantity } = action.payload;
+      const existingItem = state.cart.find(item => item.id === id);
+
+      if (existingItem) {
+        existingItem.quantity += quantity;
+      } else {
+        state.cart.push(action.payload);
+      }
     },
   },
 });
-
 
 export const {  addCart } = cartSlice.actions;
 

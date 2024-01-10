@@ -5,6 +5,9 @@ import { BuyerProps, FormBuyer } from '../types/types';
 import Input from '../components/UI/Input/Input';
 import Button from '../components/UI/Button/Button';
 import { validateForm } from '../utils/validationUtils';
+import { useSelector } from 'react-redux';
+import { RootState } from '../state/store';
+import { useCartInfo } from '../hooks/useCartInfo';
 
 const Checkout: React.FC<BuyerProps> = () => {
   const navigate = useNavigate();
@@ -62,6 +65,8 @@ const Checkout: React.FC<BuyerProps> = () => {
       });
     }
   }
+  const cartItems = useSelector((state: RootState) => state.carts.cart)
+  const { totalPrice, totalQuantity } = useCartInfo();
   useEffect(() => {
     if (!isFormSubmitted) {
       navigate('/success');
@@ -165,18 +170,20 @@ const Checkout: React.FC<BuyerProps> = () => {
                     <p className="buyer-cart__text subtitle-h4">Всего</p>
                   </div>
                   <ul className="buyer-cart__list">
-                    <li className="buyer-cart__item">
-                      <p className="buyer-cart__text text">Футболка USA</p>
-                      <p className="buyer-cart__text text">$129</p>
-                    </li>
+                    {cartItems.map(item => (
+                      <li key={item.id} className="buyer-cart__item">
+                        <p className="buyer-cart__text text">{item.title}</p>
+                        <p className="buyer-cart__text text">${item.price}</p>
+                      </li>
+                    ))}
                   </ul>
                   <div className="buyer-cart__subtotal">
                     <p className="buyer-cart__text text">Подытог</p>
-                    <p className="buyer-cart__text text">$129</p>
+                    <p className="buyer-cart__text text">${totalPrice * totalQuantity}</p>
                   </div>
                   <div className="buyer-cart__total">
                     <p className="buyer-cart__text subtitle-h4">Итого</p>
-                    <p className="buyer-cart__text subtitle-h4">$129</p>
+                    <p className="buyer-cart__text subtitle-h4">${totalPrice * totalQuantity}</p>
                   </div>
                 </div>
               </div>

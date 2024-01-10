@@ -4,16 +4,18 @@ import Button from "../UI/Button/Button";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
+import { useCartInfo } from "../../hooks/useCartInfo";
 
 
 const Cart = () => {
-	const cartItems = useSelector((state: RootState) => state.carts.items)
+	const cartItems = useSelector((state: RootState) => state.carts.cart)
 	console.log(cartItems);
 
 	const [coupon, setCoupon] = useState({ coupon: "" })
 	const addCoupon = () => {
 		console.log(coupon)
 	}
+	const { totalPrice, totalQuantity } = useCartInfo();
 	return (
 		<section className="cart">
 			<div className="cart__container">
@@ -40,12 +42,16 @@ const Cart = () => {
 								<div className="product-cart__inner">
 									{cartItems.map(item => (
 										<div key={item.id} className="product-cart__item">
+											<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+												<path d="M1 1L13 13M13 1L1 13" stroke="black" />
+											</svg>
 											{item.images && item.images.length > 0 && (
 												<img src={item.images[0]} alt={item.title} />
 											)}
 											<p>{item.title}</p>
 											<p>${item.price}</p>
 											<p>{item.quantity}</p>
+											<p>${totalPrice * totalQuantity}</p>
 										</div>
 									))}
 								</div>
@@ -77,14 +83,14 @@ const Cart = () => {
 								<div className="total__subtotal">
 									<p className="total__text text">Подытог:</p>
 									<p className="total__text text">
-										{/* $<span>{item.price * item.quantity}</span> */}
+										${totalPrice * totalQuantity}
 									</p>
 								</div>
 								<div className="total__wrap">
 									<div className="total__count">
 										<p className="total__text subtitle-h3">Итого:</p>
 										<p className="total__text subtitle-h3">
-											{/* $<span>{item.price * item.quantity}</span> */}
+											${totalPrice * totalQuantity}
 										</p>
 									</div>
 									<Link to={'/checkout'} className='button'>
@@ -103,7 +109,6 @@ const Cart = () => {
 									</Link>
 								</div>
 							</div>
-
 						</>)
 				}
 			</div>

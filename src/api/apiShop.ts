@@ -11,24 +11,24 @@ class Api {
   getInstance() {
     return instance;
   }
-  async getPromo(limit: number = 3) {
-    try {
-      const categoryID = 1;
-      const params = {
-        offset: 0,
-        limit: limit,
-        // updatedAt: {
-        //   gte: updatedAtFilter,
-        // },
-      };
-      const apiUrl = `categories/${categoryID}/products`;
-      const response = await instance.get(apiUrl, { params: params });
-      // console.log(response.data);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async getPromo(limit: number = 3) {
+  //   try {
+  //     const categoryID = 1;
+  //     const params = {
+  //       offset: 0,
+  //       limit: limit,
+  //       // updatedAt: {
+  //       //   gte: updatedAtFilter,
+  //       // },
+  //     };
+  //     const apiUrl = `categories/${categoryID}/products`;
+  //     const response = await instance.get(apiUrl, { params: params });
+  //     // console.log(response.data);
+  //     return response.data;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   async getProductId(id: string) {
     try {
       const response = await instance.get(`/products/${id}`);

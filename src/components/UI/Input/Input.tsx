@@ -1,8 +1,6 @@
-import React, { InputHTMLAttributes, forwardRef, Ref } from "react";
+import React, { forwardRef, Ref } from "react";
+import { InputProps } from "../../../types/types";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-	className?: string;
-}
 const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
 	{ className, ...rest },
 	ref: Ref<HTMLInputElement>

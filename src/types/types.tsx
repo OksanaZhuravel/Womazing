@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { InputHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 
 export interface ProductPromoProps {
 	className: string;
@@ -16,27 +16,14 @@ export interface ProductProps {
 	price: number;
 	title: string;
 }
-
-
+export interface ProductItemProps {
+	item: ProductProps;
+}
 export interface formDataProps {
 	name: string;
 	email: string;
 	phone: string;
 	message?: string;
-}
-
-export interface ProductItemProps {
-	item: {
-		category: {
-			id: number;
-			name: string;
-		};
-		description: string;
-		id: number;
-		images: string[];
-		price: number;
-		title: string;
-	};
 }
 
 export interface TitleProps {
@@ -101,4 +88,30 @@ export interface PaginationProps {
 
 export interface SortProps {
 	onSortChange: (range: string) => void
+}
+export interface CartState {
+	cart: Array<{
+		id: number;
+		images?: string[];
+		price: number;
+		title: string;
+		selectedSize: string;
+		selectedColor: string;
+		quantity: number;
+	}>;
+}
+export interface ProductState {
+	item: ProductProps[];
+	status: string;
+	error?: string;
+}
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+	className?: string;
+}
+export interface PopupFormProps {
+	create: (formData: formDataProps) => void;
+	title: string;
+	text_btn?: string;
+	showMessage?: boolean;
+	showButton?: boolean;
 }

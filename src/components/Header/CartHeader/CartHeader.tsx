@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import CartIcon from '../../Icon/CartIcon';
+import { useCartInfo } from '../../../hooks/useCartInfo';
 
 const CartHeader = () => {
+  const { totalQuantity } = useCartInfo();
 
   return (
     <div className='header__cart cart-header'>
@@ -10,7 +12,7 @@ const CartHeader = () => {
           <CartIcon />
         </span>
         <div className='cart-header__count'>
-          <span className='cart-header__text'>0</span>
+          <span className='cart-header__text'>{totalQuantity}</span>
         </div>
       </Link>
     </div>

@@ -1,15 +1,9 @@
 import { useState } from 'react';
 import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
-import { formDataProps } from '../../types/types';
+import { PopupFormProps } from '../../types/types';
 import { validateForm } from '../../utils/validationUtils';
-interface PopupFormProps {
-	create: (formData: formDataProps) => void;
-	title: string;
-	text_btn?: string;
-	showMessage?: boolean;
-	showButton?: boolean;
-}
+
 const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMessage = false, showButton = true }) => {
 	const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
 	const [errors, setErrors] = useState<{ [key: string]: string }>({

@@ -1,8 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import { ModalProps } from '../../../types/types';
 
-
-
 const generateClassName = (open: boolean) => {
 	return open ? 'popup popup_show' : 'popup';
 };

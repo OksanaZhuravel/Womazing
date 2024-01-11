@@ -22,11 +22,15 @@
     }
   }
   &__img {
+    display: block;
     img {
       max-width: 100%;
     }
     max-width: 536px;
+    min-height: 730px;
     height: 100%;
+    width: 100%;
+    background-color: rgba($color: $colorNotImages, $alpha: 0.35);
   }
   &__boby {
     display: grid;

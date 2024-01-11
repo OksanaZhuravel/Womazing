@@ -42,7 +42,7 @@ export interface BreadcrumbsProps {
 }
 
 export interface ButtonProps {
-	className: string;
+	className?: string;
 	children: ReactNode;
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }

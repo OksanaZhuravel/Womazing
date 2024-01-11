@@ -10,11 +10,18 @@ import CloseSvg from "../Icon/CloseSvg";
 
 const Cart = () => {
 	const cartItems = useSelector((state: RootState) => state.carts.cart)
-	// console.log(cartItems);
-
 	const [coupon, setCoupon] = useState({ coupon: "" })
+	const [couponValid, setCouponValid] = useState(true)
+
 	const addCoupon = () => {
-		console.log(coupon)
+		const validCoupon = "1234";
+		if (coupon.coupon === validCoupon) {
+			setCouponValid(true)
+			console.log("Купон применен успешно!");
+
+		} else {
+			setCouponValid(false)
+		}
 	}
 	const { totalPrice, updateQuantity, deleteItemCart } = useCartInfo();
 
@@ -53,24 +60,24 @@ const Cart = () => {
 								<div className="product-cart__inner">
 									{cartItems.map(item => (
 										<div key={item.id} className="product-cart__item">
-											<Button className="button__svg" onClick={() => handleDeleteItem(item.id)}>
+											<Button onClick={() => handleDeleteItem(item.id)}>
 												<CloseSvg />
 											</Button>
-											{item.images && item.images.length > 0 && (
-												<img src={item.images[0]} alt={item.title} />
-											)}
-											<p>{item.title}</p>
-											<p>${item.price}</p>
+											<Link to={`/product/${item.id}`} className='product-cart__link'>
+												{item.images && item.images.length > 0 && (
+													<img src={item.images[0]} alt={item.title} />
+												)}
+												<p className="product-cart__text text">{item.title}</p>
+											</Link>
+											<p className="text">${item.price}</p>
 											<Input
 												type='number'
 												placeholder='1'
-												className='quantity__input text-big'
+												className='product-cart__input text-big'
 												value={isNaN(item.quantity) ? '' : item.quantity}
 												onChange={(e) => handleQuantityChange(item.id, e)}
 											/>
-											<p>${isNaN(item.quantity * item.price) ? 0 : item.quantity * item.price}</p>
-											{/* <p>{item.quantity}</p> */}
-											{/* <p>${totalPrice * totalQuantity}</p> */}
+											<p className="text">${isNaN(item.quantity * item.price) ? 0 : item.quantity * item.price}</p>
 										</div>
 									))}
 								</div>
@@ -82,10 +89,14 @@ const Cart = () => {
 										placeholder="Введите купон"
 										className="form__input"
 										value={coupon.coupon}
-										onChange={(e) =>
-											setCoupon({ ...coupon, coupon: e.target.value })
-										}
+										onChange={(e) => {
+											setCoupon({ ...coupon, coupon: e.target.value });
+											setCouponValid(true);
+										}}
 									/>
+									{!couponValid && (
+										<span className="error-message">Неверный код купона.</span>
+									)}
 									<Button
 										className="button button--outline"
 										children="Применить купон"

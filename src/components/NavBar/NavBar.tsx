@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const menuItem = [
   { id: 1, path: '/', text: 'Главная' },
@@ -10,6 +10,10 @@ const menuItem = [
 
 const NavBar = ({ className }: { className: string }) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <nav className={`${className} menu`}>

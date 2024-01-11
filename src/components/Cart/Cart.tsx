@@ -65,7 +65,7 @@ const Cart = () => {
 												type='number'
 												placeholder='1'
 												className='quantity__input text-big'
-												value={item.quantity}
+												value={isNaN(item.quantity) ? '' : item.quantity}
 												onChange={(e) => handleQuantityChange(item.id, e)}
 											/>
 											<p>${isNaN(item.quantity * item.price) ? 0 : item.quantity * item.price}</p>
@@ -102,20 +102,14 @@ const Cart = () => {
 								<div className="total__subtotal">
 									<p className="total__text text">Подытог:</p>
 									<p className="total__text text">
-
-										<p>${isNaN(totalPrice) ? 0 : totalPrice}</p>
-
-										{/* $
-										{totalPrice * totalQuantity} */}
+										${isNaN(totalPrice) ? 0 : totalPrice}
 									</p>
 								</div>
 								<div className="total__wrap">
 									<div className="total__count">
 										<p className="total__text subtitle-h3">Итого:</p>
 										<p className="total__text subtitle-h3">
-											<p>${isNaN(totalPrice) ? 0 : totalPrice}</p>
-
-											{/* {totalPrice * totalQuantity} */}
+											${isNaN(totalPrice) ? 0 : totalPrice}
 										</p>
 									</div>
 									<Link to={'/checkout'} className='button'>

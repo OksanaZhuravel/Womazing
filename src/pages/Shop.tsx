@@ -10,6 +10,7 @@ const Shop = () => {
   const handleSortChange = (range: string) => {
     setCurrentRange(range);
   };
+
   return <>
     <Title title="Магазин" activeTitle="Магазин" activeLink='/shop' />
     <Sort onSortChange={handleSortChange} />

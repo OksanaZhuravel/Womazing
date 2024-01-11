@@ -5,17 +5,28 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import { useCartInfo } from "../../hooks/useCartInfo";
+import CloseSvg from "../Icon/CloseSvg";
 
 
 const Cart = () => {
 	const cartItems = useSelector((state: RootState) => state.carts.cart)
-	console.log(cartItems);
+	// console.log(cartItems);
 
 	const [coupon, setCoupon] = useState({ coupon: "" })
 	const addCoupon = () => {
 		console.log(coupon)
 	}
-	const { totalPrice, totalQuantity } = useCartInfo();
+	const { totalPrice, updateQuantity, deleteItemCart } = useCartInfo();
+
+	const handleQuantityChange = (itemId: number, e: React.ChangeEvent<HTMLInputElement>) => {
+		const newQuantity = parseInt(e.target.value, 10);
+		updateQuantity(itemId, newQuantity);
+	};
+	const handleDeleteItem = (itemId: number) => {
+		deleteItemCart(itemId);
+	};
+
+
 	return (
 		<section className="cart">
 			<div className="cart__container">
@@ -42,16 +53,24 @@ const Cart = () => {
 								<div className="product-cart__inner">
 									{cartItems.map(item => (
 										<div key={item.id} className="product-cart__item">
-											<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-												<path d="M1 1L13 13M13 1L1 13" stroke="black" />
-											</svg>
+											<Button className="button__svg" onClick={() => handleDeleteItem(item.id)}>
+												<CloseSvg />
+											</Button>
 											{item.images && item.images.length > 0 && (
 												<img src={item.images[0]} alt={item.title} />
 											)}
 											<p>{item.title}</p>
 											<p>${item.price}</p>
-											<p>{item.quantity}</p>
-											<p>${totalPrice * totalQuantity}</p>
+											<Input
+												type='number'
+												placeholder='1'
+												className='quantity__input text-big'
+												value={item.quantity}
+												onChange={(e) => handleQuantityChange(item.id, e)}
+											/>
+											<p>${isNaN(item.quantity * item.price) ? 0 : item.quantity * item.price}</p>
+											{/* <p>{item.quantity}</p> */}
+											{/* <p>${totalPrice * totalQuantity}</p> */}
 										</div>
 									))}
 								</div>
@@ -83,14 +102,20 @@ const Cart = () => {
 								<div className="total__subtotal">
 									<p className="total__text text">Подытог:</p>
 									<p className="total__text text">
-										${totalPrice * totalQuantity}
+
+										<p>${isNaN(totalPrice) ? 0 : totalPrice}</p>
+
+										{/* $
+										{totalPrice * totalQuantity} */}
 									</p>
 								</div>
 								<div className="total__wrap">
 									<div className="total__count">
 										<p className="total__text subtitle-h3">Итого:</p>
 										<p className="total__text subtitle-h3">
-											${totalPrice * totalQuantity}
+											<p>${isNaN(totalPrice) ? 0 : totalPrice}</p>
+
+											{/* {totalPrice * totalQuantity} */}
 										</p>
 									</div>
 									<Link to={'/checkout'} className='button'>

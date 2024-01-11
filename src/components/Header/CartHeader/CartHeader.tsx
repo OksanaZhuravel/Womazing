@@ -12,7 +12,7 @@ const CartHeader = () => {
           <CartIcon />
         </span>
         <div className='cart-header__count'>
-          <span className='cart-header__text'>{totalQuantity}</span>
+          <span className='cart-header__text'>{isNaN(totalQuantity) ? 0 : totalQuantity}</span>
         </div>
       </Link>
     </div>

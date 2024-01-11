@@ -66,7 +66,7 @@ const Checkout: React.FC<BuyerProps> = () => {
     }
   }
   const cartItems = useSelector((state: RootState) => state.carts.cart)
-  const { totalPrice, totalQuantity } = useCartInfo();
+  const { totalPrice } = useCartInfo();
   useEffect(() => {
     if (!isFormSubmitted) {
       navigate('/success');
@@ -179,11 +179,11 @@ const Checkout: React.FC<BuyerProps> = () => {
                   </ul>
                   <div className="buyer-cart__subtotal">
                     <p className="buyer-cart__text text">Подытог</p>
-                    <p className="buyer-cart__text text">${totalPrice * totalQuantity}</p>
+                    <p className="buyer-cart__text text">${isNaN(totalPrice) ? 0 : totalPrice}</p>
                   </div>
                   <div className="buyer-cart__total">
                     <p className="buyer-cart__text subtitle-h4">Итого</p>
-                    <p className="buyer-cart__text subtitle-h4">${totalPrice * totalQuantity}</p>
+                    <p className="buyer-cart__text subtitle-h4">${isNaN(totalPrice) ? 0 : totalPrice}</p>
                   </div>
                 </div>
               </div>

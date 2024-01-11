@@ -27,10 +27,21 @@ const cartSlice = createSlice({
         state.cart.push(action.payload);
       }
     },
-  },
+    updateCart: (state, action: PayloadAction<{ itemId: number; newQuantity: number; }>) => {
+      const { itemId, newQuantity } = action.payload;
+      const existingItem = state.cart.find(item => item.id === itemId);
+
+      if (existingItem) {
+        existingItem.quantity = newQuantity;
+      }
+    },
+    deleteCart: (state, action: PayloadAction<{ itemId: number }>) => {
+      const { itemId } = action.payload;
+      state.cart = state.cart.filter(item => item.id !== itemId);
+    },
+  }
 });
 
-export const {  addCart } = cartSlice.actions;
+export const { addCart, updateCart, deleteCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
-

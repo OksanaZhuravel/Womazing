@@ -65,7 +65,7 @@ export interface FormBuyer {
 	iscash: boolean;
 }
 export interface BuyerProps {
-	onFormSubmit: (formBuyer: { id: number } & Omit<FormBuyer, 'id'>) => void;
+	onFormSubmit?: (formBuyer: { id: number } & Omit<FormBuyer, 'id'>) => void;
 }
 
 export interface ValidationRule {

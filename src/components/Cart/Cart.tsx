@@ -11,18 +11,31 @@ import CloseSvg from "../Icon/CloseSvg";
 const Cart = () => {
 	const cartItems = useSelector((state: RootState) => state.carts.cart)
 	const [coupon, setCoupon] = useState({ coupon: "" })
-	const [couponValid, setCouponValid] = useState(true)
+	const [couponValid, setCouponValid] = useState<boolean | null>(null);
+	// const discountPercentage = 0.5;
 
 	const addCoupon = () => {
+		if (couponValid) {
+			console.log("Купон уже был применен.");
+			return;
+		}
 		const validCoupon = "1234";
 		if (coupon.coupon === validCoupon) {
-			setCouponValid(true)
+			// пересчитать общую цену корзины с применением купона discountPercentage
+			setCouponValid(true);
 			console.log("Купон применен успешно!");
 
 		} else {
-			setCouponValid(false)
+			setCouponValid(false);
+			console.log("Неверный код купона.");
 		}
-	}
+	};
+
+	const handleUpdateCart = () => {
+		setCouponValid(false);
+		// Восстановить исходную общую цену при обновлении корзины
+	};
+
 	const { totalPrice, updateQuantity, deleteItemCart } = useCartInfo();
 
 	const handleQuantityChange = (itemId: number, e: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,12 +104,12 @@ const Cart = () => {
 										value={coupon.coupon}
 										onChange={(e) => {
 											setCoupon({ ...coupon, coupon: e.target.value });
-											setCouponValid(true);
+											setCouponValid(null);
 										}}
 									/>
-									{!couponValid && (
-										<span className="error-message">Неверный код купона.</span>
-									)}
+									{couponValid && <span className="error-message">Купон уже  применен.</span>}
+									{couponValid === false ? (<span className="error-message">Неверный код купона.</span>)
+										: null}
 									<Button
 										className="button button--outline"
 										children="Применить купон"
@@ -106,7 +119,7 @@ const Cart = () => {
 								<Button
 									className="button button--outline"
 									children="Обновить корзину"
-									onClick={() => console.log("Обновить корзину")}
+									onClick={handleUpdateCart}
 								/>
 							</div>
 							<div className="cart__total total">

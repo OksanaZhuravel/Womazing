@@ -98,7 +98,17 @@ export interface CartState {
 		selectedSize: string;
 		selectedColor: string;
 		quantity: number;
+
 	}>;
+}
+export interface CartItem {
+	id: number;
+	images?: string[];
+	price: number;
+	title: string;
+	selectedSize: string;
+	selectedColor: string;
+	quantity: number;
 }
 export interface ProductState {
 	item: ProductProps[];

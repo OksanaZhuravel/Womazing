@@ -12,6 +12,7 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 	const products = useSelector((state: RootState) => state.products.item as ProductProps[]);
 	const dispatch = useDispatch<AppDispatch>();
 	const currentProducts = products.slice(0, limit);
+	console.log(products);
 
 	useEffect(() => {
 		dispatch(fetchProductsAll());

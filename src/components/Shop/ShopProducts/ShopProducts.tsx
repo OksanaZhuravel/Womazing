@@ -14,6 +14,8 @@ const ShopProducts = ({ currentRange }: RangeProps) => {
 	const pageSize = 9;
 	const [currentPage, setCurrentPage] = useState(1);
 	const products = useSelector((state: RootState) => state.products.item as ProductProps[]);
+	// console.log(products);
+
 	const startIndex = (currentPage - 1) * pageSize;
 	const endIndex = startIndex + pageSize;
 	const sortedArray = useMemo(() => ranges[currentRange]?.(products) || products, [currentRange, products]);

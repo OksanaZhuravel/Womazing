@@ -14,6 +14,7 @@ const cartSlice = createSlice({
       images?: string[];
       price: number;
       title: string;
+      diccort: number | null | undefined;
       selectedSize: string;
       selectedColor: string;
       quantity: number;

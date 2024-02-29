@@ -57,7 +57,7 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 							<div className="card__prace">
 								{product.diccort !== null ? (
 									<>
-										<span>${product.diccort.toFixed(2)}</span>
+										<span>${product.diccort}</span>
 										<span className="card__discort">${product.price}</span>
 									</>
 								) : (

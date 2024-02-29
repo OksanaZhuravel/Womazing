@@ -32,6 +32,7 @@ const ProductItem = ({ item }: ProductItemProps) => {
 			images: item.images,
 			price: item.price,
 			title: item.title,
+			diccort: item.diccort,
 			selectedSize,
 			selectedColor,
 			quantity: Number(quantity)
@@ -47,7 +48,7 @@ const ProductItem = ({ item }: ProductItemProps) => {
 				<div className='product__prace'>
 					{item.diccort !== null ? (
 						<>
-							<span>${item.diccort.toFixed(2)}</span>
+							<span>${item.diccort}</span>
 							<span className='product__discort'>${item.price}</span>
 						</>
 					) : (

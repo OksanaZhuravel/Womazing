@@ -173,7 +173,13 @@ const Checkout: React.FC<BuyerProps> = () => {
                     {cartItems.map(item => (
                       <li key={item.id} className="buyer-cart__item">
                         <p className="buyer-cart__text text">{item.title}</p>
-                        <p className="buyer-cart__text text">${item.price}</p>
+                        {item.diccort !== null && item.diccort !== undefined ? (
+
+                          <p className="buyer-cart__text text">${item.diccort}</p>
+
+                        ) : (
+                          <p className="buyer-cart__text text">${item.price}</p>
+                        )}
                       </li>
                     ))}
                   </ul>

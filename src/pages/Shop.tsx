@@ -6,10 +6,11 @@ import { useState } from "react";
 
 
 const Shop = () => {
-  const [currentRange, setCurrentRange] = useState("all");
+  const [currentRange, setCurrentRange] = useState("Все");
   const handleSortChange = (range: string) => {
     setCurrentRange(range);
   };
+  console.log(currentRange);
 
   return <>
     <Title title="Магазин" activeTitle="Магазин" activeLink='/shop' />

@@ -8,7 +8,7 @@ export const useCartInfo = () => {
 
 	const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 	const totalPrice = cartItems.reduce((total, item) => {
-		const itemTotal = item.price * item.quantity;
+		const itemTotal = isNaN(item.quantity * (item.diccort ?? item.price)) ? 0 : item.quantity * (item.diccort ?? item.price);
 		return total + itemTotal;
 	}, 0);
 

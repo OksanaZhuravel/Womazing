@@ -13,6 +13,7 @@ const Cart = () => {
 	const [coupon, setCoupon] = useState({ coupon: "" })
 	const [couponValid, setCouponValid] = useState<boolean | null>(null);
 	// const discountPercentage = 0.5;
+	console.log(cartItems);
 
 	const addCoupon = () => {
 		if (couponValid) {
@@ -82,7 +83,15 @@ const Cart = () => {
 												)}
 												<p className="product-cart__text text">{item.title}</p>
 											</Link>
-											<p className="text">${item.price}</p>
+											<p className="text">
+												{item.diccort !== null && item.diccort !== undefined ? (
+
+													<span>${item.diccort}</span>
+
+												) : (
+													<span>${item.price}</span>
+												)}
+											</p>
 											<Input
 												type='text'
 												placeholder='1'
@@ -90,7 +99,7 @@ const Cart = () => {
 												value={isNaN(item.quantity) ? '' : item.quantity}
 												onChange={(e) => handleQuantityChange(item.id, e)}
 											/>
-											<p className="text">${isNaN(item.quantity * item.price) ? 0 : item.quantity * item.price}</p>
+											<p className="text">${isNaN(item.quantity * (item.diccort ?? item.price)) ? 0 : item.quantity * (item.diccort ?? item.price)}</p>
 										</div>
 									))}
 								</div>

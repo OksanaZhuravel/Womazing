@@ -151,6 +151,7 @@ export interface CartState {
 		id: number;
 		images?: string[];
 		price: number;
+		diccort: number | null | undefined;
 		title: string;
 		selectedSize: string;
 		selectedColor: string;

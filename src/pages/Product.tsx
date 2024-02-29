@@ -6,17 +6,18 @@ import ProductItem from '../components/ProductItem/ProductItem';
 
 import ProductPromo from '../components/ProductPromo/ProductPromo';
 import { ProductProps } from '../types/types';
-
 const Product = () => {
-
   const [product, setProduct] = useState<ProductProps | null>(null);
   const { productId } = useParams<{ productId?: string }>();
+  const parsedProductId = productId ? parseInt(productId, 10) : undefined;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (productId) {
-          const productData = await api.getProductId(productId);
-          setProduct(productData);
+        if (parsedProductId) {
+          const response = await api.getProductId(parsedProductId);
+          if (response) {
+            setProduct(response);
+          }
         }
 
       } catch (error) {
@@ -30,13 +31,12 @@ const Product = () => {
   }
 
 
-
   return (
     <>
       <section className='product'>
         <div className="product__container">
           <h2 className='product__title title-big'>{product.title}</h2>
-          <Breadcrumbs category={product.category} title={product.title} className='product__breadcrumbs' />
+          <Breadcrumbs categories={product.categories} title={product.title} className='product__breadcrumbs' />
           <ProductItem item={product} />
           <ProductPromo subtitle="Связанные товары" className='related' limit={2} />
         </div>
@@ -45,3 +45,4 @@ const Product = () => {
   );
 };
 export default Product;
+

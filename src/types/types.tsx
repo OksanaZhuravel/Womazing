@@ -3,22 +3,78 @@ import { InputHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 export interface ProductPromoProps {
 	className: string;
 	subtitle: string;
-	limit: number;
+	limit?: number;
 }
-export interface ProductProps {
-	category: {
-		id: number;
-		name: string;
-	};
-	description: string;
-	id: number;
-	images: string[];
-	price: number;
-	title: string;
-}
+// export interface ProductProps {
+// 	category: {
+// 		id: number;
+// 		name: string;
+// 	};
+// 	description: string;
+// 	id: number;
+// 	images: string[];
+// 	price: number;
+// 	title: string;
+// }
+// export interface ProductProps {
+// 	id: number;
+// 	attributes?: {
+// 		title: string;
+// 		description: string | null;
+// 		price: number;
+// 		diccort: number | null;
+// 		quantity: number;
+// 		images: {
+// 			data: {
+// 				id: number;
+// 				attributes: {
+// 					name: string;
+// 					width: number;
+// 					height: number;
+// 					url: string;
+// 				};
+// 			}[];
+// 		};
+// 		categories: {
+// 			data: {
+// 				id: number;
+// 				attributes: {
+// 					name: string;
+// 				};
+// 			}[];
+// 		};
+// 		sizes: {
+// 			data: {
+// 				id: number;
+// 				attributes: {
+// 					name: string;
+// 				};
+// 			}[];
+// 		};
+// 		colors: {
+// 			data: {
+// 				id: number;
+// 				attributes: {
+// 					name: string;
+// 					value: string;
+// 				};
+// 			}[];
+// 		};
+// 		news: {
+// 			data: {
+// 				id: number;
+// 				attributes: {
+// 					New: boolean;
+// 					name: string;
+// 				};
+// 			}[];
+// 		};
+// 	};
+// }
 export interface ProductItemProps {
 	item: ProductProps;
 }
+
 export interface formDataProps {
 	name: string;
 	email: string;
@@ -33,10 +89,11 @@ export interface TitleProps {
 	interim?: string;
 }
 export interface BreadcrumbsProps {
-	category: {
-		id: number;
-		name: string;
-	};
+	categories: string[];
+	// {
+	// 	// 	id: number;
+	// 	// name: string;
+	// };
 	title: string;
 	className: string;
 }
@@ -124,4 +181,94 @@ export interface PopupFormProps {
 	text_btn?: string;
 	showMessage?: boolean;
 	showButton?: boolean;
+}
+export interface ProductProps {
+	id: number;
+	title: string;
+	description: string | null;
+	price: number;
+	diccort: number | null;
+	quantity: number;
+	categories: string[];
+	images: string[];
+	sizes: string[];
+	colors: { name: string; value: string; }[];
+	news: boolean;
+}
+export interface ImageData {
+	id: number;
+	attributes: {
+		name: string;
+		width: number;
+		height: number;
+		url: string;
+	};
+}
+
+export interface CategoryData {
+	id: number;
+	attributes: {
+		name: string;
+	};
+}
+
+export interface SizeData {
+	id: number;
+	attributes: {
+		name: string;
+	};
+}
+
+export interface ColorData {
+	id: number;
+	attributes: {
+		name: string;
+		value: string;
+	};
+}
+
+export interface NewsData {
+	id: number;
+	attributes: {
+		New: boolean;
+		name: string;
+	};
+}
+
+export interface ProductData {
+	id: number;
+	attributes: {
+		title: string;
+		description: string | null;
+		price: number;
+		diccort: number;
+		quantity: number;
+		images: {
+			data: ImageData[];
+		};
+		categories: {
+			data: CategoryData[];
+		};
+		sizes: {
+			data: SizeData[];
+		};
+		colors: {
+			data: ColorData[];
+		};
+		news: {
+			data: NewsData[];
+		};
+	};
+}
+
+export interface ResponseData {
+	data: ProductData[];
+	meta: {
+		pagination: {
+			page: number;
+			pageSize: number;
+			pageCount: number;
+			total: number;
+		};
+	};
 }

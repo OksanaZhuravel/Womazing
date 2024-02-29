@@ -8,10 +8,10 @@ import { AppDispatch } from '../../state/store';
 
 
 const ProductItem = ({ item }: ProductItemProps) => {
+	console.log(item);
 	const dispatch = useDispatch<AppDispatch>();
-	const diccort = 0.9;
-	const [selectedSize, setSelectedSize] = useState('M');
-	const [selectedColor, setSelectedColor] = useState('#D4D4D4');
+	const [selectedSize, setSelectedSize] = useState(item.sizes.length > 1 ? item.sizes[1] : item.sizes[0]);
+	const [selectedColor, setSelectedColor] = useState(item.colors.length > 1 ? item.colors[1].value : item.colors[0].value);
 	const [quantity, setQuantity] = useState<number | string>(1);
 	const handleSizeChange = (size: string) => {
 		setSelectedSize(size);
@@ -36,24 +36,30 @@ const ProductItem = ({ item }: ProductItemProps) => {
 			selectedColor,
 			quantity: Number(quantity)
 		};
+		console.log(cartData);
 		dispatch(addCart(cartData))
 	};
+
 
 	return (
 		<div className='product__wrap'>
 			<img src={item.images[0]} className='product__img' alt={item.title} />
 			<div className='product__boby'>
 				<div className='product__prace'>
-					<span >
-						${(item.price * diccort).toFixed(2)}
-					</span>
-					<span className='product__discort'>${item.price}</span>
+					{item.diccort !== null ? (
+						<>
+							<span>${item.diccort.toFixed(2)}</span>
+							<span className='product__discort'>${item.price}</span>
+						</>
+					) : (
+						<span>${item.price}</span>
+					)}
 				</div>
 				<form action='#' className='product__form'>
 					<div className='product__size size'>
 						<p className='subtitle-h4'>Выберите размер</p>
 						<div className='size__options'>
-							{['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
+							{item.sizes.map((size) => (
 								<div
 									className={`size__item ${selectedSize === size ? 'active' : ''}`}
 									key={size}
@@ -77,24 +83,24 @@ const ProductItem = ({ item }: ProductItemProps) => {
 					<div className='product__color color '>
 						<p className='subtitle-h4'>Выберите цвет</p>
 						<div className='color__options'>
-							{['#927876', '#D4D4D4', '#FD9696', '#FDC796'].map((color) => (
+							{item.colors.map((color) => (
 								<div
-									className={`color__item ${selectedColor === color ? 'active' : ''}`}
-									key={color}
-									onClick={() => handleColorChange(color)}>
+									className={`color__item ${selectedColor === color.name ? 'active' : ''}`}
+									key={color.value}
+									onClick={() => handleColorChange(color.name)}>
 									<Input
 										className='color__input'
 										type='radio'
-										value={color}
-										id={color}
+										value={color.value}
+										id={color.name}
 										name='color'
-										checked={selectedColor === color}
-										onChange={() => handleColorChange(color)}
+										checked={selectedColor === color.value}
+										onChange={() => handleColorChange(color.value)}
 									/>
 									<label
-										htmlFor={color}
+										htmlFor={color.value}
 										className='color__label'
-										style={{ backgroundColor: color }}>
+										style={{ backgroundColor: color.value }}>
 									</label>
 								</div>
 							))}

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import Arrow from "../../Icon/Arrow";
+// import { Link } from "react-router-dom";
+// import Arrow from "../../Icon/Arrow";
 import { ProductProps, RangeProps } from "../../../types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../state/store";
@@ -10,7 +10,7 @@ import Pagination from "../../UI/Pagination/Pagination";
 
 
 const ShopProducts = ({ currentRange }: RangeProps) => {
-	const diccort = 0.9
+	// const diccort = 0.9
 	const pageSize = 9;
 	const [currentPage, setCurrentPage] = useState(1);
 	const products = useSelector((state: RootState) => state.products.item as ProductProps[]);
@@ -32,18 +32,19 @@ const ShopProducts = ({ currentRange }: RangeProps) => {
 	return (
 		<section className='shop' id='shop'>
 			<div className='shop__container'>
-				<div className="shop__pagination text">
+				{/* <div className="shop__pagination text">
 					{sortedArray.length < pageSize
 						? `Показано: ${sortedArray.length} из ${sortedArray.length} товаров`
 						: `Показано: ${pageSize} из ${sortedArray.length} товаров`}
-				</div>
+				</div> */}
 				{sortedArray.length <= 0
 					? <div className='shop__inner inner'><p className="subtitle-h2">По вашему запросу нет товаров</p></div>
 					: <>
 						<div className='shop__inner inner'>
 							{currentProducts.map((product) => (
 								<article className='home-card card' key={product.id}>
-									<div className='card__inner'>
+									<h1>Product</h1>
+									{/* <div className='card__inner'>
 										<img
 											src={product.images[0]}
 											width={350}
@@ -61,7 +62,7 @@ const ShopProducts = ({ currentRange }: RangeProps) => {
 											<span className='card__discort'>${product.price}</span>
 											<span className='card__number'>${(product.price * diccort).toFixed(2)}</span>
 										</div>
-									</div>
+									</div> */}
 								</article>
 							))}
 						</div>

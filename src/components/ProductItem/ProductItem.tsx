@@ -8,10 +8,10 @@ import { AppDispatch } from '../../state/store';
 
 
 const ProductItem = ({ item }: ProductItemProps) => {
-	console.log(item);
+	// console.log(item);
 	const dispatch = useDispatch<AppDispatch>();
-	const [selectedSize, setSelectedSize] = useState(item.sizes.length > 1 ? item.sizes[1] : item.sizes[0]);
-	const [selectedColor, setSelectedColor] = useState(item.colors.length > 1 ? item.colors[1].value : item.colors[0].value);
+	const [selectedSize, setSelectedSize] = useState<string>(item.sizes.length > 0 ? item.sizes[1] : '');
+	const [selectedColor, setSelectedColor] = useState<string>(item.colors.length > 0 ? item.colors[0].value : '');
 	const [quantity, setQuantity] = useState<number | string>(1);
 	const handleSizeChange = (size: string) => {
 		setSelectedSize(size);
@@ -36,7 +36,6 @@ const ProductItem = ({ item }: ProductItemProps) => {
 			selectedColor,
 			quantity: Number(quantity)
 		};
-		console.log(cartData);
 		dispatch(addCart(cartData))
 	};
 
@@ -56,60 +55,64 @@ const ProductItem = ({ item }: ProductItemProps) => {
 					)}
 				</div>
 				<form action='#' className='product__form'>
-					<div className='product__size size'>
-						<p className='subtitle-h4'>Выберите размер</p>
-						<div className='size__options'>
-							{item.sizes.map((size) => (
-								<div
-									className={`size__item ${selectedSize === size ? 'active' : ''}`}
-									key={size}
-									onClick={() => handleSizeChange(size)}>
-									<Input
-										className='size__input'
-										type='radio'
-										value={size}
-										id={size}
-										name='size'
-										checked={selectedSize === size}
-										onChange={() => handleSizeChange(size)}
-									/>
-									<label htmlFor={size} className='size__label'>
-										<span className='text'>{size}</span>
-									</label>
-								</div>
-							))}
+					{item.sizes.length > 0 && (
+						<div className='product__size size'>
+							<p className='subtitle-h4'>Выберите размер</p>
+							<div className='size__options'>
+								{item.sizes.map((size) => (
+									<div
+										className={`size__item ${selectedSize === size ? 'active' : ''}`}
+										key={size}
+										onClick={() => handleSizeChange(size)}>
+										<Input
+											className='size__input'
+											type='radio'
+											value={size}
+											id={size}
+											name='size'
+											checked={selectedSize === size}
+											onChange={() => handleSizeChange(size)}
+										/>
+										<label htmlFor={size} className='size__label'>
+											<span className='text'>{size}</span>
+										</label>
+									</div>
+								))}
+							</div>
 						</div>
-					</div>
-					<div className='product__color color '>
-						<p className='subtitle-h4'>Выберите цвет</p>
-						<div className='color__options'>
-							{item.colors.map((color) => (
-								<div
-									className={`color__item ${selectedColor === color.name ? 'active' : ''}`}
-									key={color.value}
-									onClick={() => handleColorChange(color.name)}>
-									<Input
-										className='color__input'
-										type='radio'
-										value={color.value}
-										id={color.name}
-										name='color'
-										checked={selectedColor === color.value}
-										onChange={() => handleColorChange(color.value)}
-									/>
-									<label
-										htmlFor={color.value}
-										className='color__label'
-										style={{ backgroundColor: color.value }}>
-									</label>
-								</div>
-							))}
+					)}
+					{item.colors.length > 0 && (
+						<div className='product__color color '>
+							<p className='subtitle-h4'>Выберите цвет</p>
+							<div className='color__options'>
+								{item.colors.map((color) => (
+									<div
+										className={`color__item ${selectedColor === color.name ? 'active' : ''}`}
+										key={color.value}
+										onClick={() => handleColorChange(color.name)}>
+										<Input
+											className='color__input'
+											type='radio'
+											value={color.value}
+											id={color.name}
+											name='color'
+											checked={selectedColor === color.value}
+											onChange={() => handleColorChange(color.value)}
+										/>
+										<label
+											htmlFor={color.value}
+											className='color__label'
+											style={{ backgroundColor: color.value }}>
+										</label>
+									</div>
+								))}
+							</div>
 						</div>
-					</div>
+					)}
 					<div className='product__box'>
 						<div className='product__quantity quantity'>
 							<Input
-								type='number'
+								type='text'
 								placeholder='1'
 								className='quantity__input text-big'
 								value={quantity}

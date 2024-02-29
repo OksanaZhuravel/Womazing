@@ -24,7 +24,24 @@ class Api {
       console.log(error);
     }
   }
-  async getProductId(id: number ) {
+  async getAllCategories() {
+    try {
+      const response = await instance.get(`/api/categories`, {
+        params: {
+          populate: '*',
+        }
+      });
+      const categories = response.data.data.map(({ id, attributes }: CategoryData) => ({
+        id,
+        name: attributes.name
+      }));
+      // console.log(categories);
+      return categories;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async getProductId(id: number) {
     try {
       const response = await instance.get(`/api/products/${id}`, {
         params: {
@@ -37,11 +54,11 @@ class Api {
         name: color.attributes.name,
         value: color.attributes.value,
       }));
-      const images = response.data.data.attributes.images.data.map((images: ImageData ) => images.attributes.url);
+      const images = response.data.data.attributes.images.data.map((images: ImageData) => images.attributes.url);
       const sizes = response.data.data.attributes.sizes.data.map((size: SizeData) => size.attributes.name);
       const news = response.data.data.attributes.news.data.length > 0 ? response.data.data.attributes.news.data[0].attributes.New : false;
       // console.log(id, title, diccort, price, description, quantity, categories, colors, images, sizes, news);
-      return { id, title, diccort, price, description, quantity, categories, colors, images, sizes,news };
+      return { id, title, diccort, price, description, quantity, categories, colors, images, sizes, news };
     } catch (error) {
       console.log(error);
     }

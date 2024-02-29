@@ -16,7 +16,7 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 		dispatch(fetchProductsAll())
 	}, [dispatch])
 
-	const currentProducts = Array.isArray(products)
+	const currentProducts = Array.isArray(products.filter(product => product.news))
 		? limit
 			? products.slice(0, limit)
 			: products
@@ -24,7 +24,6 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 	if (!Array.isArray(currentProducts)) {
 		return <div>Loading...</div>
 	}
-	// console.log(currentProducts)
 
 	return (
 		<div className={`${className}__container`}>

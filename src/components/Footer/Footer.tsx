@@ -2,9 +2,25 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import NavBar from "../NavBar/NavBar";
 import Social from "../Social/Social";
+import { CategoryProps } from "../../types/types";
+
+import { useEffect, useState } from "react";
+import api from "../../api/apiShop";
 
 
 const Footer = () => {
+  const [category, setCategory] = useState<CategoryProps[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const categories = await api.getAllCategories();
+        setCategory(categories);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <footer className='footer'>
       <div className='footer__container'>
@@ -22,13 +38,17 @@ const Footer = () => {
             <Link to="/" className="footer__link"><span className="footer__text">Политика конфиденциальности</span></Link>
             <Link to="/" className="footer__link"><span className="footer__text">Публичная оферта</span></Link>
           </div>
-          {/* <ul className="footer__list">
-            <li className="footer__item"><Link className="footer__link" to='/'><span className="footer__text">Пальто</span></Link></li>
-            <li className="footer__item"><Link className="footer__link" to='/'><span className="footer__text">Свитшоты</span></Link></li>
-            <li className="footer__item"><Link className="footer__link" to='/'><span className="footer__text">Кардиганы</span></Link></li>
-            <li className="footer__item"><Link className="footer__link" to='/'><span className="footer__text">Толстовки</span></Link></li>
-
-          </ul> */}
+          {category.length > 0 && (
+            <ul className="footer__list">
+              {category.map(item => (
+                <li className="footer__item" key={item.id}>
+                  <Link className="footer__link" to={`/shop`}>
+                    <span className="footer__text">{item.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
           <div className="footer__inner">
             <Social />
             <div className="footer__pay">

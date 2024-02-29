@@ -84,7 +84,7 @@ const Cart = () => {
 											</Link>
 											<p className="text">${item.price}</p>
 											<Input
-												type='number'
+												type='text'
 												placeholder='1'
 												className='product-cart__input text-big'
 												value={isNaN(item.quantity) ? '' : item.quantity}

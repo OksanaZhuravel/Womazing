@@ -3,7 +3,7 @@ import { InputHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 export interface ProductPromoProps {
 	className: string;
 	subtitle: string;
-	limit?: number;
+	limit: number;
 }
 // export interface ProductProps {
 // 	category: {

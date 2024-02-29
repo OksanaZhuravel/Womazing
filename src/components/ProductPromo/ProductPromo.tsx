@@ -16,11 +16,17 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 		dispatch(fetchProductsAll())
 	}, [dispatch])
 
-	const currentProducts = Array.isArray(products.filter(product => product.news))
-		? limit
-			? products.slice(0, limit)
-			: products
-		: []
+	const filterProducts = products.filter((product) => product.news)
+	let currentProducts = filterProducts
+	if (filterProducts.length < limit) {
+		const remainingProducts = products.filter((product) => !product.news)
+		const remainingCount = limit - filterProducts.length
+		currentProducts = [
+			...filterProducts,
+			...remainingProducts.slice(0, remainingCount),
+		]
+	}
+
 	if (!Array.isArray(currentProducts)) {
 		return <div>Loading...</div>
 	}
@@ -52,7 +58,7 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 								{product.diccort !== null ? (
 									<>
 										<span>${product.diccort.toFixed(2)}</span>
-										<span className='card__discort'>${product.price}</span>
+										<span className="card__discort">${product.price}</span>
 									</>
 								) : (
 									<span>${product.price}</span>

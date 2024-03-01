@@ -89,11 +89,10 @@ export interface TitleProps {
 	interim?: string;
 }
 export interface BreadcrumbsProps {
-	categories: string[];
-	// {
-	// 	// 	id: number;
-	// 	// name: string;
-	// };
+	categories: {
+		idCat: number;
+		name: string;
+	};
 	title: string;
 	className: string;
 }
@@ -190,7 +189,10 @@ export interface ProductProps {
 	price: number;
 	diccort: number | null;
 	quantity: number;
-	categories: string[];
+	// categories: string[];
+	categories: {
+		includes(currentRange: string): unknown; name: string; idCat: number;
+	};
 	images: string[];
 	sizes: string[];
 	colors: { name: string; value: string; }[];
@@ -206,17 +208,7 @@ export interface ImageData {
 	};
 }
 
-export interface CategoryData {
-	id: number;
-	attributes: {
-		name: string;
-	};
-}
-export interface CategoryProps {
-	id: number;
-	name: string;
 
-}
 export interface SizeData {
 	id: number;
 	attributes: {
@@ -276,4 +268,25 @@ export interface ResponseData {
 			total: number;
 		};
 	};
+}
+
+export interface CategoryData {
+	id: number;
+	attributes: {
+		name: string;
+	};
+}
+export interface CategoryProps {
+	id: number;
+	name: string;
+
+}
+export interface CategoryState {
+	categories: CategoryProps[];
+	status: string;
+	error?: string;
+}
+
+export interface CategoryResponseData {
+	data: CategoryProps[];
 }

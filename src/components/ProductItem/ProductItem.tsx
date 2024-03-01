@@ -45,6 +45,7 @@ const ProductItem = ({ item }: ProductItemProps) => {
 		<div className='product__wrap'>
 			<img src={item.images[0]} className='product__img' alt={item.title} />
 			<div className='product__boby'>
+
 				<div className='product__prace'>
 					{item.diccort !== null ? (
 						<>
@@ -53,6 +54,11 @@ const ProductItem = ({ item }: ProductItemProps) => {
 						</>
 					) : (
 						<span>${item.price}</span>
+					)}
+				</div>
+				<div className='subtitle-h4'>
+					{item.description !== null && (
+						<span>{item.description}</span>
 					)}
 				</div>
 				<form action='#' className='product__form'>

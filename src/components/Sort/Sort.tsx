@@ -1,32 +1,39 @@
-import api from "../../api/apiShop";
-import { CategoryProps, SortProps } from "../../types/types";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux"
+import { CategoryProps, SortProps } from "../../types/types"
+import { useEffect, useState } from "react"
+import { AppDispatch, RootState } from "../../state/store"
+import { fetchCategoriesAll } from "../../state/categories/categoriesSlice"
 
 const Sort = ({ onSortChange }: SortProps) => {
-	const [category, setCategory] = useState<CategoryProps[]>([]);
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const categories = await api.getAllCategories();
-				setCategory([{
-					id: 0,
-					name: "Все"
-				}, ...categories]);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchData();
-	}, []);
+	const categories = useSelector(
+		(state: RootState) => state.categories.categories,
+	)
+	// console.log(categories);
 
-	const [activeItems, setActiveItems] = useState([true, ...Array.from({ length: category.length - 1 }).map(() => false)]);
+	const dispatch = useDispatch<AppDispatch>()
+	const [category, setCategory] = useState<CategoryProps[]>([])
+
+	useEffect(() => {
+		dispatch(fetchCategoriesAll())
+	}, [dispatch])
+
+	useEffect(() => {
+		setCategory([{ id: 0, name: "Все" }, ...categories])
+	}, [categories])
+
+	const [activeItems, setActiveItems] = useState([
+		true,
+		...Array.from({ length: category.length - 1 }).map(() => false),
+	])
 
 	const handleSort = (index: number) => {
-		const newActiveItems = Array.from({ length: category.length }).map((_isActive, i) => i === index);
-		setActiveItems(newActiveItems);
-		const range = category[index].id.toString();
-		onSortChange(range);
-	};
+		const newActiveItems = Array.from({ length: category.length }).map(
+			(_isActive, i) => i === index,
+		)
+		setActiveItems(newActiveItems)
+		const range = category[index].name.toString()
+		onSortChange(range)
+	}
 
 	return (
 		<>
@@ -36,7 +43,9 @@ const Sort = ({ onSortChange }: SortProps) => {
 						{category.map((item, index) => (
 							<li
 								key={item.id}
-								className={activeItems[index] ? 'sort__item active' : 'sort__item'}
+								className={
+									activeItems[index] ? "sort__item active" : "sort__item"
+								}
 								onClick={() => handleSort(index)}
 							>
 								<span className="sort__text">{item.name}</span>
@@ -46,7 +55,7 @@ const Sort = ({ onSortChange }: SortProps) => {
 				</div>
 			</section>
 		</>
-	);
-};
+	)
+}
 
-export default Sort;
+export default Sort

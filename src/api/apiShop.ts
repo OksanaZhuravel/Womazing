@@ -31,11 +31,13 @@ class Api {
           populate: '*',
         }
       });
+        if (!Array.isArray(response.data.data)) {
+            throw new Error('Response data is not an array');
+        }
       const categories = response.data.data.map(({ id, attributes }: CategoryData) => ({
         id,
         name: attributes.name
       }));
-      // console.log(categories);
       return categories;
     } catch (error) {
       console.log(error);
@@ -49,7 +51,14 @@ class Api {
         }
       });
       const { attributes: { title, diccort, price, description, quantity } } = response.data.data;
-      const categories = response.data.data.attributes.categories.data.map((category: CategoryData) => category.attributes.name);
+      const categories = response.data.data.attributes.categories.data.map((category: CategoryData) => 
+      ({
+        idCat: category.id,
+        name: category.attributes.name,
+      }));
+      // category.attributes.name);
+
+
       const colors = response.data.data.attributes.colors.data.map((color: ColorData) => ({
         name: color.attributes.name,
         value: color.attributes.value,
@@ -63,6 +72,35 @@ class Api {
       console.log(error);
     }
   }
+//    async getCategoryId(id: number) {
+//     try {
+//       const response = await instance.get(`/api/categories/${id}`, {
+//         params: {
+//           populate: '*',
+//         }
+//       });
+//       const { attributes: { title, diccort, price, description, quantity } } = response.data.data;
+//       const categories = response.data.data.attributes.categories.data.map((category: CategoryData) => 
+//       ({
+//         idCat: category.id,
+//         name: category.attributes.name,
+//       }));
+//       // category.attributes.name);
+
+
+//       const colors = response.data.data.attributes.colors.data.map((color: ColorData) => ({
+//         name: color.attributes.name,
+//         value: color.attributes.value,
+//       }));
+//       const images = response.data.data.attributes.images.data.map((images: ImageData) => images.attributes.url);
+//       const sizes = response.data.data.attributes.sizes.data.map((size: SizeData) => size.attributes.name);
+//       const news = response.data.data.attributes.news.data.length > 0 ? response.data.data.attributes.news.data[0].attributes.New : false;
+//       // console.log(id, title, diccort, price, description, quantity, categories, colors, images, sizes, news);
+//       return { id, title, diccort, price, description, quantity, categories, colors, images, sizes, news };
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
 }
 
 const api = new Api();

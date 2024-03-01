@@ -3,7 +3,6 @@ import api from '../api/apiShop';
 import { useParams } from 'react-router-dom';
 import Breadcrumbs from '../components/UI/Breadcrumbs/Breadcrumbs';
 import ProductItem from '../components/ProductItem/ProductItem';
-
 import ProductPromo from '../components/ProductPromo/ProductPromo';
 import { ProductProps } from '../types/types';
 const Product = () => {
@@ -29,6 +28,7 @@ const Product = () => {
   if (!product) {
     return <div className='loading'>Загрузка...</div>;
   }
+  // console.log(product);
 
 
   return (

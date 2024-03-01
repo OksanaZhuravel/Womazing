@@ -1,23 +1,27 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Arrow from "../../Icon/Arrow";
 import { ProductProps, RangeProps } from "../../../types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../state/store";
 import { fetchProductsAll } from "../../../state/product/productSlice";
-import { ranges } from "../../../utils/productUtils";
 import Pagination from "../../UI/Pagination/Pagination";
 
-
 const ShopProducts = ({ currentRange }: RangeProps) => {
-	const pageSize = 9;
+	// console.log(currentRange);
+
+	const pageSize = 3;
 	const [currentPage, setCurrentPage] = useState(1);
 	const products = useSelector((state: RootState) => state.products.item as ProductProps[]);
-	// console.log(products);
-
+	const sortedArray = products.filter(product => {
+		if (currentRange === "Все") {
+			return true;
+		} else {
+			return product.categories.includes(currentRange);
+		}
+	});
 	const startIndex = (currentPage - 1) * pageSize;
 	const endIndex = startIndex + pageSize;
-	const sortedArray = useMemo(() => ranges[currentRange]?.(products) || products, [currentRange, products]);
 	const maxPage = Math.ceil(sortedArray.length / pageSize)
 	const currentProducts = sortedArray.slice(startIndex, endIndex);
 	const dispatch = useDispatch<AppDispatch>();

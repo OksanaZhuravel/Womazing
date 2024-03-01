@@ -7,14 +7,15 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ categories, title, className 
 			Главная
 		</Link>,
 	];
-	// console.log(categories);
+	console.log(categories);
 
-	if (Array.isArray(categories) && categories.length > 0) {
-		categories.forEach((category: { idCat: number, name: string }, index: number) => {
+	if (categories && categories.length > 0) {
+		categories.forEach((category, index) => {
 			breadcrumbs.push(
 				<span key={`category-${index}`} className='text'>
 					&nbsp;—&nbsp;
-					<Link to={`/category/${category.idCat}`}>{category.name}</Link>
+					{/* <Link to={`/shop`}>{category}</Link> */}
+					<Link to={`/shop/${category}`}>{category}</Link>
 				</span>
 			);
 		});

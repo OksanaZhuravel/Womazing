@@ -89,10 +89,11 @@ export interface TitleProps {
 	interim?: string;
 }
 export interface BreadcrumbsProps {
-	categories: {
-		idCat: number;
-		name: string;
-	};
+	categories: string[];
+	// categories: {
+	// 	idCat: number;
+	// 	name: string;
+	// };
 	title: string;
 	className: string;
 }
@@ -189,10 +190,10 @@ export interface ProductProps {
 	price: number;
 	diccort: number | null;
 	quantity: number;
-	// categories: string[];
-	categories: {
-		includes(currentRange: string): unknown; name: string; idCat: number;
-	};
+	categories: string[];
+	// categories: {
+	// 	includes(currentRange: string): unknown; name: string; idCat: number;
+	// };
 	images: string[];
 	sizes: string[];
 	colors: { name: string; value: string; }[];

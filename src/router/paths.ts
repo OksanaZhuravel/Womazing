@@ -6,5 +6,4 @@ export const RoutePath = {
   PRODUCT: 'product/:productId',
   SHOP: 'shop',
   SUCCESS: 'success',
-  CATEGORY: 'category/:idCat',
 } as const;

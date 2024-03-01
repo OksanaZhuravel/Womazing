@@ -14,8 +14,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ categories, title, className 
 			breadcrumbs.push(
 				<span key={`category-${index}`} className='text'>
 					&nbsp;—&nbsp;
-					{/* <Link to={`/shop`}>{category}</Link> */}
-					<Link to={`/shop/${category}`}>{category}</Link>
+					<Link to={`/shop`}>{category}</Link>
 				</span>
 			);
 		});

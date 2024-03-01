@@ -10,8 +10,6 @@ import Contacts from '../pages/Contacts';
 import Product from '../pages/Product';
 import Checkout from '../pages/Checkout';
 import Success from '../pages/Success';
-import Category from '../pages/Category';
-
 const routerConfig = createBrowserRouter([
   {
     path: '/',
@@ -45,10 +43,6 @@ const routerConfig = createBrowserRouter([
       {
         path: RoutePath.PRODUCT,
         element: <Product />,
-      },
-      {
-        path: RoutePath.CATEGORY,
-        element: <Category />,
       },
       {
         path: RoutePath.SUCCESS,

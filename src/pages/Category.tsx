@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import api from '../api/apiShop';
-import { useParams } from 'react-router-dom';
-import Breadcrumbs from '../components/UI/Breadcrumbs/Breadcrumbs';
-import ProductItem from '../components/ProductItem/ProductItem';
+// import { useEffect, useState } from 'react';
+// import api from '../api/apiShop';
+// import { useParams } from 'react-router-dom';
+// import Breadcrumbs from '../components/UI/Breadcrumbs/Breadcrumbs';
+// import ProductItem from '../components/ProductItem/ProductItem';
 
 
 const Category = () => {

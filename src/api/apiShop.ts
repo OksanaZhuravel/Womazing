@@ -1,7 +1,8 @@
 
 import axios from 'axios';
 import { CategoryData, ColorData, SizeData, ImageData } from '../types/types';
-export const API_URL = `https://womazing-server.onrender.com/`;
+// export const API_URL = `https://womazing-server.onrender.com/`;
+export const API_URL = `http://localhost:1337/`;
 
 const instance = axios.create({
   baseURL: API_URL,

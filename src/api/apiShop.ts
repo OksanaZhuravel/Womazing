@@ -1,8 +1,8 @@
 
 import axios from 'axios';
-import { CategoryData, ColorData, SizeData, ImageData } from '../types/types';
+import { CategoryData, ColorData, SizeData, ImageData, CouponsData } from '../types/types';
 // export const API_URL = `https://womazing-server.onrender.com/`;
-export const API_URL = `http://localhost:1337/`;
+export const API_URL = `http://localhost:1337`;
 
 const instance = axios.create({
   baseURL: API_URL,
@@ -66,8 +66,19 @@ class Api {
       console.log(error);
     }
   }
-
+   async getCoupons() {
+    try {
+      const response = await instance.get(`/api/coupons`);
+       const responseData = response.data.data.map(({ attributes }: { attributes: CouponsData }) => ({
+        item: attributes.item,
+        sale: attributes.sale,
+      }));
+      console.log(responseData);
+      return responseData;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
-
 const api = new Api();
 export default api;

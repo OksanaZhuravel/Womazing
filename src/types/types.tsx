@@ -5,72 +5,7 @@ export interface ProductPromoProps {
 	subtitle: string;
 	limit: number;
 }
-// export interface ProductProps {
-// 	category: {
-// 		id: number;
-// 		name: string;
-// 	};
-// 	description: string;
-// 	id: number;
-// 	images: string[];
-// 	price: number;
-// 	title: string;
-// }
-// export interface ProductProps {
-// 	id: number;
-// 	attributes?: {
-// 		title: string;
-// 		description: string | null;
-// 		price: number;
-// 		diccort: number | null;
-// 		quantity: number;
-// 		images: {
-// 			data: {
-// 				id: number;
-// 				attributes: {
-// 					name: string;
-// 					width: number;
-// 					height: number;
-// 					url: string;
-// 				};
-// 			}[];
-// 		};
-// 		categories: {
-// 			data: {
-// 				id: number;
-// 				attributes: {
-// 					name: string;
-// 				};
-// 			}[];
-// 		};
-// 		sizes: {
-// 			data: {
-// 				id: number;
-// 				attributes: {
-// 					name: string;
-// 				};
-// 			}[];
-// 		};
-// 		colors: {
-// 			data: {
-// 				id: number;
-// 				attributes: {
-// 					name: string;
-// 					value: string;
-// 				};
-// 			}[];
-// 		};
-// 		news: {
-// 			data: {
-// 				id: number;
-// 				attributes: {
-// 					New: boolean;
-// 					name: string;
-// 				};
-// 			}[];
-// 		};
-// 	};
-// }
+
 export interface ProductItemProps {
 	item: ProductProps;
 }
@@ -90,10 +25,6 @@ export interface TitleProps {
 }
 export interface BreadcrumbsProps {
 	categories: string[];
-	// categories: {
-	// 	idCat: number;
-	// 	name: string;
-	// };
 	title: string;
 	className: string;
 }
@@ -156,7 +87,7 @@ export interface CartState {
 		selectedSize: string;
 		selectedColor: string;
 		quantity: number;
-
+		totalSave?: number | null;
 	}>;
 }
 export interface CartItem {
@@ -167,6 +98,7 @@ export interface CartItem {
 	selectedSize: string;
 	selectedColor: string;
 	quantity: number;
+	diccort?: number | null;
 }
 export interface ProductState {
 	item: ProductProps[];
@@ -191,9 +123,6 @@ export interface ProductProps {
 	diccort: number | null;
 	quantity: number;
 	categories: string[];
-	// categories: {
-	// 	includes(currentRange: string): unknown; name: string; idCat: number;
-	// };
 	images: string[];
 	sizes: string[];
 	colors: { name: string; value: string; }[];
@@ -290,4 +219,42 @@ export interface CategoryState {
 
 export interface CategoryResponseData {
 	data: CategoryProps[];
+}
+
+export interface CouponsData {
+	item: string;
+	sale: number;
+}
+export interface CartItemProps {
+	item: CartItem;
+	handleDeleteItem: (itemId: number) => void;
+	handleQuantityChange: (itemId: number, e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface CartItemProps {
+	item: CartItem;
+	handleDeleteItem: (itemId: number) => void;
+	handleQuantityChange: (itemId: number, e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface CartControlsProps {
+	coupon: string;
+	setCoupon: React.Dispatch<React.SetStateAction<string>>;
+	couponValid: boolean | null;
+	couponApplied: boolean | null;
+	setCouponValid: React.Dispatch<React.SetStateAction<boolean | null>>;
+	addCoupon: () => void;
+	handleUpdateCart: () => void;
+}
+
+export interface CartListProps {
+	cartItems: CartItem[];
+	handleDeleteItem: (itemId: number) => void;
+	handleQuantityChange: (itemId: number, e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface CartTotalProps {
+	couponApplied: boolean;
+	discountedPriceNumber: number | null;
+	totalPrice: number;
 }

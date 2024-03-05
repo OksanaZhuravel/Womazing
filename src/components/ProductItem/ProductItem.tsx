@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import { ProductItemProps } from '../../types/types';
@@ -8,11 +8,10 @@ import { AppDispatch } from '../../state/store';
 
 
 const ProductItem = ({ item }: ProductItemProps) => {
-	// console.log(item);
 	const dispatch = useDispatch<AppDispatch>();
 	const [selectedSize, setSelectedSize] = useState<string>(item.sizes.length > 0 ? item.sizes[1] : '');
-	const [selectedColor, setSelectedColor] = useState<string>(item.colors.length > 0 ? item.colors[0].value : '');
 	const [quantity, setQuantity] = useState<number | string>(1);
+	const [selectedColor, setSelectedColor] = useState<string>('');
 	const handleSizeChange = (size: string) => {
 		setSelectedSize(size);
 	};
@@ -35,17 +34,20 @@ const ProductItem = ({ item }: ProductItemProps) => {
 			diccort: item.diccort,
 			selectedSize,
 			selectedColor,
-			quantity: Number(quantity)
+			quantity: Number(quantity),
 		};
 		dispatch(addCart(cartData))
 	};
-
+	useEffect(() => {
+		if (item.colors.length > 0) {
+			setSelectedColor(item.colors[0].name);
+		}
+	}, [item.colors]);
 
 	return (
 		<div className='product__wrap'>
 			<img src={item.images[0]} className='product__img' alt={item.title} />
 			<div className='product__boby'>
-
 				<div className='product__prace'>
 					{item.diccort !== null ? (
 						<>
@@ -104,7 +106,7 @@ const ProductItem = ({ item }: ProductItemProps) => {
 											id={color.name}
 											name='color'
 											checked={selectedColor === color.value}
-											onChange={() => handleColorChange(color.value)}
+											onChange={() => handleColorChange(color.name)}
 										/>
 										<label
 											htmlFor={color.value}

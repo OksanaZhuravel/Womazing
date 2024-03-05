@@ -1,8 +1,4 @@
 .buyer {
-  &__container {
-    padding: 130px 0;
-  }
-
   &__left {
     display: flex;
     flex-direction: column;
@@ -40,6 +36,8 @@
   // &__checkbox {
   // }
   &__form {
+    margin: 0 auto;
+    padding: 130px 0;
     max-width: 918px;
     width: 100%;
     display: grid;

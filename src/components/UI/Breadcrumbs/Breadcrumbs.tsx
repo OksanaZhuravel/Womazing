@@ -7,7 +7,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ categories, title, className 
 			Главная
 		</Link>,
 	];
-	console.log(categories);
+	// console.log(categories);
 
 	if (categories && categories.length > 0) {
 		categories.forEach((category, index) => {

@@ -4,12 +4,12 @@ import { RoutePath } from './paths';
 import Layout from '../pages/Layout';
 import Home from '../pages/Home';
 import AboutBrand from '../pages/AboutBrand';
-import Carts from '../pages/Cart';
 import Shop from '../pages/Shop';
 import Contacts from '../pages/Contacts';
 import Product from '../pages/Product';
 import Checkout from '../pages/Checkout';
 import Success from '../pages/Success';
+import Cart from '../pages/Cart';
 const routerConfig = createBrowserRouter([
   {
     path: '/',
@@ -26,7 +26,7 @@ const routerConfig = createBrowserRouter([
       },
       {
         path: RoutePath.CART,
-        element: <Carts />,
+        element: <Cart />,
       },
       {
         path: RoutePath.CHECKOUT,

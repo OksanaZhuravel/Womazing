@@ -18,7 +18,6 @@ const Product = () => {
             setProduct(response);
           }
         }
-
       } catch (error) {
         console.log(error);
       }

@@ -31,7 +31,9 @@ const ShopProducts = ({ currentRange }: RangeProps) => {
 			console.error("Error fetching products:", error);
 		});
 	}, [dispatch]);
-
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [currentRange]);
 	return (
 		<section className='shop' id='shop'>
 			<div className='shop__container'>

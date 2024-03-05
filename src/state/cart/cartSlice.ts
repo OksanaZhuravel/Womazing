@@ -18,6 +18,8 @@ const cartSlice = createSlice({
       selectedSize: string;
       selectedColor: string;
       quantity: number;
+      totalSave?: number | null;
+     
     }>) => {
       const { id, quantity } = action.payload;
       const existingItem = state.cart.find(item => item.id === id);
@@ -40,9 +42,19 @@ const cartSlice = createSlice({
       const { itemId } = action.payload;
       state.cart = state.cart.filter(item => item.id !== itemId);
     },
+    updateDiscountedPrice: (state, action: PayloadAction<{ itemId: number; totalSave: number }>) => {
+      const { itemId, totalSave } = action.payload;
+      const item = state.cart.find(item => item.id === itemId);
+      if (item) {
+        item.totalSave = totalSave;
+      }
+    },
+    resetCart: (state) => {
+      state.cart = [];
+    },
   }
 });
 
-export const { addCart, updateCart, deleteCart } = cartSlice.actions;
+export const { addCart, updateCart, deleteCart, updateDiscountedPrice , resetCart} = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -6,6 +6,7 @@ import { useEffect } from "react"
 import { fetchCategoriesAll } from "../../state/categories/categoriesSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../../state/store"
+import { defaultCategories } from "../../api/defolt"
 
 const Footer = () => {
   const category = useSelector((state: RootState) => state.categories.categories)
@@ -40,17 +41,23 @@ const Footer = () => {
               <span className="footer__text">Публичная оферта</span>
             </Link>
           </div>
-          {category.length > 0 && (
-            <ul className="footer__list">
-              {category.map(item => (
+          <ul className="footer__list">
+            {category && category.length > 0
+              ? category.map((item) => (
                 <li className="footer__item" key={item.id}>
                   <Link className="footer__link" to={`/shop`}>
                     <span className="footer__text">{item.name}</span>
                   </Link>
                 </li>
+              ))
+              : defaultCategories.map((category, index) => (
+                <li className="footer__item" key={index}>
+                  <Link className="footer__link" to={`/shop`}>
+                    <span className="footer__text">{category}</span>
+                  </Link>
+                </li>
               ))}
-            </ul>
-          )}
+          </ul>
           <div className="footer__inner">
             <Social />
             <div className="footer__pay">

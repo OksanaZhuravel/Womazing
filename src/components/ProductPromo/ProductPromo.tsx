@@ -29,6 +29,8 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 			...filterProducts,
 			...remainingProducts.slice(0, remainingCount),
 		]
+	} else {
+		currentProducts = currentProducts.slice(0, limit)
 	}
 
 	if (!Array.isArray(currentProducts)) {

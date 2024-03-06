@@ -19,7 +19,7 @@ const cartSlice = createSlice({
       selectedColor: string;
       quantity: number;
       totalSave?: number | null;
-     
+
     }>) => {
       const { id, quantity } = action.payload;
       const existingItem = state.cart.find(item => item.id === id);
@@ -30,6 +30,7 @@ const cartSlice = createSlice({
         state.cart.push(action.payload);
       }
     },
+
     updateCart: (state, action: PayloadAction<{ itemId: number; newQuantity: number; }>) => {
       const { itemId, newQuantity } = action.payload;
       const existingItem = state.cart.find(item => item.id === itemId);
@@ -55,6 +56,6 @@ const cartSlice = createSlice({
   }
 });
 
-export const { addCart, updateCart, deleteCart, updateDiscountedPrice , resetCart} = cartSlice.actions;
+export const { addCart, updateCart, deleteCart, updateDiscountedPrice, resetCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

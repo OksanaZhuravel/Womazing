@@ -1,8 +1,9 @@
 
 import axios from 'axios';
 import { CategoryData, ColorData, SizeData, ImageData, CouponsData } from '../types/types';
-// export const API_URL = `https://womazing-server.onrender.com/`;
-export const API_URL = `http://localhost:1337`;
+import { defaultCoupon } from './defolt';
+export const API_URL = `https://womazing-server.onrender.com/`;
+// export const API_URL = `http://localhost:1337`;
 
 const instance = axios.create({
   baseURL: API_URL,
@@ -73,10 +74,11 @@ class Api {
         item: attributes.item,
         sale: attributes.sale,
       }));
-      console.log(responseData);
+      // console.log(responseData);
       return responseData;
     } catch (error) {
       console.log(error);
+       return defaultCoupon
     }
   }
 }

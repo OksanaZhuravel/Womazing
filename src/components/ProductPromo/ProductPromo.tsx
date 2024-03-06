@@ -12,7 +12,7 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 	const products = useSelector(
 		(state: RootState) => state.products.item as ProductProps[],
 	)
-	console.log(products);
+	// console.log(products);
 
 	const dispatch = useDispatch<AppDispatch>()
 

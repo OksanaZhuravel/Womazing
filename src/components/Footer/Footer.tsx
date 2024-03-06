@@ -53,7 +53,7 @@ const Footer = () => {
               : defaultCategories.map((category, index) => (
                 <li className="footer__item" key={index}>
                   <Link className="footer__link" to={`/shop`}>
-                    <span className="footer__text">{category}</span>
+                    <span className="footer__text">{category.name}</span>
                   </Link>
                 </li>
               ))}

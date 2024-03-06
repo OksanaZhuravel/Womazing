@@ -99,6 +99,7 @@ export interface CartItem {
 	selectedColor: string;
 	quantity: number;
 	diccort?: number | null;
+	totalSave?: number | null;
 }
 export interface ProductState {
 	item: ProductProps[];

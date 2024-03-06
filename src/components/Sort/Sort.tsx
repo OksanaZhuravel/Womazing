@@ -3,13 +3,15 @@ import { CategoryProps, SortProps } from "../../types/types"
 import { useEffect, useState } from "react"
 import { AppDispatch, RootState } from "../../state/store"
 import { fetchCategoriesAll } from "../../state/categories/categoriesSlice"
+import { defaultCategories } from "../../api/defolt"
 
 const Sort = ({ onSortChange }: SortProps) => {
-	const categories = useSelector(
-		(state: RootState) => state.categories.categories,
-	)
-	// console.log(categories);
-
+	const categories = useSelector((state: RootState) => {
+		if (!state.categories.categories) {
+			return defaultCategories
+		}
+		return state.categories.categories
+	})
 	const dispatch = useDispatch<AppDispatch>()
 	const [category, setCategory] = useState<CategoryProps[]>([])
 

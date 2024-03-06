@@ -1,18 +1,14 @@
-import { ProductProps } from "../types/types";
+import { CategoryProps, CouponsData, ProductProps } from "../types/types";
 
-export const defaultCategories = [
-	'Свитшоты',
-	'Толстовки',
-	'Кардиганы',
-	'Купальники',
-	'Пальто',
-	'Футболки'
+export const defaultCategories: CategoryProps[] = [
+	{ id: 6, name: 'Футболки' },
+	{ id: 1, name: 'Свитшоты' },
+	{ id: 2, name: 'Толстовки' },
+	{ id: 4, name: 'Купальники' },
 ];
-
 export const defaultProducts: ProductProps[] = [
-
 	{
-		id: 0,
+		id: 1,
 		title: "Футболка BOUTIQUE",
 		description: "Футболка женская - это стильная и модная одежда, идеально подходящая для летнего сезона. Она выполнена из качественного хлопка, что делает ее удобной и приятной на ощупь. Белый цвет футболки придаёт ей особую свежесть и легкость. Также она отличается длинным кроем, что делает эту футболку подходящей для тех, кто предпочитает удлиненную одежду.",
 		price: 50,
@@ -30,7 +26,7 @@ export const defaultProducts: ProductProps[] = [
 		news: false,
 	},
 	{
-		id: 1,
+		id: 2,
 		title: "Футболка OSO&OSO",
 		description: 'Мода в свободном стиле набирает обороты. Молодежная одежда в стиле oversize имеет свободный крой. Базовая модная футболка с округлой горловиной держит форму и со временем не растянется. ',
 		price: 85,
@@ -48,7 +44,7 @@ export const defaultProducts: ProductProps[] = [
 		news: false,
 	},
 	{
-		id: 2,
+		id: 3,
 		title: "Футболка BOUTIQUE TREE",
 		description: "Футболка женская - это стильная и модная одежда, идеально подходящая для летнего сезона. Она выполнена из качественного хлопка, что делает ее удобной и приятной на ощупь. Белый цвет футболки придаёт ей особую свежесть и легкость. Также она отличается длинным кроем, что делает эту футболку подходящей для тех, кто предпочитает удлиненную одежду.",
 		price: 55,
@@ -66,3 +62,7 @@ export const defaultProducts: ProductProps[] = [
 		news: false,
 	},
 ];
+export  const defaultCoupon: CouponsData[] = [{
+    item: "12345",
+    sale: 50,
+  }];

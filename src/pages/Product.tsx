@@ -5,6 +5,7 @@ import Breadcrumbs from '../components/UI/Breadcrumbs/Breadcrumbs';
 import ProductItem from '../components/ProductItem/ProductItem';
 import ProductPromo from '../components/ProductPromo/ProductPromo';
 import { ProductProps } from '../types/types';
+import { defaultProducts } from '../api/defolt';
 const Product = () => {
   const [product, setProduct] = useState<ProductProps | null>(null);
   const { productId } = useParams<{ productId?: string }>();
@@ -16,6 +17,11 @@ const Product = () => {
           const response = await api.getProductId(parsedProductId);
           if (response) {
             setProduct(response);
+          } else {
+            const defaultProduct = defaultProducts.find(product => product.id === parsedProductId);
+            if (defaultProduct) {
+              setProduct(defaultProduct);
+            }
           }
         }
       } catch (error) {

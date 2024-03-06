@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Arrow from "../../Icon/Arrow";
-import { ProductProps, RangeProps } from "../../../types/types";
+import { RangeProps } from "../../../types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../state/store";
 import { fetchProductsAll } from "../../../state/product/productSlice";
 import Pagination from "../../UI/Pagination/Pagination";
+import { defaultProducts } from "../../../api/defolt";
 
 const ShopProducts = ({ currentRange }: RangeProps) => {
-	// console.log(currentRange);
-
 	const pageSize = 3;
 	const [currentPage, setCurrentPage] = useState(1);
-	const products = useSelector((state: RootState) => state.products.item as ProductProps[]);
+
+	const products = useSelector((state: RootState) => {
+		return state.products.item || defaultProducts;
+	});
+
 	const sortedArray = products.filter(product => {
 		if (currentRange === "Все") {
 			return true;

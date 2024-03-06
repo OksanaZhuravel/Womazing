@@ -10,7 +10,9 @@ import CartTotal from "../components/Cart/CartTotal/CartTotal"
 import CartControls from "../components/Cart/CartControls/CartControls"
 import CartList from "../components/Cart/CartList/CartList"
 
+
 const Cart = () => {
+
   const cartItems = useSelector((state: RootState) => state.carts.cart)
   const [coupons, setCoupons] = useState<CouponsData[]>([])
   const [coupon, setCoupon] = useState<string>("")
@@ -22,9 +24,7 @@ const Cart = () => {
     deleteItemCart,
     updateTotalSave,
   } = useCartInfo()
-  const [discountedPriceNumber, setDiscountedPriceNumber] = useState<
-    number | null
-  >(null)
+  const [discountedPriceNumber, setDiscountedPriceNumber] = useState<number | null>(null)
   // console.log(cartItems);
 
   useEffect(() => {
@@ -38,6 +38,9 @@ const Cart = () => {
     }
     fetchData()
   }, [])
+
+
+
 
   const addCoupon = () => {
     if (couponApplied) {
@@ -53,11 +56,9 @@ const Cart = () => {
       setDiscountedPriceNumber(totalSave)
       setCouponApplied(true)
       setCouponValid(true)
-      cartItems
-        .map((item) => item.id)
-        .forEach((itemId) => {
-          updateTotalSave(itemId, totalSave)
-        })
+      cartItems.map((item) => item.id).forEach((itemId) => {
+        updateTotalSave(itemId, totalSave)
+      })
     } else {
       setCouponValid(false)
       setDiscountedPriceNumber(null)

@@ -26,3 +26,5 @@ export const useCartInfo = () => {
 	return { finalPrice, totalPrice, totalQuantity, updateQuantity, deleteItemCart, updateTotalSave };
 };
 
+
+

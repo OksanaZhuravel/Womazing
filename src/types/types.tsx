@@ -23,6 +23,7 @@ export interface TitleProps {
 	activeLink: string;
 	interim?: string;
 }
+
 export interface BreadcrumbsProps {
 	categories: string[];
 	title: string;
@@ -34,6 +35,7 @@ export interface ButtonProps {
 	children: ReactNode;
 	onClick: MouseEventHandler<HTMLButtonElement>;
 }
+
 export interface ModalProps {
 	open: boolean;
 	onCancel: () => void;
@@ -52,6 +54,7 @@ export interface FormBuyer {
 	apartment: string;
 	iscash: boolean;
 }
+
 export interface BuyerProps {
 	onFormSubmit?: (formBuyer: { id: number } & Omit<FormBuyer, 'id'>) => void;
 }
@@ -65,9 +68,11 @@ export interface ValidationRule {
 export interface FormErrors {
 	[key: string]: string;
 }
+
 export interface RangeProps {
 	currentRange: string
 }
+
 export interface PaginationProps {
 	currentPage: number;
 	maxPage: number;
@@ -77,6 +82,7 @@ export interface PaginationProps {
 export interface SortProps {
 	onSortChange: (range: string) => void
 }
+
 export interface CartState {
 	cart: Array<{
 		id: number;
@@ -90,6 +96,7 @@ export interface CartState {
 		totalSave?: number | null;
 	}>;
 }
+
 export interface CartItem {
 	id: number;
 	images?: string[];
@@ -101,14 +108,17 @@ export interface CartItem {
 	diccort?: number | null;
 	totalSave?: number | null;
 }
+
 export interface ProductState {
 	item: ProductProps[];
 	status: string;
 	error?: string;
 }
+
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
 }
+
 export interface PopupFormProps {
 	create: (formData: formDataProps) => void;
 	title: string;
@@ -116,6 +126,7 @@ export interface PopupFormProps {
 	showMessage?: boolean;
 	showButton?: boolean;
 }
+
 export interface ProductProps {
 	id: number;
 	title: string;
@@ -129,6 +140,7 @@ export interface ProductProps {
 	colors: { name: string; value: string; }[];
 	news: boolean;
 }
+
 export interface ImageData {
 	id: number;
 	attributes: {
@@ -138,7 +150,6 @@ export interface ImageData {
 		url: string;
 	};
 }
-
 
 export interface SizeData {
 	id: number;
@@ -207,11 +218,13 @@ export interface CategoryData {
 		name: string;
 	};
 }
+
 export interface CategoryProps {
 	id: number;
 	name: string;
 
 }
+
 export interface CategoryState {
 	categories: CategoryProps[];
 	status: string;
@@ -226,6 +239,7 @@ export interface CouponsData {
 	item: string;
 	sale: number;
 }
+
 export interface CartItemProps {
 	item: CartItem;
 	handleDeleteItem: (itemId: number) => void;

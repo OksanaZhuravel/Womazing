@@ -6,7 +6,7 @@ const Importance = () => {
 	return (
 		<section className='importance'>
 			<div className='importance__container'>
-				<h2 className='importance__title'>Что для нас важно</h2>
+				<h2 className='importance__title subtitle-h2'>Что для нас важно</h2>
 				<ul className='importance__list'>
 					<li className='importance__item'>
 						<span className='importance__svg'>

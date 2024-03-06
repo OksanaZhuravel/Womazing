@@ -83,19 +83,25 @@ $mobileSmall: 479.98px; //em(479.98)
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 22px 50px;
+  padding: 10px;
   background-color: $colorAccent;
   transition: background-color 0.5s ease 0s;
+  @media (min-width: $mobile) {
+    padding: 22px 50px;
+  }
   &:hover {
     background-color: $colorGreen;
   }
   &__text {
     color: $colorWrite;
     text-align: center;
-    font-size: 17px;
+    font-size: 12px;
     line-height: 138.9%; /* 23.613px */
     letter-spacing: 0.34px;
     transition: color 0.5s ease 0s;
+    @media (min-width: $tablet) {
+      font-size: 17px;
+    }
   }
   &--outline {
     background-color: transparent;
@@ -169,10 +175,16 @@ $mobileSmall: 479.98px; //em(479.98)
   letter-spacing: 1.1px;
 }
 .title-big {
-  font-size: 55px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 110%; /* 60.5px */
   letter-spacing: 1.1px;
+  @media (min-width: $mobile) {
+    font-size: 35px;
+  }
+  @media (min-width: $tablet) {
+    font-size: 55px;
+  }
 }
 .subtitle {
   font-size: 25px;
@@ -181,10 +193,13 @@ $mobileSmall: 479.98px; //em(479.98)
   letter-spacing: 0.5px;
 }
 .subtitle-h2 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 500;
   line-height: 110%;
   letter-spacing: 0.8px;
+  @media (min-width: $tablet) {
+    font-size: 40px;
+  }
 }
 .subtitle-h3 {
   font-size: 25px;

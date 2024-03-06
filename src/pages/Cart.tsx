@@ -12,7 +12,6 @@ import CartList from "../components/Cart/CartList/CartList"
 
 
 const Cart = () => {
-
   const cartItems = useSelector((state: RootState) => state.carts.cart)
   const [coupons, setCoupons] = useState<CouponsData[]>([])
   const [coupon, setCoupon] = useState<string>("")
@@ -38,9 +37,6 @@ const Cart = () => {
     }
     fetchData()
   }, [])
-
-
-
 
   const addCoupon = () => {
     if (couponApplied) {

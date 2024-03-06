@@ -3,20 +3,16 @@ import Title from "../components/Title/Title";
 import Sort from "../components/Sort/Sort";
 import { useState } from "react";
 
-
-
 const Shop = () => {
   const [currentRange, setCurrentRange] = useState("Все");
   const handleSortChange = (range: string) => {
     setCurrentRange(range);
   };
-  // console.log(currentRange);
 
   return <>
     <Title title="Магазин" activeTitle="Магазин" activeLink='/shop' />
     <Sort onSortChange={handleSortChange} />
     <ShopProducts currentRange={currentRange} />
   </>
-
 };
 export default Shop;

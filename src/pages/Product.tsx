@@ -6,6 +6,7 @@ import ProductItem from '../components/ProductItem/ProductItem';
 import ProductPromo from '../components/ProductPromo/ProductPromo';
 import { ProductProps } from '../types/types';
 import { defaultProducts } from '../api/defolt';
+
 const Product = () => {
   const [product, setProduct] = useState<ProductProps | null>(null);
   const { productId } = useParams<{ productId?: string }>();
@@ -30,12 +31,11 @@ const Product = () => {
     };
     fetchData();
   }, [productId]);
+
   if (!product) {
     return <div className='loading'>Загрузка...</div>;
   }
   // console.log(product);
-
-
   return (
     <>
       <section className='product'>
@@ -50,4 +50,3 @@ const Product = () => {
   );
 };
 export default Product;
-

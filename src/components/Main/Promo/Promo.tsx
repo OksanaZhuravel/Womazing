@@ -9,7 +9,7 @@ const Promo: React.FC = () => {
 				<Swiper
 					pagination={{ clickable: true }}
 					spaceBetween={5}
-					autoplay={{ delay: 5000 }}
+					// autoplay={{ delay: 5000 }}
 					loop={true}
 					centeredSlides={true}
 					modules={[Pagination, Autoplay]}

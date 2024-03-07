@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import Logo from "../Logo/Logo"
 import NavBar from "../NavBar/NavBar"
 import Social from "../Social/Social"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { fetchCategoriesAll } from "../../state/categories/categoriesSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../../state/store"
@@ -11,16 +11,17 @@ import { defaultCategories } from "../../api/defolt"
 const Footer = () => {
   const category = useSelector((state: RootState) => state.categories.categories)
   const dispatch = useDispatch<AppDispatch>()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   useEffect(() => {
     dispatch(fetchCategoriesAll())
   }, [dispatch])
 
   return (
-    <footer className="footer">
+    <footer className={`footer ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="footer__container">
         <div className="footer__wrap">
           <Logo className="footer__logo" />
-          <NavBar className="footer__menu" />
+          <NavBar className="footer__menu" setIsMenuOpen={setIsMenuOpen} />
           <div className="footer__contact contact-footer">
             <span className="contact-footer__text">+7 (495) 823-54-12</span>
             <a

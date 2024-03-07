@@ -274,3 +274,8 @@ export interface CartTotalProps {
 	discountedPriceNumber: number | null;
 	totalPrice: number;
 }
+
+export interface NavBarProps {
+	className: string;
+	setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}

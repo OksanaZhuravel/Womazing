@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { NavBarProps } from '../../types/types';
 
 const menuItem = [
   { id: 1, path: '/', text: 'Главная' },
@@ -7,7 +8,8 @@ const menuItem = [
   { id: 3, path: '/about', text: 'О бренде' },
   { id: 4, path: '/contacts', text: 'Контакты' },
 ];
-const NavBar = ({ className, setIsMenuOpen }: { className: string, setIsMenuOpen: Function }) => {
+
+const NavBar = ({ className, setIsMenuOpen }: NavBarProps) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
 
   const location = useLocation();

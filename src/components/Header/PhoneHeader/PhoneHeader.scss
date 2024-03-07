@@ -2,7 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 9px;
+  z-index: 5;
+  @media (min-width: 850px) {
+    gap: 9px;
+  }
   &.header__phone:hover {
     & .phone-header__icon {
       background-color: $colorAccent;
@@ -18,15 +21,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 27px;
-    height: 27px;
+    width: 100%;
+    height: 100%;
+
     transition: background-color 0.5s ease 0s;
+    svg {
+      min-width: 40px;
+      min-height: 40px;
+    }
     path {
       transition: fill 0.5s ease 0s;
+    }
+    @media (min-width: $tablet) {
+      width: 27px;
+      height: 27px;
     }
   }
 
   &__number {
     transition: color 0.5s ease 0s;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 0;
+    @media (min-width: $tablet) {
+      opacity: 1;
+      visibility: visible;
+      font-size: initial;
+    }
   }
 }

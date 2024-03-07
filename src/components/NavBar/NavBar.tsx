@@ -7,9 +7,9 @@ const menuItem = [
   { id: 3, path: '/about', text: 'О бренде' },
   { id: 4, path: '/contacts', text: 'Контакты' },
 ];
-
-const NavBar = ({ className }: { className: string }) => {
+const NavBar = ({ className, setIsMenuOpen }: { className: string, setIsMenuOpen: Function }) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
+
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,6 +24,7 @@ const NavBar = ({ className }: { className: string }) => {
             key={item.id}
             onClick={() => {
               setSelectedIndex(item.id);
+              setIsMenuOpen(false);
             }}>
             <Link
               to={item.path}

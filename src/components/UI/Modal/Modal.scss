@@ -1,5 +1,5 @@
 body::after {
-  content: '';
+  content: "";
   background-color: rgba($color: $colorAccent, $alpha: 0.95);
   position: fixed;
   width: 100%;
@@ -9,7 +9,7 @@ body::after {
   opacity: 0;
   transition: opacity 0.8s ease 0s;
   pointer-events: none;
-  z-index: 149;
+  z-index: 89;
 }
 body {
   &.popup__show {
@@ -90,7 +90,7 @@ body {
 //==========================================================================================================================================
 
 .popup_show {
-  z-index: 150;
+  z-index: 90;
   visibility: visible;
   pointer-events: auto;
 }

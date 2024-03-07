@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import PromoController from './PromoController/PromoController';
-
 const Promo: React.FC = () => {
 	return (
 		<section className='promo'>
@@ -47,7 +46,7 @@ const Promo: React.FC = () => {
 							</div>
 							<img
 								className='promo__img'
-								src='/assets/img/home/foto_promo.png'
+								src='/assets/img/home/brand.png'
 								alt='Девушка в пальто'
 							/>
 						</div>
@@ -66,7 +65,7 @@ const Promo: React.FC = () => {
 							</div>
 							<img
 								className='promo__img'
-								src='/assets/img/home/foto_promo.png'
+								src='/assets/img/home/brand2.png'
 								alt='Девушка в пальто'
 							/>
 						</div>
@@ -78,3 +77,9 @@ const Promo: React.FC = () => {
 };
 
 export default Promo;
+
+
+
+
+
+

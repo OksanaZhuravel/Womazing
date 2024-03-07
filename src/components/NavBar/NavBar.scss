@@ -1,12 +1,45 @@
 .menu {
   min-width: 410px;
+  @media (max-width: $mobile) {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    top: 0;
+    left: -300%;
+    background-color: $colorAccentBacg;
+    transition: left 0.3s ease 0s;
+    padding: 90px 15px 30px 15px;
+    &::before {
+      content: "";
+      position: fixed;
+      width: 100%;
+      height: 65px;
+      top: 0;
+      left: -100%;
+      background-color: $colorAccentBacg;
+      transition: left 0.3s ease 0s;
+      z-index: 2;
+    }
+    .menu-open & {
+      left: 0;
+      &::before {
+        left: 0;
+      }
+    }
+  }
   &__list {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 15px;
+    @media (min-width: $mobile) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
-  &__item {
-  }
+  // &__item {
+  // }
   &__link {
     color: $colorBlack;
     transition: color 0.5s ease 0s;
@@ -22,6 +55,57 @@
     .active & {
       font-weight: 700;
       color: $colorAccent;
+    }
+  }
+}
+.icon-menu {
+  display: none;
+  @media (max-width: $mobile) {
+    margin-left: 15px;
+    display: block;
+    position: relative;
+    flex: 0 0 30px;
+    width: 30px;
+    height: 15px;
+    cursor: pointer;
+    z-index: 5;
+    span,
+    &::before,
+    &::after {
+      content: "";
+      transition: all 0.3s ease 0s;
+      right: 0;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+    }
+    &::before {
+      top: 0;
+    }
+    &::after {
+      bottom: 0;
+    }
+    span {
+      top: calc(50% - 1px);
+    }
+    .menu-open & {
+      span {
+        width: 0;
+      }
+      // &::before,
+      // &::after {
+      // }
+      &::before {
+        top: calc(50% - 1px);
+        transform: rotate(-45deg);
+        background-color: $colorAccent;
+      }
+      &::after {
+        bottom: calc(50% - 1px);
+        transform: rotate(45deg);
+        background-color: $colorAccent;
+      }
     }
   }
 }

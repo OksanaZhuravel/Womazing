@@ -1,5 +1,4 @@
 .menu {
-  min-width: 410px;
   @media (max-width: $mobile) {
     position: fixed;
     width: 100%;
@@ -27,6 +26,9 @@
         left: 0;
       }
     }
+  }
+  @media (min-width: $tablet) {
+    min-width: 410px;
   }
   &__list {
     display: flex;

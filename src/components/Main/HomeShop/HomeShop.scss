@@ -1,13 +1,25 @@
-.home-shop {
+.home-shops {
   padding-bottom: 65px;
   display: grid;
   justify-items: center;
+  padding-top: 30px;
+  @media (min-width: $mobile) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  @media (min-width: $tablet) {
+    padding-top: 130px;
+    padding-bottom: 130px;
+  }
   &__container {
     display: flex;
     flex-flow: column nowrap;
-    gap: 65px;
+    gap: 25px;
     justify-content: center;
     align-items: center;
+    @media (min-width: $tablet) {
+      gap: 65px;
+    }
   }
 
   & .subtitle-h2 {
@@ -18,8 +30,10 @@
       margin-bottom: 27px;
     }
   }
-  // &__inner {
-  // }
+  &__inner {
+  }
+  &__item {
+  }
 }
 // .home-card {
 // }
@@ -32,9 +46,16 @@
   justify-items: center;
   gap: 24px;
   // width: 350px;
-
-  max-width: 350px;
-  min-height: 558px;
+  width: 100%;
+  &:last-child {
+    @media (min-width: $mobile) {
+      grid-column: 1/3;
+    }
+  }
+  @media (min-width: $tablet) {
+    max-width: 350px;
+    min-height: 558px;
+  }
   &:hover {
     .card__link {
       visibility: visible;
@@ -69,12 +90,21 @@
   // }
   &__inner {
     position: relative;
-    width: 350px;
-    height: 478px;
+    max-width: 350px;
+    max-height: 478px;
     background-color: rgba($color: $colorNotImages, $alpha: 0.35);
   }
-  // &__img {
-  // }
+  &__img {
+    max-width: calc(320px - 30px);
+    height: auto;
+    @media (min-width: $mobile) {
+      max-width: 280px;
+    }
+    @media (min-width: $tablet) {
+      max-width: none;
+      max-height: 487px;
+    }
+  }
   &__link {
     visibility: hidden;
     opacity: 0;

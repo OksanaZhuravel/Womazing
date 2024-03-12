@@ -1,44 +1,68 @@
 .teams {
   &__container {
-    padding-bottom: 130px;
+    padding-bottom: calc(130px / 2);
     display: flex;
     flex-flow: column nowrap;
-    gap: 92px;
+    gap: calc(92px / 2);
     justify-content: center;
     align-items: center;
+    @media (min-width: $mobile) {
+      padding-bottom: 130px;
+      gap: 92px;
+    }
   }
 
   &__title {
     width: 100%;
     text-align: left;
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 500;
     line-height: 110%; /* 44px */
     letter-spacing: 0.8px;
+    @media (min-width: $mobile) {
+      font-size: 40px;
+    }
   }
 
   &__wrap {
     display: grid;
-    grid-template-columns: 1fr 255px;
     align-items: center;
-    // gap: 65px;
+    gap: 20px;
     width: 100%;
+    @media (min-width: $tablet) {
+      grid-template-columns: 1fr minmax(230px, max-content);
+    }
+    @media (min-width: $pcSmall) {
+      gap: 65px;
+    }
     & .swiper {
       position: relative;
-      padding: 0 60px;
-      width: 789px;
-      height: 547px;
-      margin-left: -60px;
+      padding-bottom: 30px;
+      @media (min-width: $tablet) {
+        padding: 0 60px;
+        width: 789px;
+        height: 547px;
+        margin-left: -60px;
+      }
     }
     & .swiper-pagination {
-      bottom: 61px;
+      bottom: 5px;
       &-bullet-active {
-        background-color: $colorWrite;
+        background-color: $colorGreen;
+      }
+      @media (min-width: $tablet) {
+        bottom: 61px;
+        &-bullet-active {
+          background-color: $colorWrite;
+        }
       }
     }
     .swiper-button {
       &-prev,
       &-next {
+        @media (max-width: $tablet) {
+          display: none;
+        }
         position: absolute;
         top: 50%;
         width: 28px;
@@ -51,16 +75,16 @@
         left: 0;
         right: auto;
         &::after {
-          content: '';
+          content: "";
           width: 28px;
           height: 28px;
-          background: url('/assets/img/icon/arrow-right.svg') center / contain
+          background: url("/assets/img/icon/arrow-right.svg") center / contain
             no-repeat;
           transform: rotate(-180deg);
         }
         &.swiper-button-disabled {
           &::after {
-            background: url('/assets/img/icon/arrow-des.svg') center / contain
+            background: url("/assets/img/icon/arrow-des.svg") center / contain
               no-repeat;
             transform: rotate(0deg);
           }
@@ -74,7 +98,7 @@
         }
         &.swiper-button-disabled {
           &::after {
-            background: url('/assets/img/icon/arrow-des.svg') center / contain
+            background: url("/assets/img/icon/arrow-des.svg") center / contain
               no-repeat;
             transform: rotate(-180deg);
           }
@@ -83,11 +107,11 @@
     }
   }
 
-  &__swiper {
-  }
+  // &__swiper {
+  // }
 
-  &__slide {
-  }
+  // &__slide {
+  // }
 
   &__img {
     width: 729px;
@@ -98,6 +122,9 @@
     flex-direction: column;
     gap: 28px;
     align-items: flex-start;
+    @media (min-width: $tablet) {
+      max-width: 255px;
+    }
   }
   &__subtitle {
     font-size: 25px;
@@ -108,6 +135,6 @@
     font-weight: 500;
     letter-spacing: 0.34px;
   }
-  &__link {
-  }
+  // &__link {
+  // }
 }

@@ -4,7 +4,7 @@ import ProductPromo from '../../ProductPromo/ProductPromo';
 
 const HomeShop = () => {
 	return (
-		<section className='home-shop' id='shop'>
+		<section className='home-shops' id='shop'>
 			<ProductPromo
 				subtitle='Новая коллекция'
 				className='home-shop'

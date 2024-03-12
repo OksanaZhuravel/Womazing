@@ -26,13 +26,15 @@
     left: 0;
   }
   &__container {
+    position: relative;
+    z-index: 15;
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-height: 28px;
     padding-top: 28px;
     padding-bottom: 41px;
-    gap: 15px;
+    gap: 10px;
     @media (min-width: $tablet) {
       gap: 0;
     }

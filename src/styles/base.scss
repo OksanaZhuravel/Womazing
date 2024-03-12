@@ -234,11 +234,17 @@ $mobileSmall: 479.98px; //em(479.98)
 }
 //==========================================================================================================================================
 .inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
   gap: 30px;
+  padding: 35px 0;
+  justify-items: center;
+  @media (min-width: $mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: $pcSmall) {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 65px 0;
+  }
 }
 //==========================================================================================================================================
 .success {

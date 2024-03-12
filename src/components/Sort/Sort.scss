@@ -1,7 +1,11 @@
 .sort {
   &__container {
-    padding-top: 130px;
-    padding-bottom: 92px;
+    padding-top: 24px;
+    padding-bottom: 46px;
+    @media (min-width: $tablet) {
+      padding-top: 130px;
+      padding-bottom: 92px;
+    }
   }
 
   &__list {
@@ -15,9 +19,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 19px 0;
+    padding: 10px;
     // padding: 19px 65px;
     border: 1px solid #000;
+    @media (min-width: $tablet) {
+      padding: 19px 0;
+    }
     &.active {
       color: $colorWrite;
       background-color: $colorBlack;
@@ -28,5 +35,8 @@
     font-weight: 500;
     line-height: 140%;
     letter-spacing: 0.34px;
+    @media (max-width: $tablet) {
+      font-size: 12px;
+    }
   }
 }

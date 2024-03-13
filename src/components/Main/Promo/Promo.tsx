@@ -8,7 +8,7 @@ const Promo: React.FC = () => {
 				<Swiper
 					pagination={{ clickable: true }}
 					spaceBetween={5}
-					// autoplay={{ delay: 5000 }}
+					autoplay={{ delay: 5000 }}
 					loop={true}
 					centeredSlides={true}
 					modules={[Pagination, Autoplay]}
@@ -16,7 +16,7 @@ const Promo: React.FC = () => {
 					<SwiperSlide className='promo__slide'>
 						<div className='promo__inner'>
 							<div className='promo__boby'>
-								<h1 className='promo__title title-big'>
+								<h1 className='promo__title title'>
 									Новые поступления в этом сезоне
 								</h1>
 								<p className='promo__text'>
@@ -35,7 +35,7 @@ const Promo: React.FC = () => {
 					<SwiperSlide className='promo__slide'>
 						<div className='promo__inner'>
 							<div className='promo__boby'>
-								<h1 className='promo__title  title-big'>
+								<h1 className='promo__title  title'>
 									Что-то новенькое. Мы&nbsp;заждались тебя.
 								</h1>
 								<p className='promo__text'>
@@ -54,7 +54,7 @@ const Promo: React.FC = () => {
 					<SwiperSlide className='promo__slide'>
 						<div className='promo__inner'>
 							<div className='promo__boby'>
-								<h1 className='promo__title  title-big'>
+								<h1 className='promo__title title'>
 									Включай новый сезон с&nbsp;WOMAZING
 								</h1>
 								<p className='promo__text'>

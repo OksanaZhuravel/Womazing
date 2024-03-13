@@ -1,12 +1,15 @@
 .about {
   &__container {
-    // padding-top: 130px;
-    // padding-bottom: 130px;
     padding-top: 30px;
     padding-bottom: 30px;
     display: grid;
     justify-items: center;
-    gap: 130px;
+    gap: calc(130px / 2);
+    @media (min-width: $tablet) {
+      gap: 130px;
+      padding-top: 130px;
+      padding-bottom: 130px;
+    }
   }
 
   &__wrap {
@@ -14,14 +17,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 70px;
+    @media (max-width: $tablet) {
+      gap: 30px;
+    }
+    @media (max-width: $mobile) {
+      flex-direction: column;
+    }
     &:nth-child(2) {
       flex-direction: row-reverse;
+      @media (max-width: $mobile) {
+        flex-direction: column;
+      }
     }
   }
 
   &__img {
     width: 100%;
-    max-width: 442px;
+    @media (min-width: $mobile) {
+      max-width: 345px;
+    }
+    @media (min-width: $tablet) {
+      max-width: 442px;
+    }
   }
 
   &__boby {

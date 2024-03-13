@@ -1,11 +1,14 @@
 import { useEffect, useCallback } from 'react';
 import { ModalProps } from '../../../types/types';
+import { useDispatch } from 'react-redux';
+import { setModalOpen } from '../../../state/modal/modalSlice';
 
 const generateClassName = (open: boolean) => {
 	return open ? 'popup popup_show' : 'popup';
 };
 
 const Modal: React.FC<ModalProps> = ({ open, onCancel, children }) => {
+	const dispatch = useDispatch();
 	const handleOutsideClick = useCallback(
 		(event: MouseEvent) => {
 			if (
@@ -13,7 +16,7 @@ const Modal: React.FC<ModalProps> = ({ open, onCancel, children }) => {
 				event.target instanceof Element &&
 				!event.target.closest('.popup__content')
 			) {
-				onCancel();
+				dispatch(setModalOpen(false));
 			}
 		},
 		[open, onCancel]
@@ -21,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ open, onCancel, children }) => {
 	const handleEscapeKey = useCallback(
 		(event: KeyboardEvent) => {
 			if (open && event.key === 'Escape') {
-				onCancel();
+				dispatch(setModalOpen(false));
 			}
 		},
 		[open, onCancel]

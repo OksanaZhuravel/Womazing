@@ -5,21 +5,25 @@ import PopupForm from '../../PopupForm/PopupForm';
 import Button from '../../UI/Button/Button';
 import CloseSvg from '../../Icon/CloseSvg';
 import { formDataProps } from '../../../types/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../state/store';
+import { setModalOpen } from '../../../state/modal/modalSlice';
 
 
 const PhoneHeader = ({ className }: { className: string }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const isModalOpen = useSelector((state: RootState) => state.modals.isModalOpen);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const showModal = () => {
-    setIsModalOpen(true);
+    dispatch(setModalOpen(true));
   };
   const handleCancel = () => {
-    setIsModalOpen(false);
+    dispatch(setModalOpen(false));
     setIsFormSubmitted(false);
   };
   const create = (formData: formDataProps) => {
     console.log(formData);
-    setIsModalOpen(false);
+    dispatch(setModalOpen(false));
     setIsFormSubmitted(true);
   };
 

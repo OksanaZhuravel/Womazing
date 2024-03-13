@@ -4,31 +4,36 @@ import NavBar from '../NavBar/NavBar';
 import PhoneHeader from './PhoneHeader/PhoneHeader';
 import { useEffect, useState } from 'react';
 import Button from '../UI/Button/Button';
-
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isModalOpen = useSelector((state: RootState) => state.modals.isModalOpen);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = document.documentElement.clientHeight;
-      const scrollPercentage = (scrollPosition / (scrollHeight - clientHeight)) * 100;
-      if (scrollPercentage >= 1) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      const isScrolled = scrollPosition > 0;
+      setIsScrolled(isScrolled);
     };
+
     window.addEventListener('scroll', handleScroll);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  useEffect(() => {
+    const header = document.querySelector('header');
+    if (header) {
+      header.classList.toggle('scroll', isScrolled || isModalOpen);
+    }
+  }, [isScrolled, isModalOpen]);
+
   return (
-    <header className={`header ${isScrolled ? 'scroll' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
+    <header className={`header ${isScrolled || isModalOpen ? 'scroll' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="header__wrapper">
         <div className='header__container'>
           <Logo className='header__logo' />

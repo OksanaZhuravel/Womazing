@@ -1,6 +1,9 @@
 .contact {
   &__container {
-    padding: 130px 0;
+    padding: calc(130px / 2) 0;
+    @media (min-width: $mobile) {
+      padding: 130px 0;
+    }
   }
   iframe {
     width: 100%;
@@ -8,6 +11,10 @@
   }
   & .form {
     align-items: flex-start;
+    padding: 0 20px;
+    @media (min-width: $pcSmall) {
+      padding: 0;
+    }
   }
   & .button--color {
     margin-top: 62px;
@@ -16,13 +23,24 @@
 //==========================================================================================================================================
 
 .address {
-  margin: 130px 0;
   display: flex;
-  max-width: 943px;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 40px 10px;
+  gap: 20px;
+  @media (min-width: $mobile) {
+    margin: 130px 10px;
+    max-width: 943px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
   &__item {
-    display: grid;
+    display: flex;
     gap: 19px;
+    justify-content: space-between;
+    @media (min-width: $mobile) {
+      display: grid;
+    }
   }
 }

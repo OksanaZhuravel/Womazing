@@ -9,7 +9,8 @@ import Pagination from "../../UI/Pagination/Pagination";
 import { defaultProducts } from "../../../api/defolt";
 
 const ShopProducts = ({ currentRange }: RangeProps) => {
-	const pageSize = 3;
+	const [pageSize, setPageSize] = useState(3);
+
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const products = useSelector((state: RootState) => {
@@ -23,10 +24,15 @@ const ShopProducts = ({ currentRange }: RangeProps) => {
 			return product.categories.includes(currentRange);
 		}
 	});
+
 	const startIndex = (currentPage - 1) * pageSize;
+
 	const endIndex = startIndex + pageSize;
-	const maxPage = Math.ceil(sortedArray.length / pageSize)
+
+	const maxPage = Math.ceil(sortedArray.length / pageSize);
+
 	const currentProducts = sortedArray.slice(startIndex, endIndex);
+
 	const dispatch = useDispatch<AppDispatch>();
 
 	useEffect(() => {
@@ -34,9 +40,29 @@ const ShopProducts = ({ currentRange }: RangeProps) => {
 			console.error("Error fetching products:", error);
 		});
 	}, [dispatch]);
+
+	useEffect(() => {
+		const updatePageSize = () => {
+			if (window.innerWidth <= 767.98) {
+				setPageSize(1);
+			} else if (window.innerWidth <= 1126.98) {
+				setPageSize(2);
+			} else {
+				setPageSize(3);
+			}
+			setCurrentPage(1);
+		};
+		updatePageSize();
+		window.addEventListener("resize", updatePageSize);
+		return () => {
+			window.removeEventListener("resize", updatePageSize);
+		};
+	}, []);
+
 	useEffect(() => {
 		setCurrentPage(1);
 	}, [currentRange]);
+
 	return (
 		<section className='shop' id='shop'>
 			<div className='shop__container'>

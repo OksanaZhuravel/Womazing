@@ -1,10 +1,16 @@
 .shop {
   &__container {
-    padding-bottom: 130px;
+    padding-bottom: calc(130px / 2);
+    @media (min-width: $mobile) {
+      padding-bottom: 130px;
+    }
   }
   &__pagination {
-    padding-bottom: 65px;
+    padding-bottom: calc(65px / 2);
     color: #808080;
+    @media (min-width: $mobile) {
+      padding-bottom: 65px;
+    }
   }
   // &__inner {
   //   display: flex;
@@ -14,12 +20,14 @@
 //==========================================================================================================================================
 
 .pagination {
-  padding-top: 65px;
+  padding-top: calc(65px / 2);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 14px;
-
+  @media (min-width: $mobile) {
+    padding-top: 65px;
+  }
   &__page {
     color: $colorWrite;
     width: 41px;
@@ -32,6 +40,6 @@
     padding: 9px 0px 8px 0px;
     border: 1px solid $colorBlack;
   }
-  &__arrow {
-  }
+  // &__arrow {
+  // }
 }

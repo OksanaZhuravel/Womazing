@@ -12,7 +12,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMess
 		phone: '',
 		message: '',
 	});
-	const [isFormSubmitted, setFormSubmitted] = useState(true);
+	const [isFormSubmited, setFormSubmited] = useState(true);
 	const addForm = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		const validationRules: Array<{ fields: Array<string>; condition: (value: string) => boolean; errorMessage: string }> = [
@@ -29,7 +29,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMess
 			create(newForm);
 			setForm({ name: '', email: '', phone: '', message: '' });
 			setErrors({});
-			setFormSubmitted(false);
+			setFormSubmited(false);
 		}
 	};
 
@@ -73,7 +73,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMess
 					</textarea>
 				)}
 				{showButton && (
-					<Button onClick={addForm} className={`button ${isFormSubmitted ? '' : 'disabled'}`}>
+					<Button onClick={addForm} className={`button ${isFormSubmited ? '' : 'disabled'}`}>
 						<span className='button__text'>{text_btn}</span>
 					</Button>
 				)}

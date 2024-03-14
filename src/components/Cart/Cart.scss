@@ -1,8 +1,19 @@
 .cart {
   &__container {
-    padding-top: 130px;
-    padding-bottom: 130px;
+    padding-top: calc(130px / 2);
+    padding-bottom: calc(130px / 2);
     display: grid;
+
+    @media (min-width: $mobile) {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+    @media (min-width: $tablet) {
+      padding-top: 130px;
+      padding-bottom: 130px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
   }
 
   // &__subtitle {
@@ -12,33 +23,69 @@
     display: grid;
     gap: 40px;
     justify-items: center;
+    & .subtitle-h2 {
+      @media (max-width: $mobile) {
+        font-size: 26px;
+      }
+    }
+    & .subtitle {
+      @media (max-width: $tablet) {
+        font-size: 18px;
+      }
+    }
   }
 
   &__control {
-    padding-top: 72px;
-
+    padding-top: calc(72px / 2);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      width: 100%;
+      align-items: stretch;
+      gap: 12px;
+      max-width: 280px;
+    }
     & .button {
-      color: $colorAccent;
       &:hover {
         color: $colorWrite;
       }
+      @media (max-width: $tablet) {
+        font-size: 12px;
+        max-width: 280px;
+      }
+    }
+    @media (min-width: $mobile) {
+      padding-top: 72px;
     }
   }
 
   &__form {
     display: flex;
-    gap: 16px;
     align-items: flex-end;
+    gap: 16px;
     position: relative;
+    min-width: 611px;
+    & .form__input {
+      max-width: 255px;
+    }
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      width: 100%;
+      align-items: stretch;
+      gap: 24px;
+    }
     & .error-message {
       position: absolute;
       width: 100%;
       height: 100%;
-      bottom: -80px;
+      bottom: -36px;
       left: 0;
+      z-index: -1;
+      @media (min-width: $mobile) {
+        bottom: -80px;
+      }
     }
   }
 
@@ -57,6 +104,9 @@
     display: block;
     background-color: $colorGrey;
     margin-top: 26px;
+  }
+  @media (max-width: $mobileSmall) {
+    display: none;
   }
   &__list {
     display: flex;
@@ -83,10 +133,16 @@
 //==========================================================================================================================================
 
 .total {
-  padding-top: 94px;
-  justify-self: end;
+  padding-top: calc(94px / 2);
+
   display: grid;
   gap: 28px;
+  @media (min-width: $mobileSmall) {
+    justify-self: end;
+  }
+  @media (min-width: $mobile) {
+    padding-top: 94px;
+  }
   &__subtotal {
     display: flex;
     gap: 20px;
@@ -97,6 +153,7 @@
 
   &__wrap {
     display: flex;
+    flex-direction: column;
     gap: 15px;
     & .button {
       color: $colorWrite;
@@ -126,27 +183,32 @@
     width: 100%;
     display: flex;
 
-    // justify-content: flex-start;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
 
+    @media (min-width: $mobile) {
+      gap: 24px;
+    }
     button svg {
       width: 12px;
       height: 12px;
     }
     p:not(.product-cart__text) {
-      flex: 1 0 17%;
+      // flex: 1 0 17%;
+      @media (min-width: $mobileSmall) {
+        flex: 1 0 17%;
+      }
     }
     p {
       &:last-child:not(.product-cart__text) {
         text-align: right;
+        min-width: 50px;
       }
     }
     &:not(:last-child) {
       &::after {
         content: "";
         position: absolute;
-
         bottom: -10px;
         left: 0;
         width: 100%;
@@ -156,27 +218,44 @@
       }
     }
   }
+  &__amount {
+    @media (max-width: $mobileSmall) {
+      display: none;
+    }
+  }
   &__link {
     flex: 1 0 35%;
     display: flex;
-    gap: 24px;
+    gap: 4px;
     align-items: center;
     justify-content: flex-start;
+    @media (min-width: $mobile) {
+      gap: 24px;
+    }
     img {
       width: 100%;
       max-width: 137px;
+      @media (max-width: $mobile) {
+        max-width: 50px;
+      }
     }
     & .text {
       max-width: 240px;
+      @media (max-width: $mobile) {
+        font-size: 10px;
+      }
     }
   }
   &__input {
     text-align: center;
     display: flex;
-    max-width: 47px;
-    padding: 8px 0 11px;
+    max-width: 30px;
 
+    padding: 8px 0 11px;
     border: 1px solid $colorQuanBorder;
     font-weight: 400;
+    @media (min-width: $mobile) {
+      max-width: 47px;
+    }
   }
 }

@@ -4,7 +4,6 @@ import { useCartInfo } from '../../../hooks/useCartInfo';
 
 const CartHeader = () => {
   const { totalQuantity } = useCartInfo();
-
   return (
     <div className='header__cart cart-header'>
       <Link to='/cart' className='cart-header__link'>

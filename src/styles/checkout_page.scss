@@ -4,7 +4,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 81px;
+    gap: calc(81px / 2);
+    @media (min-width: $mobile) {
+      gap: 81px;
+    }
   }
 
   &__inner {
@@ -13,8 +16,14 @@
     justify-content: center;
     align-items: stretch;
     gap: 35px;
+    width: 100%;
     &--gap {
       gap: 47px;
+    }
+    .buyer__left & {
+      @media (min-width: $tablet) {
+        min-width: 350px;
+      }
     }
   }
 
@@ -30,19 +39,30 @@
   &__right {
     display: flex;
     flex-direction: column;
-    gap: 159px;
+    gap: calc(159px / 2);
+    @media (min-width: $tablet) {
+      gap: 159px;
+    }
   }
 
   // &__checkbox {
   // }
   &__form {
     margin: 0 auto;
-    padding: 130px 0;
+    padding: 30px;
     max-width: 918px;
     width: 100%;
     display: grid;
-    justify-content: space-between;
-    grid-template-columns: repeat(2, auto);
+    gap: 20px;
+    @media (min-width: $mobile) {
+      padding: 130px 30px;
+      gap: 90px;
+      grid-template-columns: repeat(2, auto);
+    }
+    @media (min-width: $tablet) {
+      justify-content: space-between;
+      padding: 130px 0;
+    }
   }
 }
 

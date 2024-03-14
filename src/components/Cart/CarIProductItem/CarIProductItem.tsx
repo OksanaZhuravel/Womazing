@@ -13,7 +13,7 @@ const CarIProductItem: React.FC<CartItemProps> = ({ item, handleDeleteItem, hand
 			{item.images && item.images.length > 0 && <img src={item.images[0]} alt={item.title} />}
 			<p className="product-cart__text text">{item.title}</p>
 		</Link>
-		<p className="text">
+		<p className="product-cart__amount text">
 			{item.diccort !== null && item.diccort !== undefined ? (
 				<span>${item.diccort}</span>
 			) : (

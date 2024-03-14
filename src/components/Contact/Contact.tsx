@@ -3,10 +3,10 @@ import { formDataProps } from "../../types/types";
 import PopupForm from "../PopupForm/PopupForm";
 
 const Contact = () => {
-	const [isFormSubmitted, setFormSubmitted] = useState(false);
+	const [isFormSubmited, setFormSubmited] = useState(false);
 	const create = (formData: formDataProps) => {
 		console.log(formData);
-		setFormSubmitted(true);
+		setFormSubmited(true);
 
 	};
 	return (
@@ -19,7 +19,7 @@ const Contact = () => {
 					<li className="address__item text">Адрес<span className="text-big">г. Москва, 3-я улица Строителей, 25</span></li>
 				</ul>
 				<PopupForm create={create} title='Напишите нам' showMessage={true} text_btn='Отправить' />
-				{isFormSubmitted &&
+				{isFormSubmited &&
 					<div className="button button--color">Сообщение успешно отправлено</div>
 				}
 			</div>

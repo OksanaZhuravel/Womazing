@@ -13,18 +13,18 @@ import { setModalOpen } from '../../../state/modal/modalSlice';
 const PhoneHeader = ({ className }: { className: string }) => {
   const dispatch = useDispatch();
   const isModalOpen = useSelector((state: RootState) => state.modals.isModalOpen);
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [isFormSubmited, setFormSubmited] = useState(false);
   const showModal = () => {
     dispatch(setModalOpen(true));
   };
   const handleCancel = () => {
     dispatch(setModalOpen(false));
-    setIsFormSubmitted(false);
+    setFormSubmited(false);
   };
   const create = (formData: formDataProps) => {
     console.log(formData);
     dispatch(setModalOpen(false));
-    setIsFormSubmitted(true);
+    setFormSubmited(true);
   };
 
   return (
@@ -43,8 +43,8 @@ const PhoneHeader = ({ className }: { className: string }) => {
           <CloseSvg />
         </Button>
       </Modal>
-      {isFormSubmitted && (
-        <Modal open={isFormSubmitted} onCancel={handleCancel}>
+      {isFormSubmited && (
+        <Modal open={isFormSubmited} onCancel={handleCancel}>
           <div className='popup__content'>
             <h2 className='popup__title submit'>
               Отлично! Мы скоро вам перезвоним.

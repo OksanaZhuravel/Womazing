@@ -1,7 +1,10 @@
 .product {
   &__container {
     padding-top: 110px;
-    padding-bottom: 130px;
+    padding-bottom: calc(130px / 2);
+    @media (min-width: $mobile) {
+      padding-bottom: 130px;
+    }
   }
   &__title {
     &:not(:last-child) {
@@ -10,15 +13,26 @@
   }
   &__breadcrumbs {
     &:not(:last-child) {
-      padding-bottom: 102px;
+      padding-bottom: 50px;
+      @media (min-width: $tablet) {
+        padding-bottom: 102px;
+      }
     }
   }
   &__wrap {
     display: flex;
+    flex-direction: row;
     gap: 74px;
     align-items: center;
     &:not(:last-child) {
-      padding-bottom: 130px;
+      padding-bottom: 65px;
+      @media (min-width: $tablet) {
+        padding-bottom: 130px;
+      }
+    }
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      gap: 35px;
     }
   }
   &__img {
@@ -27,15 +41,25 @@
       max-width: 100%;
     }
     max-width: 536px;
-    min-height: 730px;
+    // min-height: 730px;
     height: 100%;
     width: 100%;
     background-color: rgba($color: $colorNotImages, $alpha: 0.35);
   }
   &__boby {
     display: grid;
-    gap: 59px;
-    min-width: 347px;
+    gap: 30px;
+    padding: 10px;
+    @media (min-width: $mobileSmall) {
+      min-width: 347px;
+    }
+    @media (min-width: $mobile) {
+      gap: 59px;
+      padding: 0 40px;
+    }
+    @media (min-width: $tablet) {
+      padding: 0;
+    }
   }
   &__prace {
     display: flex;
@@ -55,7 +79,10 @@
 
   &__form {
     display: grid;
-    gap: 59px;
+    gap: 30px;
+    @media (min-width: $mobile) {
+      gap: 59px;
+    }
   }
   &__size,
   &__color {
@@ -69,6 +96,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (min-width: $mobileSmall) and (max-width: $tablet) {
+      justify-content: flex-start;
+      gap: 60px;
+    }
   }
 
   // &__quantity {
@@ -79,8 +110,9 @@
 .size {
   &__options {
     display: flex;
+    flex-wrap: wrap;
     gap: 14px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
   }
 
@@ -110,7 +142,9 @@
 .color {
   &__options {
     display: flex;
+    flex-wrap: wrap;
     gap: 14px;
+    justify-content: flex-start;
   }
 
   &__item {
@@ -138,22 +172,32 @@
   &__input {
     text-align: center;
     display: flex;
-    max-width: 68px;
-    padding: 20px;
+    max-width: 36px;
+    min-height: 36px;
+    padding: 5px;
 
     border: 1px solid $colorQuanBorder;
     font-weight: 400;
+    @media (min-width: $mobile) {
+      padding: 17px;
+      max-width: 68px;
+    }
+    @media (min-width: $tablet) {
+      padding: 20px;
+    }
   }
 }
 //==========================================================================================================================================
 .related {
-  &__container {
-    & .subtitle-h2 {
-      &:not(:last-child) {
+  & .subtitle-h2 {
+    &:not(:last-child) {
+      padding-bottom: 30px;
+      @media (min-width: $mobile) {
         padding-bottom: 67px;
       }
     }
   }
+
   &__inner {
     justify-content: flex-start;
   }

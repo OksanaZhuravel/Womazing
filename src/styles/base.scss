@@ -174,15 +174,7 @@ $mobileSmall: 479.98px; //em(479.98)
   line-height: 110%; /* 60.5px */
   letter-spacing: 1.1px;
 }
-// .title-big {
-//   font-size: 35px;
-//   font-weight: 500;
-//   line-height: 110%; /* 60.5px */
-//   letter-spacing: 1.1px;
-//   @media (min-width: $tablet) {
-//     font-size: 55px;
-//   }
-// }
+
 .title-big {
   font-size: 35px;
   font-weight: 500;
@@ -226,10 +218,13 @@ $mobileSmall: 479.98px; //em(479.98)
   letter-spacing: 0.5px;
 }
 .subtitle-h4 {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 140%; /* 28px */
   letter-spacing: 0.4px;
+  @media (min-width: $tablet) {
+    font-size: 20px;
+  }
 }
 .text {
   font-size: 15px;

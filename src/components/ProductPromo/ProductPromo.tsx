@@ -38,7 +38,7 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 	}
 
 	return (
-		<div className={`${className}__container`}>
+		<div className={`${className}`}>
 			<h2 className="subtitle-h2">{subtitle}</h2>
 			<div className={`inner ${className}__inner`}>
 				{currentProducts && currentProducts.length > 0

@@ -13,8 +13,12 @@ const NavBar = ({ className, setIsMenuOpen }: NavBarProps) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
 
   const location = useLocation();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const selectedMenuItem = menuItem.find((item) => item.path === location.pathname);
+    if (selectedMenuItem) {
+      setSelectedIndex(selectedMenuItem.id);
+    }
   }, [location.pathname]);
 
   return (

@@ -19,6 +19,7 @@ const NavBar = ({ className, setIsMenuOpen }: NavBarProps) => {
     if (selectedMenuItem) {
       setSelectedIndex(selectedMenuItem.id);
     }
+    window.scrollTo(0, 0);
   }, [location.pathname]);
 
   return (

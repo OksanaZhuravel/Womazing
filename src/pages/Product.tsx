@@ -11,10 +11,11 @@ const Product = () => {
   const [product, setProduct] = useState<ProductProps | null>(null);
   const { productId } = useParams<{ productId?: string }>();
   const parsedProductId = productId ? parseInt(productId, 10) : undefined;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (parsedProductId) {
+        if (parsedProductId !== undefined) {
           const response = await api.getProductId(parsedProductId);
           if (response) {
             setProduct(response);
@@ -30,8 +31,7 @@ const Product = () => {
       }
     };
     fetchData();
-  }, [productId]);
-
+  }, [parsedProductId]);
   if (!product) {
     return <div className='loading'>Загрузка...</div>;
   }

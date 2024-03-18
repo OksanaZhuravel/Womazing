@@ -20,12 +20,15 @@ body {
 }
 //==========================================================================================================================================
 .popup {
+  width: 100%;
+  max-width: 495px;
+  min-height: fit-content;
   display: flex;
   justify-content: center;
   position: fixed;
   bottom: 0;
   right: 0;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px 10px;
@@ -34,23 +37,30 @@ body {
   pointer-events: none;
   &__wrapper {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100%;
-    flex: 1 1 auto;
-    width: 100%;
-    max-width: 495px;
-    justify-content: flex-start;
-    align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // min-height: 100%;
+    // // flex: 1 1 auto;
+    // width: 100%;
+    // max-width: 495px;
+    // justify-content: flex-start;
+    // align-items: center;
   }
   &__content {
     visibility: hidden;
     transform: scale(0);
     transition: transform 0.5s ease 0s;
     background-color: $colorWrite;
-    padding: 70px;
+
+    padding: 50px 15px;
     width: 100%;
+    @media (min-width: $mobile) {
+      padding: 55px 25px;
+    }
+    @media (min-width: $tablet) {
+      padding: 70px;
+    }
     &:has(.submit) {
       min-width: 600px;
       display: flex;
@@ -58,7 +68,6 @@ body {
       align-items: center;
       gap: 35px;
     }
-
     .lock & {
       visibility: visible;
     }

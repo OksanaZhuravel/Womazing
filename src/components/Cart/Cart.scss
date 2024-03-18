@@ -83,7 +83,7 @@
       bottom: -36px;
       left: 0;
       z-index: -1;
-      @media (min-width: $mobile) {
+      @media (min-width: $tablet) {
         bottom: -80px;
       }
     }

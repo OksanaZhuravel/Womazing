@@ -8,6 +8,7 @@ import { formDataProps } from '../../../types/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../state/store';
 import { setModalOpen } from '../../../state/modal/modalSlice';
+import api from '../../../api/apiShop';
 
 
 const PhoneHeader = ({ className }: { className: string }) => {
@@ -21,10 +22,16 @@ const PhoneHeader = ({ className }: { className: string }) => {
     dispatch(setModalOpen(false));
     setFormSubmited(false);
   };
-  const create = (formData: formDataProps) => {
+  const create = async (formData: formDataProps) => {
     console.log(formData);
     dispatch(setModalOpen(false));
     setFormSubmited(true);
+    const response = await api.postEmails(formData);
+    if (response.ok) {
+      console.log("Email sent successfully!");
+    } else {
+      console.log("Message sending failed");
+    }
   };
 
   return (

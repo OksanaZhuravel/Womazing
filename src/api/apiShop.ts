@@ -137,15 +137,15 @@ class Api {
       console.log(error)
     }
   }
-async postOrders(newOrder: any, cartItemsInfo: string) {
-  // console.log(newOrder);
-  try {
-    const response = await instance.post("/api/SendEmail", {
-      data: {
-        to: "1144827@gmail.com",
-        from: "1144827@gmail.com",
-        subject: "Заказ с WOMAZING",
-        html: `
+  async postOrders(newOrder: any, cartItemsInfo: string) {
+    // console.log(newOrder);
+    try {
+      const response = await instance.post("/api/SendEmail", {
+        data: {
+          to: "1144827@gmail.com",
+          from: "1144827@gmail.com",
+          subject: "Заказ с WOMAZING",
+          html: `
     <h2>Заказ товара</h2>
     <p>Имя: ${newOrder.name}</p>
     <p>Email: ${newOrder.email}</p>
@@ -160,15 +160,15 @@ async postOrders(newOrder: any, cartItemsInfo: string) {
     <p>Информация о товарах:</p>
     ${cartItemsInfo}
   `,
-      },
-    });
-    // console.log(response);
-    // console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.log(error);
+        },
+      });
+      // console.log(response);
+      // console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
-}
 }
 const api = new Api()
 export default api

@@ -24,7 +24,7 @@ const Cart = () => {
     updateTotalSave,
   } = useCartInfo()
   const [discountedPriceNumber, setDiscountedPriceNumber] = useState<number | null>(null)
-  console.log(cartItems);
+  // console.log(cartItems);
 
   useEffect(() => {
     const fetchData = async () => {

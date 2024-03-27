@@ -2,6 +2,7 @@ import { CartListProps } from "../../../types/types";
 import CarIProductItem from "../CarIProductItem/CarIProductItem"
 
 const CartList: React.FC<CartListProps> = ({ cartItems, handleDeleteItem, handleQuantityChange }) => (
+
 	<div className="product-cart__inner">
 		<div className="cart__subtitle subtitle-cart">
 			<ul className="subtitle-cart__list">
@@ -21,7 +22,8 @@ const CartList: React.FC<CartListProps> = ({ cartItems, handleDeleteItem, handle
 		</div>
 		{cartItems.map((item) => (
 			<CarIProductItem
-				key={item.id}
+				key={item.key}
+				cartItems={cartItems}
 				item={item}
 				handleDeleteItem={handleDeleteItem}
 				handleQuantityChange={handleQuantityChange}

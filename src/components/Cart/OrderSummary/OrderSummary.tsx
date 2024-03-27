@@ -21,7 +21,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ cartItems, finalPrice, isFo
 					</div>
 					<ul className="buyer-cart__list">
 						{cartItems.map(item => (
-							<li key={item.id} className="buyer-cart__item">
+							<li key={item.key} className="buyer-cart__item">
 								<p className="buyer-cart__text text">{item.title}</p>
 								{item.diccort !== null && item.diccort !== undefined ? (
 									<p className="buyer-cart__text text">${item.diccort}</p>

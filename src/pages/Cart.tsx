@@ -24,7 +24,7 @@ const Cart = () => {
     updateTotalSave,
   } = useCartInfo()
   const [discountedPriceNumber, setDiscountedPriceNumber] = useState<number | null>(null)
-  // console.log(cartItems);
+  console.log(cartItems);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,6 +83,7 @@ const Cart = () => {
   const handleDeleteItem = (itemId: number) => {
     deleteItemCart(itemId)
   }
+  // console.log(cartItems);
   return (
     <>
       <Title title="Корзина" activeTitle="Корзина" activeLink="/cart" />

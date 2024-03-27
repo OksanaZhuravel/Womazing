@@ -108,6 +108,9 @@ export interface CartItem {
 	quantity: number;
 	diccort?: number | null;
 	totalSave?: number | null;
+	total?: number;
+	key?: string;
+
 }
 
 export interface ProductState {
@@ -247,11 +250,11 @@ export interface CartItemProps {
 	handleQuantityChange: (itemId: number, e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface CartItemProps {
-	item: CartItem;
-	handleDeleteItem: (itemId: number) => void;
-	handleQuantityChange: (itemId: number, e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+// export interface CartItemProps {
+// 	item: CartItem;
+// 	handleDeleteItem: (itemId: number) => void;
+// 	handleQuantityChange: (itemId: number, e: React.ChangeEvent<HTMLInputElement>) => void;
+// }
 
 export interface CartControlsProps {
 	coupon: string;

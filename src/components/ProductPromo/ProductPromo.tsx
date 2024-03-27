@@ -34,7 +34,7 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 	}
 
 	if (!Array.isArray(currentProducts)) {
-		return <div>Loading...</div>
+		return <div>Загрузка...</div>
 	}
 
 	return (

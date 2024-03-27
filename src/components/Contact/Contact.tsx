@@ -1,12 +1,21 @@
 import { useState } from "react";
 import { formDataProps } from "../../types/types";
 import PopupForm from "../PopupForm/PopupForm";
+import api from "../../api/apiShop";
 
 const Contact = () => {
 	const [isFormSubmited, setFormSubmited] = useState(false);
-	const create = (formData: formDataProps) => {
-		console.log(formData);
-		setFormSubmited(true);
+	const create = async (formData: formDataProps) => {
+		// console.log(formData);
+		// setFormSubmited(true);
+		const response = await api.postEmails(formData);
+		if (response) {
+			setFormSubmited(true);
+			console.log("Email sent successfully!");
+		} else {
+			setFormSubmited(false);
+			console.log("Message sending failed");
+		}
 
 	};
 	return (

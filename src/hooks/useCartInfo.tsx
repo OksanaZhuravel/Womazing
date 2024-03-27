@@ -5,6 +5,8 @@ import { deleteCart, updateCart, updateDiscountedPrice } from '../state/cart/car
 export const useCartInfo = () => {
 	const dispatch = useDispatch();
 	const cartItems = useSelector((state: RootState) => state.carts.cart);
+	// console.log(cartItems);
+
 	const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 	const totalPrice = cartItems.reduce((total, item) => {
 		const itemTotal = isNaN(item.quantity * (item.diccort ?? item.price)) ? 0 : item.quantity * (item.diccort ?? item.price);
@@ -25,6 +27,3 @@ export const useCartInfo = () => {
 
 	return { finalPrice, totalPrice, totalQuantity, updateQuantity, deleteItemCart, updateTotalSave };
 };
-
-
-

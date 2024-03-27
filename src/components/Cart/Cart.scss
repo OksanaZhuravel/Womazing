@@ -177,6 +177,15 @@
     gap: 20px;
     justify-items: start;
   }
+  &__wrap {
+    display: grid;
+    & .text {
+      max-width: 240px;
+      @media (max-width: $mobile) {
+        font-size: 10px;
+      }
+    }
+  }
   &__item {
     position: relative;
     max-width: 989px;
@@ -239,12 +248,12 @@
         max-width: 50px;
       }
     }
-    & .text {
-      max-width: 240px;
-      @media (max-width: $mobile) {
-        font-size: 10px;
-      }
-    }
+    // & .text {
+    //   max-width: 240px;
+    //   @media (max-width: $mobile) {
+    //     font-size: 10px;
+    //   }
+    // }
   }
   &__input {
     text-align: center;

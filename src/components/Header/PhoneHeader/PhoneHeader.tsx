@@ -23,13 +23,16 @@ const PhoneHeader = ({ className }: { className: string }) => {
     setFormSubmited(false);
   };
   const create = async (formData: formDataProps) => {
-    console.log(formData);
-    dispatch(setModalOpen(false));
-    setFormSubmited(true);
+    // console.log(formData);
+    // dispatch(setModalOpen(false));
+    // setFormSubmited(true);
     const response = await api.postEmails(formData);
-    if (response.ok) {
+    if (response) {
+      dispatch(setModalOpen(false));
+      setFormSubmited(true);
       console.log("Email sent successfully!");
     } else {
+      setFormSubmited(false);
       console.log("Message sending failed");
     }
   };

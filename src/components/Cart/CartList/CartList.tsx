@@ -2,7 +2,6 @@ import { CartListProps } from "../../../types/types";
 import CarIProductItem from "../CarIProductItem/CarIProductItem"
 
 const CartList: React.FC<CartListProps> = ({ cartItems, handleDeleteItem, handleQuantityChange }) => (
-
 	<div className="product-cart__inner">
 		<div className="cart__subtitle subtitle-cart">
 			<ul className="subtitle-cart__list">

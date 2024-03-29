@@ -22,6 +22,7 @@ const Cart = () => {
     updateQuantity,
     deleteItemCart,
     updateTotalSave,
+
   } = useCartInfo()
   const [discountedPriceNumber, setDiscountedPriceNumber] = useState<number | null>(null)
   // console.log(cartItems);
@@ -78,6 +79,7 @@ const Cart = () => {
   ) => {
     const newQuantity = parseInt(e.target.value, 10)
     updateQuantity(itemId, newQuantity)
+    handleUpdateCart()
   }
 
   const handleDeleteItem = (itemId: number) => {

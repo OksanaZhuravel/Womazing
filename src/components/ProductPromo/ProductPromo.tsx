@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchProductsAll } from "../../state/product/productSlice"
 import { defaultProducts } from "../../api/defolt"
 import Loading from "../UI/Loading/Loading"
-
+import { shuffle } from "../../utils/shuffle"
 
 const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 	const products = useSelector(
@@ -21,23 +21,19 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 		dispatch(fetchProductsAll())
 	}, [dispatch])
 
-	const filterProducts = products.filter((product) => product.news)
-	let currentProducts = filterProducts
-	if (filterProducts.length < limit) {
-		const remainingProducts = products.filter((product) => !product.news)
-		const remainingCount = limit - filterProducts.length
+	if (!Array.isArray(products)) {
+		return <Loading />;
+	}
+	const newsProducts = shuffle(products.filter((product) => product.news));
+	const remainingProducts = shuffle(products.filter((product) => !product.news));
+	let currentProducts = newsProducts.slice(0, limit);
+	if (currentProducts.length < limit) {
+		const remainingCount = limit - currentProducts.length;
 		currentProducts = [
-			...filterProducts,
+			...currentProducts,
 			...remainingProducts.slice(0, remainingCount),
-		]
-	} else {
-		currentProducts = currentProducts.slice(0, limit)
+		];
 	}
-
-	if (!Array.isArray(currentProducts)) {
-		return <Loading />
-	}
-
 	return (
 		<div className={`${className}`}>
 			<h2 className="subtitle-h2">{subtitle}</h2>
@@ -112,3 +108,4 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 	)
 }
 export default ProductPromo
+

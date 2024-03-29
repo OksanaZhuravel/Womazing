@@ -40,7 +40,7 @@ const Product = () => {
       return (
         <>
           {/* <div className='loading'>Загрузка...</div> */}
-          <Loading />
+          {/* <Loading /> */}
           <section className='product'>
             <div className="product__container">
               <h2 className='product__title title-big'>{defaultProduct.title}</h2>

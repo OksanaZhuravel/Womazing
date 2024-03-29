@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Phone from '../../Icon/Phone';
 import Modal from '../../UI/Modal/Modal';
 import PopupForm from '../../PopupForm/PopupForm';

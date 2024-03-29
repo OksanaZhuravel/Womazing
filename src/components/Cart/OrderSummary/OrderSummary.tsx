@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CartItem, FormBuyer } from "../../../types/types";
 import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
@@ -10,6 +11,18 @@ interface OrderSummaryProps {
 	setFormBuyer: React.Dispatch<React.SetStateAction<FormBuyer>>;
 }
 const OrderSummary: React.FC<OrderSummaryProps> = ({ cartItems, finalPrice, isFormSubmited, addFormBuyer, formBuyer, setFormBuyer }) => {
+	if (cartItems.length < 1) {
+		return <div className="buyer__right">
+			<div className="buyer__inner">
+				<p className="buyer__title subtitle-h3">Невозможно отправить заказ!</p>
+				<p className="buyer__title subtitle-h3">Корзина пуста.</p>
+				<Link to={"/shop"} className=" button">
+					<span className="button__text ">Перейти в магазин</span>
+				</Link>
+			</div>
+		</div>
+	}
+
 	return (
 		<div className="buyer__right">
 			<div className="buyer__inner">

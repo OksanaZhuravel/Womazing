@@ -7,7 +7,6 @@ const Success = () => {
     <Title title='Заказ получен' activeTitle='Заказ получен' activeLink='/success' interim="Оформление заказа" />
     <section className="success">
       <div className="success__container">
-
         <div className="success__inner">
           <img
             className='success__img'

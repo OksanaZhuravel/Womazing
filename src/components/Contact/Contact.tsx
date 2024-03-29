@@ -1,19 +1,21 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { formDataProps } from "../../types/types";
 import PopupForm from "../PopupForm/PopupForm";
 import api from "../../api/apiShop";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../state/store";
+import { setPost } from "../../state/form/formSlice";
 
 const Contact = () => {
-	const [isFormSubmited, setFormSubmited] = useState(false);
+	const dispatch = useDispatch();
+	const isPost = useSelector((state: RootState) => state.form.isPost)
 	const create = async (formData: formDataProps) => {
-		// console.log(formData);
-		// setFormSubmited(true);
 		const response = await api.postEmails(formData);
 		if (response) {
-			setFormSubmited(true);
+			dispatch(setPost(true))
 			console.log("Email sent successfully!");
 		} else {
-			setFormSubmited(false);
+			dispatch(setPost(false))
 			console.log("Message sending failed");
 		}
 
@@ -28,7 +30,7 @@ const Contact = () => {
 					<li className="address__item text">Адрес<span className="text-big">г. Москва, 3-я улица Строителей, 25</span></li>
 				</ul>
 				<PopupForm create={create} title='Напишите нам' showMessage={true} text_btn='Отправить' />
-				{isFormSubmited &&
+				{isPost &&
 					<div className="button button--color">Сообщение успешно отправлено</div>
 				}
 			</div>

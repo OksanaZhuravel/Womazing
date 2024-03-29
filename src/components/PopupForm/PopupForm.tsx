@@ -3,8 +3,12 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import { PopupFormProps } from '../../types/types';
 import { validateForm } from '../../utils/validationUtils';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
+import { setFormSubmited } from '../../state/form/formSlice';
 
 const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMessage = false, showButton = true }) => {
+	const dispatch = useDispatch()
 	const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
 	const [errors, setErrors] = useState<{ [key: string]: string }>({
 		name: '',
@@ -12,7 +16,9 @@ const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMess
 		phone: '',
 		message: '',
 	});
-	const [isFormSubmited, setFormSubmited] = useState(true);
+	const isFormSubmited = useSelector((state: RootState) => state.form.isFormSubmited)
+	console.log(isFormSubmited);
+
 	const addForm = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		const validationRules: Array<{ fields: Array<string>; condition: (value: string) => boolean; errorMessage: string }> = [
@@ -24,12 +30,13 @@ const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMess
 
 		if (Object.keys(validationErrors).length > 0) {
 			setErrors(validationErrors);
+			// dispatch(setFormSubmited(true))
 		} else {
 			const newForm = { ...form, id: Date.now() };
 			create(newForm);
 			setForm({ name: '', email: '', phone: '', message: '' });
 			setErrors({});
-			setFormSubmited(false);
+			dispatch(setFormSubmited(false))
 		}
 	};
 

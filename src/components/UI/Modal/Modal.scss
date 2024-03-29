@@ -62,11 +62,13 @@ body {
       padding: 70px;
     }
     &:has(.submit) {
-      min-width: 600px;
       display: flex;
       flex-flow: column;
       align-items: center;
       gap: 35px;
+      @media (min-width: $tablet) {
+        min-width: 600px;
+      }
     }
     .lock & {
       visibility: visible;

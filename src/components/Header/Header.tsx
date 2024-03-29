@@ -11,6 +11,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isModalOpen = useSelector((state: RootState) => state.modals.isModalOpen);
+  const isVerification = useSelector((state: RootState) => state.form.isVerification)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,12 +29,12 @@ const Header = () => {
   useEffect(() => {
     const header = document.querySelector('header');
     if (header) {
-      header.classList.toggle('scroll', isScrolled || isModalOpen);
+      header.classList.toggle('scroll', isScrolled || isModalOpen || isVerification);
     }
-  }, [isScrolled, isModalOpen]);
+  }, [isScrolled, isModalOpen, isVerification]);
 
   return (
-    <header className={`header ${isScrolled || isModalOpen ? 'scroll' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
+    <header className={`header ${isScrolled || isModalOpen || isVerification ? 'scroll' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="header__wrapper">
         <div className='header__container'>
           <Logo className='header__logo' />

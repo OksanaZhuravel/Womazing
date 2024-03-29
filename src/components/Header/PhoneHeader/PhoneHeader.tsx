@@ -8,31 +8,32 @@ import { formDataProps } from '../../../types/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../state/store';
 import { setModalOpen } from '../../../state/modal/modalSlice';
+import { setVerification } from '../../../state/form/formSlice';
+
 import api from '../../../api/apiShop';
 
 
 const PhoneHeader = ({ className }: { className: string }) => {
   const dispatch = useDispatch();
   const isModalOpen = useSelector((state: RootState) => state.modals.isModalOpen);
-  const [isFormSubmited, setFormSubmited] = useState(false);
+  const isVerification = useSelector((state: RootState) => state.form.isVerification)
+
   const showModal = () => {
     dispatch(setModalOpen(true));
   };
   const handleCancel = () => {
     dispatch(setModalOpen(false));
-    setFormSubmited(false);
+    dispatch(setVerification(false))
   };
   const create = async (formData: formDataProps) => {
     // console.log(formData);
-    // dispatch(setModalOpen(false));
-    // setFormSubmited(true);
     const response = await api.postEmails(formData);
     if (response) {
       dispatch(setModalOpen(false));
-      setFormSubmited(true);
+      dispatch(setVerification(true))
       console.log("Email sent successfully!");
     } else {
-      setFormSubmited(false);
+      dispatch(setVerification(false))
       console.log("Message sending failed");
     }
   };
@@ -53,8 +54,8 @@ const PhoneHeader = ({ className }: { className: string }) => {
           <CloseSvg />
         </Button>
       </Modal>
-      {isFormSubmited && (
-        <Modal open={isFormSubmited} onCancel={handleCancel}>
+      {isVerification && (
+        <Modal open={isVerification} onCancel={handleCancel}>
           <div className='popup__content'>
             <h2 className='popup__title submit'>
               Отлично! Мы скоро вам перезвоним.

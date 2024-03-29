@@ -51,7 +51,6 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 										height={478}
 									/>
 								)}
-
 								<Link to={`/product/${product.id}`} className="card__link">
 									<Arrow />
 								</Link>
@@ -83,7 +82,6 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 										height={478}
 									/>
 								)}
-
 								<Link to={`/product/${product.id}`} className="card__link">
 									<Arrow />
 								</Link>

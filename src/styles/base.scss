@@ -300,19 +300,40 @@ $mobileSmall: 479.98px; //em(479.98)
 //==========================================================================================================================================
 .success {
   &__container {
-    padding: 130px 0;
+    padding: 60px 10px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    gap: 25px;
+    @media (min-width: $mobile) {
+      padding: 60px 20px;
+      flex-direction: row;
+      gap: 0;
+    }
+    @media (min-width: $pcSmall) {
+      padding: 130px 0;
+    }
   }
   &__inner {
     display: grid;
-    grid-template-columns: 96px 1fr;
+
     justify-items: center;
     align-items: center;
     gap: 32px;
+    @media (min-width: $mobile) {
+      grid-template-columns: 96px 1fr;
+    }
+    @media (max-width: $mobile) {
+      img {
+        max-width: 40px;
+      }
+    }
   }
   &__box {
+    @media (max-width: $mobile) {
+      text-align: center;
+    }
     p {
       &:not(:last-child) {
         padding-bottom: 17px;

@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from "../../state/store"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProductsAll } from "../../state/product/productSlice"
 import { defaultProducts } from "../../api/defolt"
+import Loading from "../UI/Loading/Loading"
 
 
 const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
@@ -34,7 +35,7 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
 	}
 
 	if (!Array.isArray(currentProducts)) {
-		return <div>Загрузка...</div>
+		return <Loading />
 	}
 
 	return (

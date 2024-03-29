@@ -169,18 +169,27 @@ $mobileSmall: 479.98px; //em(479.98)
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 30vw;
-  color: $colorGreen;
-  font-size: 55px;
-  font-weight: 500;
-  line-height: 110%; /* 60.5px */
-  letter-spacing: 1.1px;
-  @media (max-width: $mobile) {
-    padding-top: 90px;
-    padding-bottom: 40px;
-    font-size: 35px;
+  height: 100vh;
+}
+
+.spinner {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid $colorQuanBorder;
+  border-top: 3px solid $colorAccent;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
+//==========================================================================================================================================
 
 .title-big {
   font-size: 35px;

@@ -6,6 +6,7 @@ import ProductItem from '../components/ProductItem/ProductItem';
 import ProductPromo from '../components/ProductPromo/ProductPromo';
 import { ProductProps } from '../types/types';
 import { defaultProducts } from '../api/defolt';
+import Loading from '../components/UI/Loading/Loading';
 
 const Product = () => {
   const [product, setProduct] = useState<ProductProps | null>(null);
@@ -32,9 +33,28 @@ const Product = () => {
     };
     fetchData();
   }, [parsedProductId]);
+
   if (!product) {
-    return <div className='loading'>Загрузка...</div>;
+    const defaultProduct = defaultProducts.find(product => product.id === parsedProductId);
+    if (defaultProduct) {
+      return (
+        <>
+          {/* <div className='loading'>Загрузка...</div> */}
+          <Loading />
+          <section className='product'>
+            <div className="product__container">
+              <h2 className='product__title title-big'>{defaultProduct.title}</h2>
+              <Breadcrumbs categories={defaultProduct.categories} title={defaultProduct.title} className='product__breadcrumbs' />
+              <ProductItem item={defaultProduct} />
+            </div>
+          </section>
+        </>
+      );
+    } else {
+      return <Loading />
+    }
   }
+
   // console.log(product);
   return (
     <>

@@ -17,7 +17,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMess
 		message: '',
 	});
 	const isFormSubmited = useSelector((state: RootState) => state.form.isFormSubmited)
-	console.log(isFormSubmited);
+	// console.log(isFormSubmited);
 
 	const addForm = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
@@ -30,13 +30,16 @@ const PopupForm: React.FC<PopupFormProps> = ({ create, title, text_btn, showMess
 
 		if (Object.keys(validationErrors).length > 0) {
 			setErrors(validationErrors);
-			// dispatch(setFormSubmited(true))
+
 		} else {
 			const newForm = { ...form, id: Date.now() };
 			create(newForm);
 			setForm({ name: '', email: '', phone: '', message: '' });
 			setErrors({});
 			dispatch(setFormSubmited(false))
+			setTimeout(() => {
+				dispatch(setFormSubmited(true));
+			}, 3000);
 		}
 	};
 

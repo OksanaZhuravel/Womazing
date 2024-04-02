@@ -11,7 +11,7 @@ import BuyerForm from "../components/Cart/BuyerForm/BuyerForm"
 import OrderSummary from "../components/Cart/OrderSummary/OrderSummary"
 import { resetCart } from "../state/cart/cartSlice"
 import api from "../api/apiShop"
-import { setFormSubmited } from "../state/form/formSlice"
+import { setFormSubmitedOrder } from "../state/form/formSlice"
 
 const Checkout: React.FC<BuyerProps> = () => {
   const navigate = useNavigate()
@@ -39,7 +39,7 @@ const Checkout: React.FC<BuyerProps> = () => {
     house: "",
     apartment: "",
   })
-  const isFormSubmited = useSelector((state: RootState) => state.form.isFormSubmited)
+  const isFormSubmitedOrder = useSelector((state: RootState) => state.form.isFormSubmitedOrder)
   const addFormBuyer = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const validationErrors = validateForm(formBuyer, validationRules);
@@ -92,14 +92,14 @@ const Checkout: React.FC<BuyerProps> = () => {
   `;
       const newForm = { ...formBuyer, id: Date.now(), cartItems: table };
       setErrors({});
-      dispatch(setFormSubmited(false))
+      dispatch(setFormSubmitedOrder(false))
       dispatch(resetCart());
       const response = await api.postOrders(newForm, table);
       if (response) {
-        dispatch(setFormSubmited(true))
+        dispatch(setFormSubmitedOrder(true))
         console.log("Email sent successfully!");
       } else {
-        dispatch(setFormSubmited(false))
+        dispatch(setFormSubmitedOrder(false))
         console.log("Message sending failed");
       }
     }
@@ -109,10 +109,10 @@ const Checkout: React.FC<BuyerProps> = () => {
   const { finalPrice } = useCartInfo()
 
   useEffect(() => {
-    if (!isFormSubmited) {
+    if (!isFormSubmitedOrder) {
       navigate("/success")
     }
-  }, [isFormSubmited, navigate])
+  }, [isFormSubmitedOrder, navigate])
 
   return (
     <>
@@ -131,7 +131,7 @@ const Checkout: React.FC<BuyerProps> = () => {
           <OrderSummary
             cartItems={cartItems}
             finalPrice={finalPrice}
-            isFormSubmited={isFormSubmited}
+            isFormSubmitedOrder={isFormSubmitedOrder}
             addFormBuyer={addFormBuyer}
             formBuyer={formBuyer}
             setFormBuyer={setFormBuyer}

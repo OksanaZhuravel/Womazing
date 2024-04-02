@@ -5,12 +5,12 @@ import Input from "../../UI/Input/Input";
 interface OrderSummaryProps {
 	cartItems: CartItem[];
 	finalPrice: number;
-	isFormSubmited: boolean;
+	isFormSubmitedOrder: boolean;
 	addFormBuyer: (e: React.MouseEvent<HTMLButtonElement>) => void;
 	formBuyer: FormBuyer;
 	setFormBuyer: React.Dispatch<React.SetStateAction<FormBuyer>>;
 }
-const OrderSummary: React.FC<OrderSummaryProps> = ({ cartItems, finalPrice, isFormSubmited, addFormBuyer, formBuyer, setFormBuyer }) => {
+const OrderSummary: React.FC<OrderSummaryProps> = ({ cartItems, finalPrice, isFormSubmitedOrder, addFormBuyer, formBuyer, setFormBuyer }) => {
 	if (cartItems.length < 1) {
 		return <div className="buyer__right">
 			<div className="buyer__inner">
@@ -69,7 +69,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ cartItems, finalPrice, isFo
 						<span>Оплата наличными</span>
 					</label>
 				</div>
-				<Button onClick={addFormBuyer} className={`button ${isFormSubmited ? '' : 'disabled'}`}>
+				<Button onClick={addFormBuyer} className={`button ${isFormSubmitedOrder ? '' : 'disabled'}`}>
 					<span className='button__text'>Разместить заказ</span>
 				</Button>
 			</div>

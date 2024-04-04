@@ -82,8 +82,8 @@ const Cart = () => {
     handleUpdateCart()
   }
 
-  const handleDeleteItem = (itemId: number) => {
-    deleteItemCart(itemId)
+  const handleDeleteItem = (key: string) => {
+    deleteItemCart(key)
   }
   // console.log(cartItems);
   return (

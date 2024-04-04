@@ -18,8 +18,11 @@ export const useCartInfo = () => {
 	const updateQuantity = (itemId: number, newQuantity: number) => {
 		dispatch(updateCart({ itemId, newQuantity }));
 	};
-	const deleteItemCart = (itemId: number) => {
-		dispatch(deleteCart({ itemId }));
+	// const deleteItemCart = (itemId: number) => {
+	// 	dispatch(deleteCart({ itemId }));
+	// };
+	const deleteItemCart = (key: string) => {
+		dispatch(deleteCart({ key }));
 	};
 	const updateTotalSave = (itemId: number, totalSave: number) => {
 		dispatch(updateDiscountedPrice({ itemId, totalSave }));

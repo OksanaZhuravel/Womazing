@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import CloseSvg from "../../Icon/CloseSvg";
 import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
-
 import { CartItem, CartItemProps } from "../../../types/types";
+
 const CarIProductItem: React.FC<CartItemProps & { cartItems: CartItem[] }> = ({ item, cartItems, handleDeleteItem, handleQuantityChange }) => {
 	const hasDifferentProperties = cartItems.some((cartItem) => {
 		return cartItem.id === item.id &&
@@ -11,9 +11,11 @@ const CarIProductItem: React.FC<CartItemProps & { cartItems: CartItem[] }> = ({ 
 				cartItem.selectedColor !== item.selectedColor ||
 				cartItem.quantity !== item.quantity);
 	});
+	// console.log(item);
+
 	return (
 		<div className="product-cart__item">
-			<Button onClick={() => handleDeleteItem(item.id)}>
+			<Button onClick={() => handleDeleteItem(item.key)}>
 				<CloseSvg />
 			</Button>
 			<Link to={`/product/${item.id}`} className="product-cart__link">

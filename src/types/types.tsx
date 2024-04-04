@@ -95,6 +95,8 @@ export interface CartState {
 		selectedColor: string;
 		quantity: number;
 		totalSave?: number | null;
+		total?: number;
+		key?: string;
 	}>;
 }
 
@@ -109,8 +111,7 @@ export interface CartItem {
 	diccort?: number | null;
 	totalSave?: number | null;
 	total?: number;
-	key?: string;
-
+	key: string;
 }
 
 export interface ProductState {
@@ -246,7 +247,7 @@ export interface CouponsData {
 
 export interface CartItemProps {
 	item: CartItem;
-	handleDeleteItem: (itemId: number) => void;
+	handleDeleteItem: (key: string) => void;
 	handleQuantityChange: (itemId: number, e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -268,7 +269,7 @@ export interface CartControlsProps {
 
 export interface CartListProps {
 	cartItems: CartItem[];
-	handleDeleteItem: (itemId: number) => void;
+	handleDeleteItem: (key: string) => void;
 	handleQuantityChange: (itemId: number, e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

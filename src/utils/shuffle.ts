@@ -1,14 +1,18 @@
-export function shuffle(array: any[]) {
-	let currentIndex = array.length, temporaryValue, randomIndex;
+import { ProductProps } from "../types/types"
 
-	while (0 !== currentIndex) {
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex--;
+export function shuffle(array: ProductProps[]) {
+  let currentIndex = array.length,
+    temporaryValue,
+    randomIndex
 
-		temporaryValue = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = temporaryValue;
-	}
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex--
 
-	return array;
+    temporaryValue = array[currentIndex]
+    array[currentIndex] = array[randomIndex]
+    array[randomIndex] = temporaryValue
+  }
+
+  return array
 }

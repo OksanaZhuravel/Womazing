@@ -1,11 +1,11 @@
-import React, { forwardRef, Ref } from "react";
-import { InputProps } from "../../../types/types";
+import { Ref, forwardRef } from "react"
+import { InputProps } from "../../../types/types"
 
-const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-	{ className, ...rest },
-	ref: Ref<HTMLInputElement>
-) => {
-	return <input {...rest} ref={ref} className={className} />;
-};
+const Input = forwardRef(function Input(
+  { className, ...rest }: InputProps,
+  ref: Ref<HTMLInputElement>,
+) {
+  return <input {...rest} ref={ref} className={className} />
+})
 
-export default forwardRef(Input);
+export default Input

@@ -1,9 +1,10 @@
-import { ButtonProps } from "../../../types/types";
-
+import { ButtonProps } from "../../../types/types"
 
 const Button: React.FC<ButtonProps> = ({ className, onClick, children }) => {
-	return (
-		<button onClick={onClick} className={className}>{children}</button>
-	);
+  return (
+    <button onClick={onClick} className={className}>
+      {children}
+    </button>
+  )
 }
-export default Button;
+export default Button

@@ -39,23 +39,25 @@ const Checkout: React.FC<BuyerProps> = () => {
     house: "",
     apartment: "",
   })
-  const isFormSubmitedOrder = useSelector((state: RootState) => state.form.isFormSubmitedOrder)
+  const isFormSubmitedOrder = useSelector(
+    (state: RootState) => state.form.isFormSubmitedOrder,
+  )
   const addFormBuyer = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const validationErrors = validateForm(formBuyer, validationRules);
+    e.preventDefault()
+    const validationErrors = validateForm(formBuyer, validationRules)
 
     if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+      setErrors(validationErrors)
     } else {
       const cartItemsInfo = cartItems
         .map((item: CartItem) => {
-          let totalSaveCell = 'N/A';
+          let totalSaveCell = "N/A"
           if (item.totalSave) {
-            totalSaveCell = `<td>${item.totalSave}</td>`;
+            totalSaveCell = `<td>${item.totalSave}</td>`
           }
-          let diccortCell = 'N/A';
+          let diccortCell = "N/A"
           if (item.diccort) {
-            diccortCell = `<td>${item.diccort}</td>`;
+            diccortCell = `<td>${item.diccort}</td>`
           }
           return `
       <tr>
@@ -68,9 +70,9 @@ const Checkout: React.FC<BuyerProps> = () => {
         ${totalSaveCell}
          <td><h3>${finalPrice}</h3></td>
       </tr>
-    `;
+    `
         })
-        .join("");
+        .join("")
       const table = `
     <table style="border-collapse: collapse; width: 100%;">
       <thead>
@@ -89,21 +91,21 @@ const Checkout: React.FC<BuyerProps> = () => {
         ${cartItemsInfo}
       </tbody>
     </table>
-  `;
-      const newForm = { ...formBuyer, id: Date.now(), cartItems: table };
-      setErrors({});
+  `
+      const newForm = { ...formBuyer, id: Date.now(), cartItems: table }
+      setErrors({})
       dispatch(setFormSubmitedOrder(false))
-      dispatch(resetCart());
-      const response = await api.postOrders(newForm, table);
+      dispatch(resetCart())
+      const response = await api.postOrders(newForm, table)
       if (response) {
         dispatch(setFormSubmitedOrder(true))
-        console.log("Email sent successfully!");
+        console.log("Email sent successfully!")
       } else {
         dispatch(setFormSubmitedOrder(false))
-        console.log("Message sending failed");
+        console.log("Message sending failed")
       }
     }
-  };
+  }
 
   const cartItems = useSelector((state: RootState) => state.carts.cart)
   const { finalPrice } = useCartInfo()

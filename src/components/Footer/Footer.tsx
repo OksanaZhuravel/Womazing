@@ -9,15 +9,17 @@ import { AppDispatch, RootState } from "../../state/store"
 import { defaultCategories } from "../../api/defolt"
 
 const Footer = () => {
-  const category = useSelector((state: RootState) => state.categories.categories)
+  const category = useSelector(
+    (state: RootState) => state.categories.categories,
+  )
   const dispatch = useDispatch<AppDispatch>()
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   useEffect(() => {
     dispatch(fetchCategoriesAll())
   }, [dispatch])
 
   return (
-    <footer className={`footer ${isMenuOpen ? 'menu-open' : ''}`}>
+    <footer className={`footer ${isMenuOpen ? "menu-open" : ""}`}>
       <div className="footer__container">
         <div className="footer__wrap">
           <Logo className="footer__logo" />
@@ -45,19 +47,19 @@ const Footer = () => {
           <ul className="footer__list">
             {category && category.length > 0
               ? category.map((item) => (
-                <li className="footer__item" key={item.id}>
-                  <Link className="footer__link" to={`/shop`}>
-                    <span className="footer__text">{item.name}</span>
-                  </Link>
-                </li>
-              ))
+                  <li className="footer__item" key={item.id}>
+                    <Link className="footer__link" to={`/shop`}>
+                      <span className="footer__text">{item.name}</span>
+                    </Link>
+                  </li>
+                ))
               : defaultCategories.map((category, index) => (
-                <li className="footer__item" key={index}>
-                  <Link className="footer__link" to={`/shop`}>
-                    <span className="footer__text">{category.name}</span>
-                  </Link>
-                </li>
-              ))}
+                  <li className="footer__item" key={index}>
+                    <Link className="footer__link" to={`/shop`}>
+                      <span className="footer__text">{category.name}</span>
+                    </Link>
+                  </li>
+                ))}
           </ul>
           <div className="footer__inner">
             <Social />

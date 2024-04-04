@@ -1,23 +1,23 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { RoutePath } from './paths';
+import { createBrowserRouter } from "react-router-dom"
+import { RoutePath } from "./paths"
 
-import Layout from '../pages/Layout';
-import Home from '../pages/Home';
-import AboutBrand from '../pages/AboutBrand';
-import Shop from '../pages/Shop';
-import Contacts from '../pages/Contacts';
-import Product from '../pages/Product';
-import Checkout from '../pages/Checkout';
-import Success from '../pages/Success';
-import Cart from '../pages/Cart';
+import Layout from "../pages/Layout"
+import Home from "../pages/Home"
+import AboutBrand from "../pages/AboutBrand"
+import Shop from "../pages/Shop"
+import Contacts from "../pages/Contacts"
+import Product from "../pages/Product"
+import Checkout from "../pages/Checkout"
+import Success from "../pages/Success"
+import Cart from "../pages/Cart"
 const routerConfig = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     errorElement: <Layout />,
     children: [
       {
-        path: '',
+        path: "",
         element: <Home />,
       },
       {
@@ -47,9 +47,9 @@ const routerConfig = createBrowserRouter([
       {
         path: RoutePath.SUCCESS,
         element: <Success />,
-      }
+      },
     ],
   },
-]);
+])
 
-export default routerConfig;
+export default routerConfig

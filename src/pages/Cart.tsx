@@ -10,21 +10,17 @@ import CartTotal from "../components/Cart/CartTotal/CartTotal"
 import CartControls from "../components/Cart/CartControls/CartControls"
 import CartList from "../components/Cart/CartList/CartList"
 
-
 const Cart = () => {
   const cartItems = useSelector((state: RootState) => state.carts.cart)
   const [coupons, setCoupons] = useState<CouponsData[]>([])
   const [coupon, setCoupon] = useState<string>("")
   const [couponValid, setCouponValid] = useState<boolean | null>(null)
   const [couponApplied, setCouponApplied] = useState<boolean>(false)
-  const {
-    totalPrice,
-    updateQuantity,
-    deleteItemCart,
-    updateTotalSave,
-
-  } = useCartInfo()
-  const [discountedPriceNumber, setDiscountedPriceNumber] = useState<number | null>(null)
+  const { totalPrice, updateQuantity, deleteItemCart, updateTotalSave } =
+    useCartInfo()
+  const [discountedPriceNumber, setDiscountedPriceNumber] = useState<
+    number | null
+  >(null)
   // console.log(cartItems);
 
   useEffect(() => {
@@ -53,9 +49,11 @@ const Cart = () => {
       setDiscountedPriceNumber(totalSave)
       setCouponApplied(true)
       setCouponValid(true)
-      cartItems.map((item) => item.id).forEach((itemId) => {
-        updateTotalSave(itemId, totalSave)
-      })
+      cartItems
+        .map((item) => item.id)
+        .forEach((itemId) => {
+          updateTotalSave(itemId, totalSave)
+        })
     } else {
       setCouponValid(false)
       setDiscountedPriceNumber(null)
@@ -75,10 +73,11 @@ const Cart = () => {
 
   const handleQuantityChange = (
     itemId: number,
+    key: string,
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const newQuantity = parseInt(e.target.value, 10)
-    updateQuantity(itemId, newQuantity)
+    updateQuantity(key, newQuantity, itemId)
     handleUpdateCart()
   }
 
@@ -118,7 +117,9 @@ const Cart = () => {
               <div className="cart__inner">
                 <p className="subtitle-h2">Ваша корзина пуста.</p>
                 <Link to={"/shop"} className=" button">
-                  <span className="button__text subtitle">Перейти в магазин</span>
+                  <span className="button__text subtitle">
+                    Перейти в магазин
+                  </span>
                 </Link>
               </div>
             </div>
@@ -126,7 +127,7 @@ const Cart = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

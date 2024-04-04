@@ -6,9 +6,10 @@ import {
   ImageData,
   CouponsData,
   formDataProps,
+  FormBuyer,
 } from "../types/types"
 import { defaultCoupon } from "./defolt"
-export const API_URL = `https://womazing-server.onrender.com/`;
+export const API_URL = `https://womazing-server.onrender.com/`
 // export const API_URL = `http://localhost:1337`
 
 const instance = axios.create({
@@ -137,7 +138,7 @@ class Api {
       console.log(error)
     }
   }
-  async postOrders(newOrder: any, cartItemsInfo: string) {
+  async postOrders(newOrder: FormBuyer, cartItemsInfo: string) {
     // console.log(newOrder);
     try {
       const response = await instance.post("/api/SendEmail", {
@@ -150,23 +151,23 @@ class Api {
     <p>Имя: ${newOrder.name}</p>
     <p>Email: ${newOrder.email}</p>
     <p>Телефон для связи: ${newOrder.phone}</p>
-    ${newOrder.message ? `<p>Сообщение: ${newOrder.message}</p>` : ''}
+    ${newOrder.message ? `<p>Сообщение: ${newOrder.message}</p>` : ""}
     <p>Страна: ${newOrder.country}</p>
     <p>Город: ${newOrder.city}</p>
     <p>Улица: ${newOrder.street}</p>
     <p>Дом: ${newOrder.house}</p>
     <p>Квартира: ${newOrder.apartment}</p>
-    <p>Оплата наличными: ${newOrder.iscash ? 'Да' : 'Нет'}</p>
+    <p>Оплата наличными: ${newOrder.iscash ? "Да" : "Нет"}</p>
     <p>Информация о товарах:</p>
     ${cartItemsInfo}
   `,
         },
-      });
+      })
       // console.log(response);
       // console.log(response.data);
-      return response.data;
+      return response.data
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 }

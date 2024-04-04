@@ -1,14 +1,11 @@
-
-import Contact from '../components/Contact/Contact';
-import Title from '../components/Title/Title';
+import Contact from "../components/Contact/Contact"
+import Title from "../components/Title/Title"
 const Contacts = () => {
-
-
   return (
     <>
-      <Title title='Контакты' activeTitle='Контакты' activeLink='/contacts' />
+      <Title title="Контакты" activeTitle="Контакты" activeLink="/contacts" />
       <Contact />
     </>
-  );
-};
-export default Contacts;
+  )
+}
+export default Contacts

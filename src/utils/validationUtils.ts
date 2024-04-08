@@ -1,10 +1,7 @@
 import { FormErrors, ValidationRule } from "../types/types"
-interface Form {
-  [key: string]: string
-}
 
 export const validateForm = (
-  form: Form,
+  form: any,
   validationRules: ValidationRule[],
 ): FormErrors => {
   const errors: FormErrors = {}

@@ -46,8 +46,8 @@ const CarIProductItem: React.FC<CartItemProps & { cartItems: CartItem[] }> = ({
         </div>
       </Link>
       <p className="product-cart__amount text">
-        {item.diccort !== null && item.diccort !== undefined ? (
-          <span>${item.diccort}</span>
+        {item.discord !== null && item.discord !== undefined ? (
+          <span>${item.discord}</span>
         ) : (
           <span>${item.price}</span>
         )}
@@ -61,9 +61,9 @@ const CarIProductItem: React.FC<CartItemProps & { cartItems: CartItem[] }> = ({
       />
       <p className="text">
         $
-        {isNaN(item.quantity * (item.diccort ?? item.price))
+        {isNaN(item.quantity * (item.discord ?? item.price))
           ? 0
-          : item.quantity * (item.diccort ?? item.price)}
+          : item.quantity * (item.discord ?? item.price)}
       </p>
     </div>
   )

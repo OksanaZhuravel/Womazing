@@ -5,7 +5,7 @@ import Input from "../../UI/Input/Input"
 interface OrderSummaryProps {
   cartItems: CartItem[]
   finalPrice: number
-  isFormSubmitedOrder: boolean
+  isFormSubmittedOrder: boolean
   addFormBuyer: (e: React.MouseEvent<HTMLButtonElement>) => void
   formBuyer: FormBuyer
   setFormBuyer: React.Dispatch<React.SetStateAction<FormBuyer>>
@@ -13,7 +13,7 @@ interface OrderSummaryProps {
 const OrderSummary: React.FC<OrderSummaryProps> = ({
   cartItems,
   finalPrice,
-  isFormSubmitedOrder,
+  isFormSubmittedOrder,
   addFormBuyer,
   formBuyer,
   setFormBuyer,
@@ -47,8 +47,8 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
             {cartItems.map((item) => (
               <li key={item.key} className="buyer-cart__item">
                 <p className="buyer-cart__text text">{item.title}</p>
-                {item.diccort !== null && item.diccort !== undefined ? (
-                  <p className="buyer-cart__text text">${item.diccort}</p>
+                {item.discord !== null && item.discord !== undefined ? (
+                  <p className="buyer-cart__text text">${item.discord}</p>
                 ) : (
                   <p className="buyer-cart__text text">${item.price}</p>
                 )}
@@ -75,11 +75,11 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
           <Input
             id="checkbox"
             type="checkbox"
-            name="iscash"
+            name="isCash"
             className="checkbox__input"
-            checked={formBuyer.iscash}
+            checked={formBuyer.isCash}
             onChange={() =>
-              setFormBuyer({ ...formBuyer, iscash: !formBuyer.iscash })
+              setFormBuyer({ ...formBuyer, isCash: !formBuyer.isCash })
             }
           />
           <label htmlFor="checkbox" className="text checkbox__label">
@@ -88,7 +88,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
         </div>
         <Button
           onClick={addFormBuyer}
-          className={`button ${isFormSubmitedOrder ? "" : "disabled"}`}
+          className={`button ${isFormSubmittedOrder ? "" : "disabled"}`}
         >
           <span className="button__text">Разместить заказ</span>
         </Button>

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { addCart } from "../../state/cart/cartSlice"
+import { AppDispatch } from "../../state/store"
+import { ProductItemProps } from "../../types/types"
 import Button from "../UI/Button/Button"
 import Input from "../UI/Input/Input"
-import { ProductItemProps } from "../../types/types"
-import { addCart } from "../../state/cart/cartSlice"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "../../state/store"
 
 const ProductItem = ({ item }: ProductItemProps) => {
   const dispatch = useDispatch<AppDispatch>()
@@ -32,7 +32,7 @@ const ProductItem = ({ item }: ProductItemProps) => {
       images: item.images,
       price: item.price,
       title: item.title,
-      diccort: item.diccort,
+      discord: item.discord,
       selectedSize,
       selectedColor,
       quantity: Number(quantity),
@@ -50,9 +50,9 @@ const ProductItem = ({ item }: ProductItemProps) => {
       <img src={item.images[0]} className="product__img" alt={item.title} />
       <div className="product__boby">
         <div className="product__prace">
-          {item.diccort !== null ? (
+          {item.discord !== null ? (
             <>
-              <span>${item.diccort}</span>
+              <span>${item.discord}</span>
               <span className="product__discort">${item.price}</span>
             </>
           ) : (

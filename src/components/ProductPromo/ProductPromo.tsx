@@ -1,13 +1,13 @@
 import { useEffect } from "react"
-import { Link } from "react-router-dom"
-import Arrow from "../Icon/Arrow"
-import { ProductPromoProps, ProductProps } from "../../types/types"
-import { AppDispatch, RootState } from "../../state/store"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchProductsAll } from "../../state/product/productSlice"
+import { Link } from "react-router-dom"
 import { defaultProducts } from "../../api/defolt"
-import Loading from "../UI/Loading/Loading"
+import { fetchProductsAll } from "../../state/product/productSlice"
+import { AppDispatch, RootState } from "../../state/store"
+import { ProductPromoProps, ProductProps } from "../../types/types"
 import { shuffle } from "../../utils/shuffle"
+import Arrow from "../Icon/Arrow"
+import Loading from "../UI/Loading/Loading"
 
 const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
   const products = useSelector(
@@ -58,9 +58,9 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
                 <div className="card__boby">
                   <h3 className="card__title">{product.title}</h3>
                   <div className="card__prace">
-                    {product.diccort !== null ? (
+                    {product.discord !== null ? (
                       <>
-                        <span>${product.diccort}</span>
+                        <span>${product.discord}</span>
                         <span className="card__discort">${product.price}</span>
                       </>
                     ) : (
@@ -89,9 +89,9 @@ const ProductPromo = ({ subtitle, className, limit }: ProductPromoProps) => {
                 <div className="card__boby">
                   <h3 className="card__title">{product.title}</h3>
                   <div className="card__prace">
-                    {product.diccort !== null ? (
+                    {product.discord !== null ? (
                       <>
-                        <span>${product.diccort}</span>
+                        <span>${product.discord}</span>
                         <span className="card__discort">${product.price}</span>
                       </>
                     ) : (

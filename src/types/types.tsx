@@ -53,7 +53,7 @@ export interface FormBuyer {
   street: string
   house: string
   apartment: string
-  iscash: boolean
+  isCash: boolean
 }
 
 export interface BuyerProps {
@@ -89,7 +89,7 @@ export interface CartState {
     id: number
     images?: string[]
     price: number
-    diccort: number | null | undefined
+    discord: number | null | undefined
     title: string
     selectedSize: string
     selectedColor: string
@@ -108,7 +108,7 @@ export interface CartItem {
   selectedSize: string
   selectedColor: string
   quantity: number
-  diccort?: number | null
+  discord?: number | null
   totalSave?: number | null
   total?: number
   key: string
@@ -137,7 +137,7 @@ export interface ProductProps {
   title: string
   description: string | null
   price: number
-  diccort: number | null
+  discord: number | null
   quantity: number
   categories: string[]
   images: string[]
@@ -185,7 +185,7 @@ export interface ProductData {
     title: string
     description: string | null
     price: number
-    diccort: number
+    discord: number
     quantity: number
     images: {
       data: ImageData[]

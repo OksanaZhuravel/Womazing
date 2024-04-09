@@ -2,11 +2,11 @@ import axios from "axios"
 import {
   CategoryData,
   ColorData,
-  SizeData,
-  ImageData,
   CouponsData,
-  formDataProps,
   FormBuyer,
+  ImageData,
+  SizeData,
+  formDataProps,
 } from "../types/types"
 import { defaultCoupon } from "./defolt"
 export const API_URL = `https://womazing-server.onrender.com/`
@@ -62,7 +62,7 @@ class Api {
         },
       })
       const {
-        attributes: { title, diccort, price, description, quantity },
+        attributes: { title, discord, price, description, quantity },
       } = response.data.data
       const categories = response.data.data.attributes.categories.data.map(
         (category: CategoryData) => category.attributes.name,
@@ -83,11 +83,11 @@ class Api {
         response.data.data.attributes.news.data.length > 0
           ? response.data.data.attributes.news.data[0].attributes.New
           : false
-      // console.log(id, title, diccort, price, description, quantity, categories, colors, images, sizes, news);
+      // console.log(id, title, discord, price, description, quantity, categories, colors, images, sizes, news);
       return {
         id,
         title,
-        diccort,
+        discord,
         price,
         description,
         quantity,
@@ -157,7 +157,7 @@ class Api {
     <p>Улица: ${newOrder.street}</p>
     <p>Дом: ${newOrder.house}</p>
     <p>Квартира: ${newOrder.apartment}</p>
-    <p>Оплата наличными: ${newOrder.iscash ? "Да" : "Нет"}</p>
+    <p>Оплата наличными: ${newOrder.isCash ? "Да" : "Нет"}</p>
     <p>Информация о товарах:</p>
     ${cartItemsInfo}
   `,

@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { Draft } from "immer"
 import api from "../../api/apiShop"
-import { ProductProps, ProductState, ResponseData } from "../../types/types"
 import { defaultProducts } from "../../api/defolt"
+import { ProductProps, ProductState, ResponseData } from "../../types/types"
 
 const initialState: ProductState = {
   item: defaultProducts,
@@ -18,7 +18,7 @@ export const fetchProductsAll = createAsyncThunk(
       title: attributes.title,
       description: attributes.description,
       price: attributes.price,
-      diccort: attributes.diccort,
+      discord: attributes.discord,
       quantity: attributes.quantity,
       categories: attributes.categories.data.map(
         ({ attributes }) => attributes.name,

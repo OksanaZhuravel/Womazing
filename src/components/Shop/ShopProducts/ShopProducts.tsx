@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import Arrow from "../../Icon/Arrow"
-import { RangeProps } from "../../../types/types"
 import { useDispatch, useSelector } from "react-redux"
-import { AppDispatch, RootState } from "../../../state/store"
-import { fetchProductsAll } from "../../../state/product/productSlice"
-import Pagination from "../../UI/Pagination/Pagination"
+import { Link } from "react-router-dom"
 import { defaultProducts } from "../../../api/defolt"
+import { fetchProductsAll } from "../../../state/product/productSlice"
+import { AppDispatch, RootState } from "../../../state/store"
+import { RangeProps } from "../../../types/types"
+import Arrow from "../../Icon/Arrow"
+import Pagination from "../../UI/Pagination/Pagination"
 
 const ShopProducts = ({ currentRange }: RangeProps) => {
   const [pageSize, setPageSize] = useState(3)
@@ -95,9 +95,9 @@ const ShopProducts = ({ currentRange }: RangeProps) => {
                   <div className="card__boby">
                     <h3 className="card__title">{product.title}</h3>
                     <div className="card__prace">
-                      {product.diccort !== null ? (
+                      {product.discord !== null ? (
                         <>
-                          <span>${product.diccort}</span>
+                          <span>${product.discord}</span>
                           <span className="card__discort">
                             ${product.price}
                           </span>

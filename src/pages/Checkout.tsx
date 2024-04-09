@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react"
-import Title from "../components/Title/Title"
-import { useNavigate } from "react-router-dom"
-import { BuyerProps, CartItem, FormBuyer } from "../types/types"
-import { validateForm } from "../utils/validationUtils"
 import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "../state/store"
-import { useCartInfo } from "../hooks/useCartInfo"
-import { validationRules } from "../utils/validationRules"
+import { useNavigate } from "react-router-dom"
+import api from "../api/apiShop"
 import BuyerForm from "../components/Cart/BuyerForm/BuyerForm"
 import OrderSummary from "../components/Cart/OrderSummary/OrderSummary"
+import Title from "../components/Title/Title"
+import { useCartInfo } from "../hooks/useCartInfo"
 import { resetCart } from "../state/cart/cartSlice"
-import api from "../api/apiShop"
-import { setFormSubmitedOrder } from "../state/form/formSlice"
+import { setFormSubmittedOrder } from "../state/form/formSlice"
+import { RootState } from "../state/store"
+import { BuyerProps, CartItem, FormBuyer } from "../types/types"
+import { validationRules } from "../utils/validationRules"
+import { validateForm } from "../utils/validationUtils"
 
 const Checkout: React.FC<BuyerProps> = () => {
   const navigate = useNavigate()
@@ -26,7 +26,7 @@ const Checkout: React.FC<BuyerProps> = () => {
     street: "",
     house: "",
     apartment: "",
-    iscash: false,
+    isCash: false,
   })
   const [errors, setErrors] = useState<{ [key: string]: string }>({
     name: "",
@@ -39,8 +39,8 @@ const Checkout: React.FC<BuyerProps> = () => {
     house: "",
     apartment: "",
   })
-  const isFormSubmitedOrder = useSelector(
-    (state: RootState) => state.form.isFormSubmitedOrder,
+  const isFormSubmittedOrder = useSelector(
+    (state: RootState) => state.form.isFormSubmittedOrder,
   )
   const addFormBuyer = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -55,9 +55,9 @@ const Checkout: React.FC<BuyerProps> = () => {
           if (item.totalSave) {
             totalSaveCell = `<td>${item.totalSave}</td>`
           }
-          let diccortCell = "N/A"
-          if (item.diccort) {
-            diccortCell = `<td>${item.diccort}</td>`
+          let discordCell = "N/A"
+          if (item.discord) {
+            discordCell = `<td>${item.discord}</td>`
           }
           return `
       <tr>
@@ -66,9 +66,9 @@ const Checkout: React.FC<BuyerProps> = () => {
         <td>${item.selectedColor}</td>
         <td>${item.quantity}</td>
         <td>${item.price}</td>
-        ${diccortCell}
+        ${discordCell}
         ${totalSaveCell}
-         <td><h3>${finalPrice}</h3></td>
+        <td><h3>${finalPrice}</h3></td>
       </tr>
     `
         })
@@ -94,14 +94,14 @@ const Checkout: React.FC<BuyerProps> = () => {
   `
       const newForm = { ...formBuyer, id: Date.now(), cartItems: table }
       setErrors({})
-      dispatch(setFormSubmitedOrder(false))
+      dispatch(setFormSubmittedOrder(false))
       dispatch(resetCart())
       const response = await api.postOrders(newForm, table)
       if (response) {
-        dispatch(setFormSubmitedOrder(true))
+        dispatch(setFormSubmittedOrder(true))
         console.log("Email sent successfully!")
       } else {
-        dispatch(setFormSubmitedOrder(false))
+        dispatch(setFormSubmittedOrder(false))
         console.log("Message sending failed")
       }
     }
@@ -111,10 +111,10 @@ const Checkout: React.FC<BuyerProps> = () => {
   const { finalPrice } = useCartInfo()
 
   useEffect(() => {
-    if (!isFormSubmitedOrder) {
+    if (!isFormSubmittedOrder) {
       navigate("/success")
     }
-  }, [isFormSubmitedOrder, navigate])
+  }, [isFormSubmittedOrder, navigate])
 
   return (
     <>
@@ -133,7 +133,7 @@ const Checkout: React.FC<BuyerProps> = () => {
           <OrderSummary
             cartItems={cartItems}
             finalPrice={finalPrice}
-            isFormSubmitedOrder={isFormSubmitedOrder}
+            isFormSubmittedOrder={isFormSubmittedOrder}
             addFormBuyer={addFormBuyer}
             formBuyer={formBuyer}
             setFormBuyer={setFormBuyer}

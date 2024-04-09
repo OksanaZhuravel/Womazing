@@ -15,9 +15,9 @@ export const useCartInfo = () => {
     0,
   )
   const totalPrice = cartItems.reduce((total, item) => {
-    const itemTotal = isNaN(item.quantity * (item.diccort ?? item.price))
+    const itemTotal = isNaN(item.quantity * (item.discord ?? item.price))
       ? 0
-      : item.quantity * (item.diccort ?? item.price)
+      : item.quantity * (item.discord ?? item.price)
     return total + itemTotal
   }, 0)
   const totalsSave =
